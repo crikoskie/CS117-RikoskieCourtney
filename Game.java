@@ -9,6 +9,7 @@
  * commands that the parser returns.
  * 
  * @author Maria Jump
+ * @author Courtney Rikoskie
  * @version 2015.02.01
  */
 
