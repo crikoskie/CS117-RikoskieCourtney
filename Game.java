@@ -18,6 +18,10 @@ public class Game {
     private World world;
     /** The room the player character is currently in. */
     private Room currentRoom;
+    /** The score that the player currently has. */
+    private int score;
+    /** The number of turns that the player has taken. */
+    private int turns;
 
     /**
      * Create the game and initialize its internal map.
@@ -26,6 +30,8 @@ public class Game {
         world = new World();
         // set the starting room
         currentRoom = world.getRoom("outside");
+        score = 0;
+        turns = 0;
     }
 
     /**
@@ -40,6 +46,7 @@ public class Game {
         while (!wantToQuit) {
             Command command = Reader.getCommand();
             wantToQuit = processCommand(command);
+            turns += 1;
             // other stuff that needs to happen every turn can be added here.
         }
         printGoodbye();
@@ -123,6 +130,7 @@ public class Game {
      * Print out the closing message for the player.
      */
     private void printGoodbye() {
+        Writer.println("You have earned " + score + " in " + (turns - 1) + " turns.");
         Writer.println("I hope you weren't too bored here on the Campus of Kings!");
         Writer.println("Thank you for playing.  Good bye.");
     }
