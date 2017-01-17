@@ -114,8 +114,6 @@ public class Game {
             } else {
                 Room newRoom = doorway.getDestination();
                 currentRoom = newRoom;
-                Writer.println(newRoom.getName() + ":");
-                Writer.println("You are " + newRoom.getDescription());
                 printLocationInformation();
             }
         }
@@ -150,8 +148,6 @@ public class Game {
         Writer.println("Campus of Kings is a new, incredibly boring adventure game.");
         Writer.println("Type 'help' if you need help.");
         Writer.println();
-        Writer.println(currentRoom.getName() + ":");
-        Writer.println("You are " + currentRoom.getDescription());
         printLocationInformation();
     }
 
@@ -175,7 +171,9 @@ public class Game {
     /**
      * Prints out the current location and exits.
      */
-    private void printLocationInformation() {        
+    private void printLocationInformation() { 
+        Writer.println(currentRoom.getName() + ":");
+        Writer.println("You are " + currentRoom.getDescription());
         Writer.print("Exits: ");
         if (currentRoom.northExit != null) {
             Writer.print("north ");
