@@ -16,12 +16,12 @@
 public class Game {
     /** The world where the game takes place. */
     private World world;
-    /** The room the player character is currently in. */
-    private Room currentRoom;
     /** The score that the player currently has. */
     private int score;
     /** The number of turns that the player has taken. */
     private int turns;
+    /** The player character. */
+    private Player player;
 
     /**
      * Create the game and initialize its internal map.
@@ -29,7 +29,7 @@ public class Game {
     public Game() {
         world = new World();
         // set the starting room
-        currentRoom = world.getRoom("outside");
+        player = new Player(world.getRoom("outside"));
         score = 0;
         turns = 0;
     }
@@ -100,7 +100,8 @@ public class Game {
             Writer.println("Go where?");
         } else {
             String direction = command.getRestOfLine();
-
+            Room currentRoom = player.getCurrentRoom();
+            
             // Try to leave current.
             Door doorway = null;
             if (direction.equals("north")) {
@@ -118,9 +119,10 @@ public class Game {
 
             if (doorway == null) {
                 Writer.println("There is no door!");
-            } else {
+            } 
+            else {
                 Room newRoom = doorway.getDestination();
-                currentRoom = newRoom;
+                player.setCurrentRoom(newRoom);
                 printLocationInformation();
             }
         }
@@ -180,6 +182,8 @@ public class Game {
      * Prints out the current location and exits.
      */
     private void printLocationInformation() { 
+        Room currentRoom = player.getCurrentRoom();
+        
         Writer.println(currentRoom.getName() + ":");
         Writer.println("You are " + currentRoom.getDescription());
         Writer.print("Exits: ");

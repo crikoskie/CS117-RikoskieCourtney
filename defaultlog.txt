@@ -1,0 +1,35 @@
+
+Welcome to the Campus of Kings!
+Campus of Kings is a new, incredibly boring adventure game.
+Type 'help' if you need help.
+
+Outside:
+You are outside in the center of the King's College campus.
+Exits: north east south west 
+> go north
+Essef:
+You are at the other main dormitory on campus.
+Exits: south 
+> go south
+Outside:
+You are outside in the center of the King's College campus.
+Exits: north east south west 
+> go south
+Admin:
+You are in the oldest building on campus and home to the computer science department.
+Exits: north east south west 
+> go south
+Hogg's Office:
+You are in Dr Hogg's office.
+Exits: north 
+> go east
+There is no door!
+> go north
+Admin:
+You are in the oldest building on campus and home to the computer science department.
+Exits: north east south west 
+> go west
+Jump's Office:
+You are in Dr Jump's office.
+Exits: east 
+> 
