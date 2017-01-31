@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Iterator;
 /**
  * Class Room - a room in an adventure game.
  * 
@@ -19,14 +21,8 @@ public class Room {
     /** The description of this room. */
     private String description;
 
-    /** This room's north exit, null if none exits. */
-    private Door northExit;
-    /** This room's south exit, null if none exits. */
-    private Door southExit;
-    /** This room's east exit, null if none exits. */
-    private Door eastExit;
-    /** This room's west exit, null if none exits. */
-    private Door westExit;
+    /** The room's exits. */
+    private HashMap<String, Door> exits;
 
     /**
      * Static initializer.
@@ -45,6 +41,7 @@ public class Room {
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
+        exits = new HashMap<String, Door>();
         counter++;
     }
     
@@ -75,78 +72,6 @@ public class Room {
     }
     
     /**
-     * Gets the room's north exit.
-     * 
-     * @return The room's north exit.
-     */
-    public Door getNorthExit() {
-        return northExit;
-    }
-    
-    /**
-     * Gets the room's south exit.
-     * 
-     * @return The room's south exit.
-     */
-    public Door getSouthExit() {
-        return southExit;
-    }
-    
-    /**
-     * Gets the room's east exit.
-     * 
-     * @return The room's east exit.
-     */
-    public Door getEastExit() {
-        return eastExit;
-    }
-    
-    /**
-     * Gets the room's west exit.
-     * 
-     * @return The room's west exit.
-     */
-    public Door getWestExit() {
-        return westExit;
-    }
-    
-    /**
-     * Sets the room's north exit.
-     * 
-     * @param theNorthExit The room's new north exit.
-     */
-    public void setNorthExit(Door theNorthExit) {
-        northExit = theNorthExit;
-    }
-    
-    /**
-     * Sets the room's south exit.
-     * 
-     * @param theSouthExit The room's new south exit.
-     */
-    public void setSouthExit(Door theSouthExit) {
-        southExit = theSouthExit;
-    }
-    
-    /**
-     * Sets the room's east exit.
-     * 
-     * @param theEastExit The room's new east exit.
-     */
-    public void setEastExit(Door theEastExit) {
-        eastExit = theEastExit;
-    }
-    
-    /**
-     * Sets the room's west exit.
-     * 
-     * @param theWestExit The room's new west exit.
-     */
-    public void setWestExit(Door theWestExit) {
-        westExit = theWestExit;
-    }
-    
-    /**
      * Returns a string description including all the details of a Room.
      * For example,
      *          Outside:
@@ -156,30 +81,44 @@ public class Room {
      * @return A string representing all the detail of a Room.
      */
     public String toString() {
-        String roomDetails;
-        String north = "";
-        String east = "";
-        String south = "";
-        String west = "";
+        String roomDetails = "";
         
-        String name = (getName() + ":");
-        String description = ("You are " + getDescription());
-        String exits = ("Exits: ");
-        if (getNorthExit() != null) {
-            north = ("north ");
-        }
-        if (getEastExit() != null) {
-            east = ("east ");
-        }
-        if (getSouthExit() != null) {
-            south = ("south ");
-        }
-        if (getWestExit() != null) {
-            west = ("west ");
+        roomDetails += (getName() + ":" + "\n");
+        roomDetails += ("You are " + getDescription() + "\n");
+        roomDetails += ("Exits: ");
+
+        Iterator<String> iter = exits.keySet().iterator();
+        
+        while(iter.hasNext()) {
+            String current = iter.next();
+           
+            if(getExit(current) != null) {
+                roomDetails += current + " ";
+            }
         }
         
-        roomDetails = (name + "\n" + description + "\n" + exits + north + east + south + west + "\n");
+        roomDetails += "\n";
         
         return roomDetails;
+    }
+    
+    /**
+     * Defines an exit from this room.
+     * 
+     * @param direction The direction of the exit.
+     * @param neighbor The door in the given direction.
+     */
+    public void setExit(String direction, Door neighbor) {
+        exits.put(direction, neighbor);
+    }
+    
+    /**
+     * Gets a door in a specified direction if it exists.
+     * 
+     * @param direction The direction of the exit.
+     * @return The door in the specified direction or null if it does not exist.
+     */
+    public Door getExit(String direction) {
+        return exits.get(direction);
     }
 }

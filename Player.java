@@ -5,8 +5,7 @@
  * @author Courtney Rikoskie 
  * @version 2017.01.24
  */
-public class Player
-{
+public class Player {
     /** The room that the player character is currently in. */
     private Room currentRoom;
     
