@@ -145,4 +145,41 @@ public class Room {
     public void setWestExit(Door theWestExit) {
         westExit = theWestExit;
     }
+    
+    /**
+     * Returns a string description including all the details of a Room.
+     * For example,
+     *          Outside:
+     *          You are outside in the center of the King's College campus.
+     *          Exits: north east south west
+     *          
+     * @return A string representing all the detail of a Room.
+     */
+    public String toString() {
+        String roomDetails;
+        String north = "";
+        String east = "";
+        String south = "";
+        String west = "";
+        
+        String name = (getName() + ":");
+        String description = ("You are " + getDescription());
+        String exits = ("Exits: ");
+        if (getNorthExit() != null) {
+            north = ("north ");
+        }
+        if (getEastExit() != null) {
+            east = ("east ");
+        }
+        if (getSouthExit() != null) {
+            south = ("south ");
+        }
+        if (getWestExit() != null) {
+            west = ("west ");
+        }
+        
+        roomDetails = (name + "\n" + description + "\n" + exits + north + east + south + west + "\n");
+        
+        return roomDetails;
+    }
 }
