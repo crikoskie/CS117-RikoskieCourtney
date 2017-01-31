@@ -10,6 +10,10 @@ Exits: north east south west
 Essef:
 You are at the other main dormitory on campus.
 Exits: south 
+> go east
+There is no door!
+> go west
+There is no door!
 > go south
 Outside:
 You are outside in the center of the King's College campus.
@@ -22,14 +26,8 @@ Exits: north east south west
 Hogg's Office:
 You are in Dr Hogg's office.
 Exits: north 
+> go west
+There is no door!
 > go east
 There is no door!
-> go north
-Admin:
-You are in the oldest building on campus and home to the computer science department.
-Exits: north east south west 
-> go west
-Jump's Office:
-You are in Dr Jump's office.
-Exits: east 
 > 

@@ -105,16 +105,16 @@ public class Game {
             // Try to leave current.
             Door doorway = null;
             if (direction.equals("north")) {
-                doorway = currentRoom.northExit;
+                doorway = currentRoom.getNorthExit();
             }
             if (direction.equals("east")) {
-                doorway = currentRoom.eastExit;
+                doorway = currentRoom.getEastExit();
             }
             if (direction.equals("south")) {
-                doorway = currentRoom.southExit;
+                doorway = currentRoom.getSouthExit();
             }
             if (direction.equals("west")) {
-                doorway = currentRoom.westExit;
+                doorway = currentRoom.getWestExit();
             }
 
             if (doorway == null) {
@@ -187,16 +187,16 @@ public class Game {
         Writer.println(currentRoom.getName() + ":");
         Writer.println("You are " + currentRoom.getDescription());
         Writer.print("Exits: ");
-        if (currentRoom.northExit != null) {
+        if (currentRoom.getNorthExit() != null) {
             Writer.print("north ");
         }
-        if (currentRoom.eastExit != null) {
+        if (currentRoom.getEastExit() != null) {
             Writer.print("east ");
         }
-        if (currentRoom.southExit != null) {
+        if (currentRoom.getSouthExit() != null) {
             Writer.print("south ");
         }
-        if (currentRoom.westExit != null) {
+        if (currentRoom.getWestExit() != null) {
             Writer.print("west ");
         }
         Writer.println();
