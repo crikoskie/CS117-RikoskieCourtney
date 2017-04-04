@@ -3,24 +3,13 @@ Welcome to the Campus of Kings!
 Campus of Kings is a new, incredibly boring adventure game.
 Type 'help' if you need help.
 
-Outside:
-You are outside in the center of the King's College campus.
-Exits: east south north west 
+Front Porch:
+The wood creaks under your feet.  A welcome sign is nailed onto the front door.  Down the stairs is a path.
+Exits: north 
 
 > go north
-Essef:
-You are at the other main dormitory on campus.
+Living Room:
+Curtains hang over the window, making it a bit difficult to see.  The fireplace is unlit, but the warm weather outside makes it feel temperate.  Out the door to the south is the front porch.  To the north is the downstairs hall.
 Exits: south 
-
-> go east
-There is no door!
-> go west
-There is no door!
-> go north
-There is no door!
-> go south
-Outside:
-You are outside in the center of the King's College campus.
-Exits: east south north west 
 
 > 

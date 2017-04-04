@@ -29,7 +29,7 @@ public class Game {
     public Game() {
         world = new World();
         // set the starting room
-        player = new Player(world.getRoom("outside"));
+        player = new Player(world.getRoom("Front Porch"));
         score = 0;
         turns = 0;
     }

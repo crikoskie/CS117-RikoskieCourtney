@@ -84,7 +84,7 @@ public class Room {
         String roomDetails = "";
         
         roomDetails += (getName() + ":" + "\n");
-        roomDetails += ("You are " + getDescription() + "\n");
+        roomDetails += (getDescription() + "\n");
         roomDetails += ("Exits: ");
 
         Iterator<String> iter = exits.keySet().iterator();
