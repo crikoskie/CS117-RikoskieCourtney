@@ -20,6 +20,8 @@ public class Room {
     private String name;
     /** The description of this room. */
     private String description;
+    /** The number of points that the player will receive upon entering a room. */
+    private int points;
 
     /** The room's exits. */
     private HashMap<String, Door> exits;
@@ -120,5 +122,26 @@ public class Room {
      */
     public Door getExit(String direction) {
         return exits.get(direction);
+    }
+    
+    /**
+     * Sets the number of points that a player will receive upon entering a room.
+     * 
+     * @param thePoints The number of points that a player will receive upon entering a room.
+     */
+    public void setPoints(int thePoints) {
+        points = thePoints;
+    }
+    
+    /**
+     * Gets the number of points that a player will receive upon entering a room.
+     * 
+     * @return The number of points that a player will receive upon entering a room.
+     */
+    public int getPoints() {
+        int roomPoints = points;
+        setPoints(0);
+        
+        return roomPoints;
     }
 }
