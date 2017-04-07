@@ -76,6 +76,8 @@ public class Game {
                 goRoom(command);
             } else if (commandWord.equals("quit")) {
                 wantToQuit = quit(command);
+            } else if (commandWord.equals("look")) {
+                look();
             } else {
                 Writer.println(commandWord + " is not implemented yet!");
             }
@@ -178,5 +180,12 @@ public class Game {
         Room currentRoom = player.getCurrentRoom();
         
         Writer.println(currentRoom.toString());
+    }
+    
+    /**
+     * Prints out the location information
+     */
+    private void look() {
+        printLocationInformation();
     }
 }
