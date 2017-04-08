@@ -34,6 +34,8 @@ public enum CommandEnum
     
     /**
      * Gets the text that the player enters in order to execute a command.
+     * 
+     * @return The text that the player enters in order to execute a command.
      */
     public String getText() {
         return text;
