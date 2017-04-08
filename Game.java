@@ -68,18 +68,24 @@ public class Game {
         if (command.isUnknown()) {
             Writer.println("I don't know what you mean...");
         } else {
-
-            String commandWord = command.getCommandWord();
-            if (commandWord.equals("help")) {
-                printHelp();
-            } else if (commandWord.equals("go")) {
-                goRoom(command);
-            } else if (commandWord.equals("quit")) {
-                wantToQuit = quit(command);
-            } else if (commandWord.equals("look")) {
-                look();
-            } else {
-                Writer.println(commandWord + " is not implemented yet!");
+            CommandEnum commandWord = command.getCommandWord();
+            
+            switch(commandWord) {
+                case HELP:
+                    printHelp();
+                    break;
+                case GO:
+                    goRoom(command);
+                    break;
+                case QUIT:
+                    wantToQuit = quit(command);
+                    break;
+                case LOOK:
+                    look();
+                    break;
+                default:
+                    Writer.println(commandWord + " is not implemented yet!");
+                    break;
             }
         }
         return wantToQuit;
@@ -140,8 +146,9 @@ public class Game {
         Writer.println("You are lost. You are alone. You wander");
         Writer.println("around at the university.");
         Writer.println();
-        Writer.println("Your command words are:");
-        Writer.println("   go quit help");
+        
+        String commands = CommandWords.getCommandString();
+        Writer.println(commands);
     }
 
     /**

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 /**
  * This class is part of the "Campus of Kings" application. "Campus of Kings" is a
  * very simple, text based adventure game.
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 
 public class Command {
 	/** The command word for this command. */
-	private String commandWord;
+	private CommandEnum commandWord;
 	/** The rest of the line with all the spaces removed. */
 	private ArrayList<String> restOfLine;
 
@@ -34,7 +33,7 @@ public class Command {
 	 *            The first word of the command. Null if the command was not
 	 *            recognized.
 	 */
-	public Command(String firstWord) {
+	public Command(CommandEnum firstWord) {
 		commandWord = firstWord;
 		restOfLine = new ArrayList<String>();
 	}
@@ -49,7 +48,7 @@ public class Command {
 	 * @param rest
 	 *            The rest of the command.
 	 */
-	public Command(String firstWord, ArrayList<String> rest) {
+	public Command(CommandEnum firstWord, ArrayList<String> rest) {
 		commandWord = firstWord;
 		restOfLine = rest;
 	}
@@ -60,7 +59,7 @@ public class Command {
 	 * 
 	 * @return The command word.
 	 */
-	public String getCommandWord() {
+	public CommandEnum getCommandWord() {
 		return commandWord;
 	}
 
