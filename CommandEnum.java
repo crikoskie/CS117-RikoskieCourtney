@@ -14,7 +14,11 @@ public enum CommandEnum
     /** The look command. */
     LOOK("look"),
     /** The quit command. */
-    QUIT("quit");
+    QUIT("quit"),
+    /** The status command. */
+    STATUS("status"),
+    /** The back command. */
+    BACK("back");
     
     /** The text that the player enters in order to execute the command. */
     private String text;

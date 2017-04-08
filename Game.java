@@ -83,6 +83,12 @@ public class Game {
                 case LOOK:
                     look();
                     break;
+                case STATUS:
+                    status();
+                    break;
+                case BACK:
+                    back();
+                    break;
                 default:
                     Writer.println(commandWord + " is not implemented yet!");
                     break;
@@ -190,9 +196,33 @@ public class Game {
     }
     
     /**
-     * Prints out the location information
+     * Prints out the location information.
      */
     private void look() {
         printLocationInformation();
+    }
+    
+    /**
+     * Prints out the player's status.
+     */
+    private void status() {
+        Writer.println("You have earned " + score + " points in " + turns + " turns.");
+        Writer.println();
+        Writer.println(player.getCurrentRoom().toString());
+    }
+    
+    /**
+     * Takes the player back to the previous room, if it exists.
+     */
+    private void back() {
+        Room previous = player.getPreviousRoom();
+        
+        if (previous != null) {
+            player.setCurrentRoom(previous);
+            Writer.println(player.getCurrentRoom().toString());
+        }
+        else {
+            Writer.println("You cannot go back.");
+        }
     }
 }
