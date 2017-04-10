@@ -21,6 +21,7 @@ public class World {
     public World() {
         rooms = new HashMap<String, Room>();
         createRooms();
+        createItems();
     }
 
     /**
@@ -333,4 +334,22 @@ public class World {
         this.createDoor(mainRoad, "east", library);
         this.createDoor(library, "west", mainRoad);
     }
+    
+    /**
+     * Creates items in the rooms in which they belong.
+     */
+    public void createItems() {
+        Item garlic = new Item("head of garlic", "Your nose scrunches from the smell. It seems to be made up of at least ten cloves.", 5, 1.5);
+        Room kitchen = getRoom("Kitchen");
+        kitchen.addItem(garlic);
+        
+        Item pouch = new Item("herb pouch", "The inside made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
+        Item notepad = new Item("notepad", "Recipes for potions are scribbled inside. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
+        Item coins = new Item("coin collection", "Since your first trip to town, the shopkeepers of Fairsway have been giving you coins from far-off lands.  The jar contains all of the ones you have received. It is one of your cherished possessions.", 0, 20);
+        Room yourRoom = getRoom("Your Bedroom");
+        yourRoom.addItem(pouch);
+        yourRoom.addItem(notepad);
+        yourRoom.addItem(coins);
+    }
+    
 }

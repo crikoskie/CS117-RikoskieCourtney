@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.HashSet;
 /**
  * Class Room - a room in an adventure game.
  * 
@@ -25,6 +26,8 @@ public class Room {
 
     /** The room's exits. */
     private HashMap<String, Door> exits;
+    /** The room's items. */
+    private HashSet<Item> items;
 
     /**
      * Static initializer.
@@ -44,6 +47,8 @@ public class Room {
         this.name = name;
         this.description = description;
         exits = new HashMap<String, Door>();
+        points = 0;
+        items = new HashSet<Item>();
         counter++;
     }
     
@@ -87,14 +92,27 @@ public class Room {
         
         roomDetails += (getName() + ":" + "\n");
         roomDetails += (getDescription() + "\n");
-        roomDetails += ("Exits: ");
+        
+        if (items.size() != 0) {
+            roomDetails += "Items: ";
+            
+            for (Item current : items) {
+                String itemName = current.getName();
+                
+                roomDetails += itemName + "   ";
+            }
+            
+            roomDetails += "\n";
+        }
+        
+        roomDetails += "Exits: ";
 
         Iterator<String> iter = exits.keySet().iterator();
         
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
             String current = iter.next();
            
-            if(getExit(current) != null) {
+            if (getExit(current) != null) {
                 roomDetails += current + " ";
             }
         }
@@ -143,5 +161,85 @@ public class Room {
         setPoints(0);
         
         return roomPoints;
+    }
+    
+    /**
+     * Adds the specified item to the room.
+     * 
+     * @param theItem The item to be added.
+     */
+    public void addItem(Item theItem) {
+        items.add(theItem);
+    }
+    
+    /**
+     * Gets the specified item.
+     * 
+     * @param theName The name of the specified item.
+     * @return The specified item, if it exists.
+     */
+    public Item getItem(String theName) {
+        Item item = null;
+        boolean found = false;
+        Iterator<Item> iter = items.iterator();
+        
+        while (!found && iter.hasNext()) {
+            Item current = iter.next();
+            String itemName = current.getName();
+            
+            if (itemName.equals(theName)) {
+                item = current;
+                found = true;
+            }
+        }
+        
+        return item;
+    }
+    
+    /**
+     * Removes the specified item from the room.
+     * 
+     * @param theName The name of the specified item.
+     * @return The specified item, if it exists.
+     */
+    public Item removeItem(String theName) {
+        Item item = null;
+        boolean found = false;
+        Iterator<Item> iter = items.iterator();
+        
+        while (!found && iter.hasNext()) {
+            Item current = iter.next();
+            String itemName = current.getName();
+            
+            if (itemName.equals(theName)) {
+                item = current;
+                iter.remove();
+                found = true;
+            }
+        }
+        
+        return item;
+    }
+    
+    /**
+     * Gets whether or not the specified item can be found in the room.
+     * 
+     * @param theName The name of the specified item.
+     * @return Whether or not the specified item can be found in the room.
+     */
+    public boolean isInRoom(String theName) {
+        Iterator<Item> iter = items.iterator();
+        boolean found = false;
+        
+        while (!found && iter.hasNext()) {
+            Item current = iter.next();
+            String itemName = current.getName();
+            
+            if (itemName.equals(theName)) {
+                found = true;
+            }
+        }
+        
+        return found;
     }
 }

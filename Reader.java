@@ -49,7 +49,7 @@ public class Reader {
             word1 = tokenizer.next(); // get first word
             if (tokenizer.hasNext()) {
             	restOfLine = new ArrayList<String>();
-            	while(tokenizer.hasNext()) {
+            	while (tokenizer.hasNext()) {
             		restOfLine.add(tokenizer.next());
             	}
             }

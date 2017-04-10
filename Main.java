@@ -120,7 +120,8 @@ public class Main extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == saveItem) {
 			Writer.copyDefaultLog();
-		} else if (event.getSource() == exitItem) {
+		} 
+		else if (event.getSource() == exitItem) {
 			System.exit(0);
 		}
 	}
@@ -225,7 +226,8 @@ public class Main extends JFrame implements ActionListener {
 						synchronized (this) {
 							this.wait();
 						}
-					} catch (InterruptedException ex) {
+					} 
+					catch (InterruptedException ex) {
 						ex.printStackTrace();
 					}
 				}

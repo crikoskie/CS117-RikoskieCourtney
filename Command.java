@@ -119,7 +119,7 @@ public class Command {
 	public String getRestOfLine() {
 		StringBuffer buffer = null;
 		if (restOfLine.size() != 0) {
-			for(String word : restOfLine) {
+			for (String word : restOfLine) {
 				if (buffer == null) {
 					buffer = new StringBuffer();
 					buffer.append(word);

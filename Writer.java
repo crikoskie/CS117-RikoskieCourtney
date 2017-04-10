@@ -191,10 +191,12 @@ public class Writer {
 			BufferedWriter log = new BufferedWriter(new FileWriter(DEFAULT_LOG, true));
 			log.write(toPrint);
 			log.close();
-		} catch (BadLocationException ex) {
+		} 
+		catch (BadLocationException ex) {
 			System.err.println("ERROR: Should never get this [" + toPrint + "]");
 			System.exit(2);
-		} catch (IOException ex) {
+		} 
+		catch (IOException ex) {
 			System.err.println("ERROR printing to default log (see instructor for help)");
 			System.exit(1);
 		}
@@ -207,7 +209,8 @@ public class Writer {
 		try {
 			BufferedWriter log = new BufferedWriter(new FileWriter(DEFAULT_LOG, false));
 			log.close();
-		} catch (IOException ex) {
+		} 
+		catch (IOException ex) {
 			System.err.println("ERROR resetting the default log (see instructor for help)");
 			System.exit(1);
 		}
@@ -233,10 +236,12 @@ public class Writer {
 				output.close();
 				input.close();
 			}
-		} catch (FileNotFoundException exception) {
+		} 
+		catch (FileNotFoundException exception) {
 			System.err.println("ERROR: default log file cannot be found");
 			System.exit(3);
-		} catch (IOException exception) {
+		} 
+		catch (IOException exception) {
 			System.err.println("ERROR: file for copy cannot be written to");
 			System.exit(4);
 		}

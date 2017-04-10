@@ -1,3 +1,5 @@
+import java.util.Iterator;
+import java.util.HashSet;
 /**
  * This class is the main class of the "Campus of Kings" application.
  * "Campus of Kings" is a very simple, text based adventure game. Users can walk
@@ -67,7 +69,8 @@ public class Game {
 
         if (command.isUnknown()) {
             Writer.println("I don't know what you mean...");
-        } else {
+        } 
+        else {
             CommandEnum commandWord = command.getCommandWord();
             
             switch(commandWord) {
@@ -88,6 +91,18 @@ public class Game {
                     break;
                 case BACK:
                     back();
+                    break;
+                case DROP:
+                    drop(command);
+                    break;
+                case INVENTORY:
+                    inventory();
+                    break;
+                case EXAMINE:
+                    examine(command);
+                    break;
+                case TAKE:
+                    take(command);
                     break;
                 default:
                     Writer.println(commandWord + " is not implemented yet!");
@@ -112,7 +127,8 @@ public class Game {
         if (!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             Writer.println("Go where?");
-        } else {
+        } 
+        else {
             String direction = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
             
@@ -223,6 +239,106 @@ public class Game {
         }
         else {
             Writer.println("You cannot go back.");
+        }
+    }
+    
+    /**
+     * Drops an item from the player character's inventory.
+     * 
+     * Command command The command to be processed.
+     */
+    private void drop(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to drop?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            
+            if (player.isInInventory(itemName)) {
+                Item item = player.getItem(itemName);
+                player.removeItem(itemName);
+                player.getCurrentRoom().addItem(item);
+                Writer.println("Dropped.");
+            }
+            else {
+                Writer.println("You are not carrying this item.");
+            }
+        }
+    }
+    
+    /**
+     * Prints out the player character's inventory.
+     */
+    private void inventory() {
+        HashSet<Item> inventory = player.getInventory();
+        
+        if (inventory.size() == 0) {
+            Writer.println("You are not carrying anything.");
+        }
+        else {
+            Writer.println("Items:");
+        }
+        
+        for (Item current : inventory) {
+            String itemName = current.getName();
+            
+            Writer.println("     " + itemName);
+        }
+    }
+    
+    /**
+     * Examines a specified item.
+     * 
+     * @param command The command to be processed.
+     */
+    private void examine(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to examine?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (player.isInInventory(itemName)) {
+                Item item = player.getItem(itemName);
+                String itemDescription = item.getDescription();
+                Writer.println(itemName + ": " + "\n" + itemDescription);
+            }
+            else if (currentRoom.isInRoom(itemName)) {
+                Item item = currentRoom.getItem(itemName);
+                String itemDescription = item.getDescription();
+                Writer.println(itemName + ": " + "\n" + itemDescription);
+            }
+            else {
+                Writer.println("You search the room and your pockets, but there is no such item to be found.");
+            }
+        }
+    }
+    
+    /**
+     * Takes a specified item.
+     * 
+     * @param command The command to be processed.
+     */
+    private void take(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to take?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (currentRoom.isInRoom(itemName)) {
+                Item item = currentRoom.getItem(itemName);
+                boolean added = player.addToInventory(item);
+                if (added) {
+                    currentRoom.removeItem(itemName);
+                    Writer.println("Taken.");
+                }
+            }
+            else {
+                Writer.println("You search the room, but there is no such item to be found.");
+            }
         }
     }
 }

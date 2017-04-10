@@ -18,7 +18,15 @@ public enum CommandEnum
     /** The status command. */
     STATUS("status"),
     /** The back command. */
-    BACK("back");
+    BACK("back"),
+    /** The drop command. */
+    DROP("drop"),
+    /** The inventory command. */
+    INVENTORY("inventory"),
+    /** The examine command. */
+    EXAMINE("examine"),
+    /** The take command. */
+    TAKE("take");
     
     /** The text that the player enters in order to execute the command. */
     private String text;
