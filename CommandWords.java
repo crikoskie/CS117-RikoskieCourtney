@@ -38,14 +38,10 @@ public class CommandWords {
      */
     public static boolean isCommand(String aString) {
         boolean valid = false;
-        Iterator<String> iter = validCommands.keySet().iterator();
+        CommandEnum command = validCommands.get(aString);
         
-        while (!valid && iter.hasNext()) {
-            String currentCommand = iter.next();
-            
-            if (currentCommand.equals(aString)) {
-                valid = true;
-            }
+        if (command != null) {
+            valid = true;
         }
         // if we get here, the string was not found in the commands
         return valid;
@@ -79,18 +75,6 @@ public class CommandWords {
           does not exisit
      */
     public static CommandEnum getCommand(String theString) {
-        boolean found = false;
-        Iterator<String> iter = validCommands.keySet().iterator();
-        CommandEnum command = null;
-        
-        while (!found && iter.hasNext()) {
-            String current = iter.next();
-            
-            if (current.equals(theString)) {
-                command = validCommands.get(theString);
-            }
-        }
-        
-        return command;
+              return validCommands.get(theString);
     }
 }
