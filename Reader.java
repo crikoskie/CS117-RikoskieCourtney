@@ -84,6 +84,8 @@ public class Reader {
      * @return The response typed in by the user.
      */
     public static String getResponseKeepCase() {
-        return reader.nextLine().trim();
+        String response = reader.nextLine().trim();
+        Writer.printCommand(response);
+        return response;
     }
 }
