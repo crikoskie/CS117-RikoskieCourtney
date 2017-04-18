@@ -301,13 +301,11 @@ public class Game {
             
             if (player.isInInventory(itemName)) {
                 Item item = player.getItem(itemName);
-                String itemDescription = item.getDescription();
-                Writer.println(itemName + ": " + "\n" + itemDescription);
+                Writer.println(item.toString());
             }
             else if (currentRoom.isInRoom(itemName)) {
                 Item item = currentRoom.getItem(itemName);
-                String itemDescription = item.getDescription();
-                Writer.println(itemName + ": " + "\n" + itemDescription);
+                Writer.println(item.toString());
             }
             else {
                 Writer.println("You search the room and your pockets, but there is no such item to be found.");
