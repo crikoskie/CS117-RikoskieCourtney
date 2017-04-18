@@ -8,7 +8,7 @@ import java.util.Iterator;
  */
 public class Player {
     /** The maximum amount of weight that the player character can carry. */
-    private static final double MAX_WEIGHT;
+    public static final double MAX_WEIGHT;
     
     /** The room that the player character is currently in. */
     private Room currentRoom;
@@ -79,15 +79,9 @@ public class Player {
     public boolean addToInventory(Item theItem) {
         boolean added = false;
         
-        if (theItem.getWeight() > MAX_WEIGHT) {
-            Writer.println("This item is too heavy for you to pick up.");
-        }
-        else if (getTotalWeight() + theItem.getWeight() < MAX_WEIGHT) {
+        if (getTotalWeight() + theItem.getWeight() < MAX_WEIGHT) {
             inventory.add(theItem);
             added = true;
-        }
-        else {
-            Writer.println("You can't carry any more items.");
         }
         
         return added;

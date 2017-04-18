@@ -331,9 +331,18 @@ public class Game {
             if (currentRoom.isInRoom(itemName)) {
                 Item item = currentRoom.getItem(itemName);
                 boolean added = player.addToInventory(item);
+                
                 if (added) {
                     currentRoom.removeItem(itemName);
                     Writer.println("Taken.");
+                }
+                else {
+                    if (item.getWeight() > Player.MAX_WEIGHT) {
+                        Writer.println("This item is too heavy for you to pick up.");
+                    }
+                    else {
+                        Writer.println("You can't carry any more items.");
+                    }
                 }
             }
             else {
