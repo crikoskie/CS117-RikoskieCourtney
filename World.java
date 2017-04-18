@@ -343,19 +343,18 @@ public class World {
         Room kitchen = getRoom("Kitchen");
         kitchen.addItem(garlic);
         
-        Item pouch = new Item("herb pouch", "The inside made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
-        Item notes = new Item("notepad", "Recipes for potions are scribbled inside. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
-        Item coins = new Item("coin collection", "Since your first trip to town, the shopkeepers of Fairsway have been giving you coins from far-off lands.  The jar contains all of the ones you have received. It is one of your cherished possessions.", 0, 20);
+        Item pouch = new Item("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
+        Item notes = new Item("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
+        Item coins = new Item("coin collection", "One of your cherished possessions, it is a jar filled with currency from far-off lands.  The coins are well-cared-for and shine brightly.", 0, 20);
         Room yourRoom = getRoom("Your Bedroom");
         yourRoom.addItem(pouch);
         yourRoom.addItem(notes);
         yourRoom.addItem(coins);
         
-        Item jewelryBox = new Item("jewelry box", "Though it is made of wood and has a simple design, it must have been expensive.  Its emblem, a small bird embossed with delicate silver on its top, marks its maker as one of the most reknown jewelers within the country.", 0, 48);
+        Item jewelryBox = new Item("jewelry box", "Though it is made of wood and has a simple design, it must have been expensive.  Its emblem, a small bird embossed with delicate silver on its lid, marks its maker as one of the renowned jewelers within the country.", 0, 48);
         Item cellarKey = new Item("cellar key", "The steel key sits heavily in the palm of your hand.  It looks a bit rusted and makes your fingers smell gross.", 15, 5);
         Room masterRoom = getRoom("Master's Bedroom");
         masterRoom.addItem(jewelryBox);
-        masterRoom.addItem(cellarKey);
         
         Item shed = new Item("shed", "A wooden shed stands at the end of the backyard.  It is weathered and beaten, looking like it could collapse any second.", 0, 0);
         Item rune = new Item("barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 0, 0);
@@ -363,31 +362,59 @@ public class World {
         Room backyard = getRoom("Backyard");
         backyard.addItem(shed);
         backyard.addItem(rune);
-        backyard.addItem(hiddenRune);
         
         Item wardBook = new Item("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36);
+        Item cauldron = new Item("empty cauldon", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
+        Item vial = new Item("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
         Room cellar = getRoom("Cellar");
         cellar.addItem(wardBook);
+        cellar.addItem(cauldron);
+        cellar.addItem(vial);
+        
+        Item gold = new Item("gold", "The small bag is heavy for its size.  The gold inside jingles whenever you move.", 15, 13);
+        Room guardian = getRoom("Forest Guardian");
         
         Item bulb = new Item("illuminated bulb", "It's the bulb of a sun blossom.  As they are native to only the southern part of the country, the lizard must have found one that had fallen off a travelling merchant cart.", 10, 2.5);
         Room lizard = getRoom("Lizard");
         lizard.addItem(bulb);
         
-        Item cloth = new Item("soft cloth", "Made from the silk of volcanic worms, this cloth is reverred as one of the softest that has ever graced the country.  It's rumored that the Duke of Nightwood sold his first child just to be able to touch the shimmering blue fabric.", 10, 16);
+        Item cloth = new Item("soft cloth", "Made from the silk of volcanic worms, this cloth is revered as one of the softest that has ever graced the country.  It's rumored that the Duke of Nightwood sold his first child just to be able to touch the shimmering blue fabric.", 10, 16);
         Room townSquare = getRoom("Town Square");
-        townSquare.addItem(cloth);
         
         Item broadsword = new Item("broadsword", "After the last time, you don't trust yourself to pick up the broadsword without some assistance.  The weight, combined with the fact that it is longer than you are tall, makes it quite unwieldy.", 0, 129);
+        Item duplicate = new Item("duplicate broadsword", "It is a perfect physical copy of the original but lacks the enchantments that made such an amazing weapon.", 0, 129);
         Room weapons = getRoom("Fairsway Weapons");
         weapons.addItem(broadsword);
         
         Item card = new Item("citizenship card", "Providing your name, age, and picture, this card is proof that you are a citizen of Fairsway.  Despite costing you so much gold, it is made up of some kind of flimsy material.  Hopefully, someone has cast some spells on it to prevent its destruction.", 15, 1);
         Room office = getRoom("Government Office");
-        office.addItem(card);
         
         Item cat = new Item("your cat", "It stares back at you smugly.  You scowl and look away.", 50, 125);
         Room library = getRoom("Library");
         library.addItem(cat);
+        
+        Item shrinking = new Item("shrinking potion", "Bubbles float to the surface of the pick liquid.", 10, 7);
+        Item featherlight = new Item("featherlight potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
+        Item remover = new Item("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
+        
+        Item eppeth = new Item("eppeth", "", 0, 0.2);
+        Item riverCress = new Item("river cress", "", 0, 0.2);
+        Item blisterFlower = new Item("blister flower", "", 0, 0.2);
+        Item wratagrass = new Item("wratagrass", "", 0, 0.2);
+        Item hifefron = new Item("hifefron", "", 0, 0.2);
+        Item taglisbi = new Item("taglisbi", "", 0, 0.2);
+        Item inneoShoot = new Item("inneo shoot", "", 0, 0.2);
+        Item ashClove = new Item("ash clove", "", 0, 0.2);
+        Item orreamin = new Item("orreamin", "", 0, 0.2);
+        backyard.addItem(eppeth);
+        backyard.addItem(riverCress);
+        backyard.addItem(blisterFlower);
+        backyard.addItem(wratagrass);
+        backyard.addItem(hifefron);
+        backyard.addItem(taglisbi);
+        backyard.addItem(inneoShoot);
+        backyard.addItem(ashClove);
+        backyard.addItem(orreamin);
     }
     
 }
