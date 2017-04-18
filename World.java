@@ -394,18 +394,19 @@ public class World {
         library.addItem(cat);
         
         Item shrinking = new Item("shrinking potion", "Bubbles float to the surface of the pick liquid.", 10, 7);
-        Item featherlight = new Item("featherlight potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
+        Item duplication = new Item("duplication potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
         Item remover = new Item("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
+        Item unknown = new Item("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
         
-        Item eppeth = new Item("eppeth", "", 0, 0.2);
-        Item riverCress = new Item("river cress", "", 0, 0.2);
-        Item blisterFlower = new Item("blister flower", "", 0, 0.2);
-        Item wratagrass = new Item("wratagrass", "", 0, 0.2);
-        Item hifefron = new Item("hifefron", "", 0, 0.2);
-        Item taglisbi = new Item("taglisbi", "", 0, 0.2);
-        Item inneoShoot = new Item("inneo shoot", "", 0, 0.2);
-        Item ashClove = new Item("ash clove", "", 0, 0.2);
-        Item orreamin = new Item("orreamin", "", 0, 0.2);
+        Item eppeth = new Item("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2);
+        Item riverCress = new Item("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2);
+        Item blisterFlower = new Item("blister flower", "In spring, these plants bloom with brilliant red and orange flowers.", 0, 0.2);
+        Item wratagrass = new Item("wratagrass", "This tall grass is the staple of many potions, useful in its stabilizing capabilities.", 0, 0.2);
+        Item hifefron = new Item("hifefron", "Hifefron cacti are not suited for this climate, so Master has put a warming spell around them to keep them alive.", 0, 0.2);
+        Item taglisbi = new Item("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2);
+        Item inneoShoot = new Item("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2);
+        Item ashClove = new Item("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2);
+        Item orreamin = new Item("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2);
         backyard.addItem(eppeth);
         backyard.addItem(riverCress);
         backyard.addItem(blisterFlower);
@@ -414,7 +415,9 @@ public class World {
         backyard.addItem(taglisbi);
         backyard.addItem(inneoShoot);
         backyard.addItem(ashClove);
-        backyard.addItem(orreamin);
+        
+        Room fairy = getRoom("Fairy Herbs");
+        fairy.addItem(orreamin);
     }
     
 }
