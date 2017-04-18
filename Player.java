@@ -62,12 +62,27 @@ public class Player {
     }
     
     /**
-     * Gets the player character's inventory.
+     * Gets a description of the player character's inventory.
      * 
-     * @return The player character's inventory.
+     * @return A description of the player character's inventory.
      */
-    public HashSet<Item> getInventory() {
-        return inventory;
+    public String toString() {
+        String result = "";
+        
+        if (inventory.size() == 0) {
+            result = "You are not carrying anything.";
+        }
+        else {
+            result = "You are carrying:" + "\n";
+        }
+        
+        for (Item current : inventory) {
+            String itemName = current.getName();
+            
+            result += "       " + itemName + "\n";
+        }
+        
+        return result;
     }
     
     /**

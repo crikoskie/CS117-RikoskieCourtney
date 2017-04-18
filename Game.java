@@ -270,20 +270,7 @@ public class Game {
      * Prints out the player character's inventory.
      */
     private void inventory() {
-        HashSet<Item> inventory = player.getInventory();
-        
-        if (inventory.size() == 0) {
-            Writer.println("You are not carrying anything.");
-        }
-        else {
-            Writer.println("Items:");
-        }
-        
-        for (Item current : inventory) {
-            String itemName = current.getName();
-            
-            Writer.println("     " + itemName);
-        }
+       Writer.println(player.toString());        
     }
     
     /**
