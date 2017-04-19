@@ -104,6 +104,12 @@ public class Game {
                 case TAKE:
                     take(command);
                     break;
+                case UNLOCK:
+                    unlock(command);
+                    break;
+                case LOCK:
+                    lock(command);
+                    break;
                 default:
                     Writer.println(commandWord + " is not implemented yet!");
                     break;
@@ -139,6 +145,9 @@ public class Game {
             if (doorway == null) {
                 Writer.println("There is no door!");
             } 
+            else if (doorway.isLocked()) {
+                Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
+            }
             else {
                 Room newRoom = doorway.getDestination();
                 player.setCurrentRoom(newRoom);
@@ -332,6 +341,100 @@ public class Game {
             }
             else {
                 Writer.println("You search the room, but there is no such item to be found.");
+            }
+        }
+    }
+    
+    /**
+     * Unlocks a specified door.
+     * 
+     * @param command The command to be processed.
+     */
+    public void unlock(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to unlock?");
+        }
+        else {
+            String direction = command.getRestOfLine();
+            Room room = player.getCurrentRoom();
+            Door door = room.getExit(direction);
+            
+            if (door == null) {
+                Writer.println("There is no door in that direction.");
+            }
+            else {
+                if (door.isLocked()) {
+                    Writer.println("With which key?");
+                    String response = Reader.getResponse();
+                    Item key = door.getKey();
+                    String keyName = key.getName();
+                    
+                    if (player.isInInventory(response)) {
+                        if (response.equals(keyName)) {
+                            door.setLocked(false);
+                            Writer.println("You unlocked the door.");
+                        }
+                        else {
+                            Writer.println("The key doesn't fit the lock.");
+                        }
+                    }
+                    else {
+                        Writer.println("You don't have that key.");
+                    }
+                }
+                else {
+                    Writer.println("The door is already unlocked."); 
+                }
+            }
+        }
+    }
+    
+    /**
+     * Locks a specified door.
+     * 
+     * @param command The command to be processed.
+     */
+    public void lock(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to lock?");
+        }
+        else {
+            String direction = command.getRestOfLine();
+            Room room = player.getCurrentRoom();
+            Door door = room.getExit(direction);
+            
+            if (door == null) {
+                Writer.println("There is no door in that direction.");
+            }
+            else {
+                if (door.isLocked()) {
+                    Writer.println("The door is already locked.");
+                }
+                else {
+                    Item key = door.getKey();
+                    
+                    if (key == null) {
+                        Writer.println("The door cannot be locked.");
+                    }
+                    else {
+                        Writer.println("With which key?");
+                        String keyName = key.getName();
+                        String response = Reader.getResponse();
+                        
+                        if (player.isInInventory(response)) {
+                            if (response.equals(keyName)) {
+                                door.setLocked(true);
+                                Writer.println("You locked the door.");
+                            }
+                            else {
+                                Writer.println("That is not the right key.");
+                            }
+                        }
+                        else {
+                            Writer.println("You don't have that key.");
+                        }
+                    }
+                }
             }
         }
     }

@@ -371,6 +371,13 @@ public class World {
         cellar.addItem(cauldron);
         cellar.addItem(vial);
         
+        Door yardToCellar = backyard.getExit("down");
+        yardToCellar.setLocked(true);
+        yardToCellar.setKey(cellarKey);
+        
+        Door cellarToYard = cellar.getExit("up");
+        cellarToYard.setKey(cellarKey);
+        
         Item gold = new Item("gold", "The small bag is heavy for its size.  The gold inside jingles whenever you move.", 15, 13);
         Room guardian = getRoom("Forest Guardian");
         
@@ -418,6 +425,8 @@ public class World {
         
         Room fairy = getRoom("Fairy Herbs");
         fairy.addItem(orreamin);
+        
+        kitchen.addItem(cellarKey);
     }
     
 }

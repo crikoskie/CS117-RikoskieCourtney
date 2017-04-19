@@ -26,7 +26,11 @@ public enum CommandEnum
     /** The examine command. */
     EXAMINE("examine"),
     /** The take command. */
-    TAKE("take");
+    TAKE("take"),
+    /** The unlock command. */
+    UNLOCK("unlock"),
+    /** The lock command. */
+    LOCK("lock");
     
     /** The text that the player enters in order to execute the command. */
     private String text;
