@@ -178,7 +178,7 @@ public class Player {
      * 
      * @return The total weight (in ounces) that the player character is carrying.
      */
-    private double getTotalWeight() {
+    public double getTotalWeight() {
         double totalWeight = 0;
         
         for (Item current : inventory) {

@@ -343,7 +343,7 @@ public class World {
         Room kitchen = getRoom("Kitchen");
         kitchen.addItem(garlic);
         
-        Item pouch = new Item("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
+        Container pouch = new Container("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
         Item notes = new Item("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
         Item coins = new Item("coin collection", "One of your cherished possessions, it is a jar filled with currency from far-off lands.  The coins are well-cared-for and shine brightly.", 0, 20);
         Room yourRoom = getRoom("Your Bedroom");
@@ -351,17 +351,18 @@ public class World {
         yourRoom.addItem(notes);
         yourRoom.addItem(coins);
         
-        Item jewelryBox = new Item("jewelry box", "Though it is made of wood and has a simple design, it must have been expensive.  Its emblem, a small bird embossed with delicate silver on its lid, marks its maker as one of the renowned jewelers within the country.", 0, 48);
+        Container jewelryBox = new Container("jewelry box", "Though it is made of wood and has a simple design, it must have been expensive.  Its emblem, a small bird embossed with delicate silver on its lid, marks its maker as one of the renowned jewelers within the country.", 0, 48);
         Item cellarKey = new Item("cellar key", "The steel key sits heavily in the palm of your hand.  It looks a bit rusted and makes your fingers smell gross.", 15, 5);
         Room masterRoom = getRoom("Master's Bedroom");
         masterRoom.addItem(jewelryBox);
+        jewelryBox.addItem(cellarKey);
         
-        Item shed = new Item("shed", "A wooden shed stands at the end of the backyard.  It is weathered and beaten, looking like it could collapse any second.", 0, 0);
+        Container shed = new Container("shed", "A wooden shed stands at the end of the backyard.  It is weathered and beaten, looking like it could collapse any second.", 0, 0);
         Item rune = new Item("barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 0, 0);
         Item hiddenRune = new Item("hidden barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 15, 0);
         Room backyard = getRoom("Backyard");
         backyard.addItem(shed);
-        backyard.addItem(rune);
+        shed.addItem(rune);
         
         Item wardBook = new Item("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36);
         Item cauldron = new Item("empty cauldon", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
@@ -425,8 +426,6 @@ public class World {
         
         Room fairy = getRoom("Fairy Herbs");
         fairy.addItem(orreamin);
-        
-        kitchen.addItem(cellarKey);
     }
     
 }

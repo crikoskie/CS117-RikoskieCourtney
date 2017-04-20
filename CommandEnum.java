@@ -30,7 +30,11 @@ public enum CommandEnum
     /** The unlock command. */
     UNLOCK("unlock"),
     /** The lock command. */
-    LOCK("lock");
+    LOCK("lock"),
+    /** The pack command. */
+    PACK("pack"),
+    /** The unpack command. */
+    UNPACK("unpack");
     
     /** The text that the player enters in order to execute the command. */
     private String text;

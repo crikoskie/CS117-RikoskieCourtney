@@ -75,6 +75,6 @@ public class CommandWords {
           does not exisit
      */
     public static CommandEnum getCommand(String theString) {
-              return validCommands.get(theString);
+        return validCommands.get(theString);
     }
 }

@@ -110,6 +110,12 @@ public class Game {
                 case LOCK:
                     lock(command);
                     break;
+                case PACK:
+                    pack(command);
+                    break;
+                case UNPACK:
+                    unpack(command);
+                    break;
                 default:
                     Writer.println(commandWord + " is not implemented yet!");
                     break;
@@ -279,7 +285,7 @@ public class Game {
      * Prints out the player character's inventory.
      */
     private void inventory() {
-       Writer.println(player.toString());        
+        Writer.println(player.toString());        
     }
     
     /**
@@ -335,7 +341,7 @@ public class Game {
                         Writer.println("This item is too heavy for you to pick up.");
                     }
                     else {
-                        Writer.println("You can't carry any more items.");
+                        Writer.println("You try to pick it up, but you're already carrying so much.");
                     }
                 }
             }
@@ -350,7 +356,7 @@ public class Game {
      * 
      * @param command The command to be processed.
      */
-    public void unlock(Command command) {
+    private void unlock(Command command) {
         if (!command.hasSecondWord()) {
             Writer.println("What would you like to unlock?");
         }
@@ -394,7 +400,7 @@ public class Game {
      * 
      * @param command The command to be processed.
      */
-    public void lock(Command command) {
+    private void lock(Command command) {
         if (!command.hasSecondWord()) {
             Writer.println("What would you like to lock?");
         }
@@ -432,6 +438,142 @@ public class Game {
                         }
                         else {
                             Writer.println("You don't have that key.");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Packs the specified item into a container.
+     * 
+     * @param command The command to be processed.
+     */
+    private void pack(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to pack?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (!(currentRoom.isInRoom(itemName) || player.isInInventory(itemName))) {
+                Writer.println("You can't pack an item you don't have.");
+            }
+            else {
+                Item item = null;
+                
+                if (currentRoom.isInRoom(itemName)) {
+                    item = currentRoom.getItem(itemName);
+                }
+                if (player.isInInventory(itemName)) {
+                    item = player.getItem(itemName);
+                }
+                
+                if (item.getWeight() > Player.MAX_WEIGHT) {
+                    Writer.println("This item is too heavy for you to move.");
+                }
+                else {
+                    Writer.println("With which container?");
+                    
+                    String response = Reader.getResponse();
+                    
+                    if (!(currentRoom.isInRoom(response) || player.isInInventory(response))) {
+                        Writer.println("You don't see that container anywhere.");
+                    }
+                    else {
+                        Item container = null;
+                        
+                        if (currentRoom.isInRoom(response)) {
+                            container = currentRoom.getItem(response);
+                        }
+                        if (player.isInInventory(response)) {
+                            container = player.getItem(response);
+                        }
+                        
+                        if (!(container instanceof Container)) {
+                            Writer.println("You can't pack things in that.");
+                        }
+                        else {
+                            Container aContainer = (Container)container;
+                            
+                            if (player.isInInventory(itemName)) {
+                                if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
+                                    Writer.println("You try to pick it up, but you're already carrying so much.");
+                                }
+                                else {
+                                    player.removeItem(itemName);
+                                    aContainer.addItem(item);
+                                    Writer.println("Packed.");
+                                }
+                            }
+                            else {
+                                currentRoom.removeItem(itemName);
+                                aContainer.addItem(item);
+                                Writer.println("Packed.");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Unpacks the specified item from a container.
+     * 
+     * @param command The command to be processed.
+     */
+    private void unpack(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to unpack?");
+        }
+        else {
+            String containerName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (!(currentRoom.isInRoom(containerName) || player.isInInventory(containerName))) {
+                Writer.println("You don't see that container anywhere.");
+            }
+            else {
+                Item container = null;
+                
+                if (currentRoom.isInRoom(containerName)) {
+                    container = currentRoom.getItem(containerName);
+                }
+                if (player.isInInventory(containerName)) {
+                    container = player.getItem(containerName);
+                }
+                
+                if (!(container instanceof Container)) {
+                    Writer.println("You can't unpack that.");
+                }
+                else {
+                    Writer.println("What item would you like to unpack from the " + containerName + "?");
+                    String response = Reader.getResponse();
+                    Container aContainer = (Container)container;
+                    
+                    if (!aContainer.isInContainer(response)) {
+                        Writer.println("You can't find that item in the " + containerName + ".");
+                    }
+                    else {
+                        Item item = aContainer.getItem(response);
+                        
+                        if (currentRoom.isInRoom(containerName)) {
+                            if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
+                                Writer.println("You try to pick it up, but you're alreadt carrying so much.");
+                            }
+                            else {
+                                aContainer.removeItem(response);
+                                player.addToInventory(item);
+                                Writer.println("Unpacked.");
+                            }
+                        }
+                        else {
+                            aContainer.removeItem(response);
+                            player.addToInventory(item);
+                            Writer.println("Unpacked.");
                         }
                     }
                 }
