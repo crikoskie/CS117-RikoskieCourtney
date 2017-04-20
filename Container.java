@@ -86,7 +86,10 @@ public class Container extends Item {
      */
     public String toString() {
         String result = super.toString() + "\n";
-        result += "Contains:" + "\n";
+        
+        if (!(itemsContained.size() == 0)) {
+            result += "Contains:" + "\n";
+        }
         
         for (Item current : itemsContained) {
             String itemName = current.getName();
