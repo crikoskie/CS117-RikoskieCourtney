@@ -242,4 +242,55 @@ public class Room {
         
         return found;
     }
+    
+    /**
+     * Gets whether or not the specified item can be found in a container within the room.
+     * 
+     * @param theName The name of the specified item.
+     * @return Whether or not the specified item can be found in a container within the room.
+     */
+    public boolean isInRoomContainer(String theName) {
+        Iterator<Item> iter = items.iterator();
+        boolean found = false;
+        
+        while (!found && iter.hasNext()) {
+            Item current = iter.next();
+            
+            if (current instanceof Container) {
+                Container container = (Container)current;
+                
+                if (container.isInContainer(theName)) {
+                    found = true;
+                }
+            }
+        }
+        
+        return found;
+    }
+    
+    /**
+     * Gets the container that the specified item is found in.
+     * 
+     * @param theName The name of the specfied item.
+     * @return The container that the specified item is found in.
+     */
+    public Container getContainer(String theName) {
+        Iterator<Item> iter = items.iterator();
+        boolean found = false;
+        Container container = null;
+        
+        while (!found && iter.hasNext()) {
+            Item current = iter.next();
+            
+            if (current instanceof Container) {
+                container = (Container)current;
+                
+                if (container.isInContainer(theName)) {
+                    found = true;
+                }
+            }
+        }
+        
+        return container;
+    }
 }

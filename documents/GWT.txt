@@ -223,7 +223,7 @@ PACK Scenario #2: Item is not available
      and : item is NOT in the players inventory
     THEN : appropriate message is displayed (you don't have it)
 
-PACK Scenario #3: Item is too heavy
+PACK Scenario #3: Item is too heavy*
    GIVEN : "pack item" is entered
     WHEN : item is in the current room
      and : item is heavier than player's carrying capacity
@@ -251,7 +251,7 @@ PACK Scenario #6: Container is NOT a container
      and : container is not really a container
     THEN : appropriate message is displayed (that's not a container)
 
-PACK Scenario #7: Container is a container, but item too heavy
+PACK Scenario #7: Container is a container, but item too heavy*
    GIVEN : "pack item" had been entered
      and : user has been prompted for the container
     WHEN : item is in the current room
@@ -353,7 +353,7 @@ UNPACK Scenario #5: Item is NOT in container
     WHEN : item to unpack is NOT in the container
     THEN : appropriate message is displayed (you don't find it)
 
-UNPACK Scenario #6: Item is in container but too heavy
+UNPACK Scenario #6: Item is in container but too heavy*
    GIVEN : "unpack container" had been entered
      and : user has been prompted for the item to unpack
     WHEN : item to unpack is in the container
@@ -370,5 +370,197 @@ UNPACK Scenario #7: Item can be unpacked
      and : item to unpack is added to the player's inventory
      and : appropriate message is displayed (you unpack it)
 
+///////////////////////////////////////////////////////////////////////////////
+
+MAKE Scenario #1: No item is specified
+	GIVEN : "make" is entered
+	 WHEN : 
+	 THEN : appropriate message is displayed (make what?)
+	
+MAKE Scenario #3: Specified item is not makeable
+	GIVEN : "make item" is entered
+	 WHEN : item is not makeable
+	 THEN : appropriate message is display (that isn't something you can make)
+	 
+MAKE Scenario #2: Player is not in proper room
+	GIVEN : "make item" is entered
+	 WHEN : item is makeable
+	  and : user is not in proper room
+	 THEN : appropriate message is displayed (you can't make potions here)
+	 
+MAKE Scenario #4: Player does not have proper ingredients
+	GIVEN : "make item" is entered
+	 WHEN : item is makeable
+	  and : user does not have proper ingredients
+	  and : user is in proper room
+	 THEN : appropriate message is displayed (you don't have all the ingredients)
+	 
+MAKE Scenario #5: Cauldron is not empty
+	GIVEN : "make item" is entered
+	 WHEN : item is makeable
+	  and : user has proper ingredients
+	  and : user is in proper room
+	  and : cauldron is not empty
+	 Then : appropriate message is displayed (the cauldron is not empty)
+	 
+MAKE Scenario #6: Specified item can be made
+	GIVEN : "make item" is entered
+	 WHEN : item is makeable
+	  and : user has proper ingredients
+	  and : user is in proper room
+	  and : cauldron is empty
+	 Then : ingredients are removed from inventory
+	   or : ingredients are removed from room
+	  and : potion is added to cauldron
+	  and : appropriate message is displayed (you made it)
+	  
+	  
+	  
+	  
+EMPTY Scenario #1: Item is not specified
+	GIVEN : "empty" is entered
+	 WHEN : 
+	 THEN : appropriate message is displayed (empty what?)
+	 
+EMPTY Scenario #2: Specified item is not available
+	GIVEN : "empty item" is entered
+	 WHEN : item is not in room
+	  and : item is not in inventory
+	 THEN : appropriate message is diplayed (can't find it)
+	 
+EMPTY Scenario #3: Specified item is not emptiable 
+	GIVEN : "empty item" is entered
+	 WHEN : item is in room
+	   or : item is in inventory
+	  and : item is not emptiable
+	 THEN : appropriate message is displayed (you can't empty that)
+	 
+EMPTY Scenario #4: Specified item is already empty
+	GIVEN : "empty item" is entered
+	 WHEN : item is in room
+	   or : item is in inventory
+	  and : item is aleady empty
+	  and : item is emptiable
+	 THEN : appropriate message is displayed (item is already empty)
+	 
+EMPTY Scenario #5: Specified item can be emptied
+	GIVEN : "empty item" is entered
+	 WHEN : item is in room
+	   or : item is in inventory
+	  and : item is not aleady empty
+	  and : item is emptiable
+	 THEN : item contained inside specified item is removed
+	  and : appropriate message is displayed (you emptied it)
 
 
+
+
+POUR Scenario #1: Item is not specified
+	GIVEN : "pour" is entered
+	 WHEN : 
+	 THEN : appropriate message is displayed (pour what?)
+	 
+POUR Scenario #2: Specified item is not available
+	GIVEN : "pour item" is entered
+	 WHEN : item is not in a container within the room
+	  and : item is not in a container with the inventory
+	 THEN : appropriate message is diplayed (can't find it)
+	 
+POUR Scenario #3: Specified item is not pourable 
+	GIVEN : "pour item" is entered
+	 WHEN : item is in a container within the room
+	   or : item is in a container within the inventory
+	  and : item is not pourable
+	 THEN : appropriate message is displayed (you can't pour that)
+	 
+POUR Scenario #4: Specified item is pourable
+	GIVEN : "pour item" is entered
+	 WHEN : item is in a container within the room
+	   or : item is in a container within the inventory
+	  and : item is pourable
+	 THEN : user is prompted for second item to pour into
+	 
+POUR Scenario #5: Second item is not available
+	GIVEN : "pour item" has been entered
+	  and : user has been prompted for second item to pour into
+	 WHEN : second item is not in inventory
+	  and : second item is not in room
+	 THEN : appropriate message is displayed (can't find item)
+	 
+POUR Scenario #6:  Second item is not able to be poured into
+	GIVEN : "pour item" has been entered
+	  and : user has been prompted for second item to pour into
+	 WHEN : second item is in inventory
+	   or : second item is in room
+	  and : second item is not able to be poured into
+	 THEN : appropriate message is displayed (you can't pour into that)
+	 
+POUR Scenario #7: Second item is not empty
+	GIVEN : "pour item" has been entered
+	  and : user has been prompted for second item to pour into
+	 WHEN : second item is in inventory
+	   or : second item is in room
+	  and : second item is able to be poured into
+	  and : second item is not emppty
+	 THEN : appropriate message is displayed (there's already something in it)
+	
+POUR Scenario #8:  Second item is able to be poured into
+	GIVEN : "pour item" has been entered
+	  and : user has been prompted for second item to pour into
+	 WHEN : second item is in inventory
+	   or : second item is in room
+	  and : second item is able to be poured into
+	  and : second item is empty
+	 THEN : item is added to second item
+	  and : item is removed from source
+	  and : appropriate message is displayed (you poured it) 
+	 
+	 
+	 
+	 
+READ Scenario #1: Item is not specified
+	GIVEN : "read" is entered
+	 WHEN : 
+	 THEN : appropriate message is displayed (read what?)
+	 
+READ Scenario #2: Specified item is not available
+	GIVEN : "read item" is entered
+	 WHEN : item is not in inventory
+	  and : item is not in room
+	 THEN : appropriate message is displayed (can't find item)
+	 
+READ Scenario #3: Specified item is not readable
+	GIVEN : "read item" is entered
+	 WHEN : item is in inventory
+	   or : item is in room
+	  and : item is not readable
+	 THEN : appropriate message is displayed (you can't read that)
+	 
+READ Scenario #4: Specified item can be read
+	GIVEN : "read item" is entered
+	 WHEN : item is in inventory
+	   or : item is in room
+	  and : item is readable
+	 THEN : contents of item are displayed
+	  and : user is prompted for content to read
+	 
+READ Scenario #5: Content does not exist
+	GIVEN : "read item" has been entered
+	  and : user has been prompted for content to read
+	 WHEN : content does not exist
+	 THEN : appropriate message is displayed (page doesn't exist)
+	 
+READ Scenario #6: Content exists
+	GIVEN : "read item" has been entered
+	  and : user has been prompted for content to read
+	 WHEN : content does exist
+	 THEN : appropriate contents of book are displayed
+	 
+	
+	 
+	 
+	 
+TRADE Scenario #1: Item is not specified
+	GIVEN : "trade" is entered
+	 WHEN : 
+	 THEN : appropriate message is displayed (trade what?)

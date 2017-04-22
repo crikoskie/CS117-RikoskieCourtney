@@ -116,6 +116,18 @@ public class Game {
                 case UNPACK:
                     unpack(command);
                     break;
+                case MAKE:
+                    make(command);
+                    break;
+                case EMPTY:
+                    empty(command);
+                    break;
+                case POUR:
+                    pour(command);
+                    break;
+                case READ:
+                    read(command);
+                    break;
                 default:
                     Writer.println(commandWord + " is not implemented yet!");
                     break;
@@ -576,6 +588,186 @@ public class Game {
                             Writer.println("Unpacked.");
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Makes the specified item.
+     * 
+     * @param command The command to be processed.
+     */
+    private void make(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to make?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+                if (!currentRoom.getName().equals("Cellar")) {
+                    Writer.println("You look around, but there is nothing here you can use to make potions.");
+                }
+                else {
+                    
+                }
+        }
+    }
+    
+    /**
+     * Empties certain containers.
+     * 
+     * @param command The command to be processed.
+     */
+    private void empty(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to empty?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (!(player.isInInventory(itemName) || currentRoom.isInRoom(itemName))) {
+                Writer.println("You search the room and your pockets, but there is no such item to be found.");
+            }
+            else {
+                Item item = null;
+                
+                if (player.isInInventory(itemName)) {
+                    item = player.getItem(itemName);
+                }
+                else {
+                    item = currentRoom.getItem(itemName);
+                }
+                
+                if (!(item instanceof PotionContainer)) {
+                    Writer.println("Why would you want to empty that?");
+                }
+                else {
+                    PotionContainer container = (PotionContainer)item;
+                    
+                    if (container.isEmpty()) {
+                        Writer.println("It's already empty.");
+                    }
+                    else {
+                        Writer.println(container.empty(container));
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Pours an item from one container into another.
+     * 
+     * @param command The command to be processed.
+     */
+    private void pour(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What item from a container would you like to pour?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (!(currentRoom.isInRoomContainer(itemName) || player.isInInventoryContainer(itemName))) {
+                Writer.println("That isn't in any of the nearby containers.");
+            }
+            else {
+                Item item = null;
+                Container container = null;
+                
+                if (currentRoom.isInRoomContainer(itemName)) {
+                    container = currentRoom.getContainer(itemName);
+                    item = container.getItem(itemName);
+                }
+                if (player.isInInventoryContainer(itemName)) {
+                    container = player.getContainer(itemName);
+                    item = container.getItem(itemName);
+                }
+                
+                if (!(item instanceof Potion)) {
+                    Writer.println("Why would you want to pour that?");
+                }
+                else {
+                    Potion potion = (Potion)item;
+                    
+                    Writer.println("What would you like to pour it into?");
+                    
+                    String response = Reader.getResponse();
+                    
+                    if (!(player.isInInventory(response) || currentRoom.isInRoom(response))) {
+                        Writer.println("You search the room and your pockets, but there is no such item to be found.");
+                    }
+                    else {
+                        Item secondItem = null;
+                
+                        if (currentRoom.isInRoom(itemName)) {
+                            secondItem = currentRoom.getItem(itemName);
+                        }
+                        if (player.isInInventory(itemName)) {
+                            secondItem = player.getItem(itemName);
+                        }
+                        
+                        if(!(container instanceof PotionContainer)) {
+                            Writer.println("Why would you want to pour into that?");
+                        }
+                        else {
+                            PotionContainer potionContainer = (PotionContainer)container;
+                            
+                            if (!potionContainer.isEmpty()) {
+                                Writer.println("There's already something inside of that.");
+                            }
+                            else {
+                                PotionContainer previous = potion.getContainer();
+                                Writer.println(potionContainer.pour(potion, previous, potionContainer));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Reads a book.
+     * 
+     * @param command The command to be processed.
+     */
+    private void read(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to read?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            
+            if (!(currentRoom.isInRoom(itemName) || player.isInInventory(itemName))) {
+                Writer.println("You search the room and your pockets, but there is no such item to be found.");
+            }
+            else {
+                Item item = null;
+                
+                if (currentRoom.isInRoom(itemName)) {
+                    item = currentRoom.getItem(itemName);
+                }
+                if (player.isInInventory(itemName)) {
+                    item = player.getItem(itemName);
+                }
+                
+                if (!(item instanceof Book)) {
+                    Writer.println("Um, you can't read that.");
+                }
+                else {
+                    Book book = (Book)item;
+                    
+                    Writer.println(book.read());
+                    Writer.println("What would you like to read about?");
+                    
+                    String response = Reader.getResponse();
+                    
+                    Writer.println(book.goTo(response));
                 }
             }
         }

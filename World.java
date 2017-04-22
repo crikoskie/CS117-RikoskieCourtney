@@ -343,8 +343,10 @@ public class World {
         Room kitchen = getRoom("Kitchen");
         kitchen.addItem(garlic);
         
+        Item clove = new Item("garlic clove", "It's a clove of garlic.", 0, 0.125);
+        
         Container pouch = new Container("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
-        Item notes = new Item("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
+        Book notes = new Book("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
         Item coins = new Item("coin collection", "One of your cherished possessions, it is a jar filled with currency from far-off lands.  The coins are well-cared-for and shine brightly.", 0, 20);
         Room yourRoom = getRoom("Your Bedroom");
         yourRoom.addItem(pouch);
@@ -364,9 +366,9 @@ public class World {
         backyard.addItem(shed);
         shed.addItem(rune);
         
-        Item wardBook = new Item("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36);
-        Item cauldron = new Item("empty cauldon", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
-        Item vial = new Item("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
+        Book wardBook = new Book("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36);
+        Container cauldron = new Container("empty cauldon", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
+        Container vial = new Container("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
         Room cellar = getRoom("Cellar");
         cellar.addItem(wardBook);
         cellar.addItem(cauldron);
@@ -401,10 +403,10 @@ public class World {
         Room library = getRoom("Library");
         library.addItem(cat);
         
-        Item shrinking = new Item("shrinking potion", "Bubbles float to the surface of the pick liquid.", 10, 7);
-        Item duplication = new Item("duplication potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
-        Item remover = new Item("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
-        Item unknown = new Item("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
+        Potion shrinking = new Potion("shrinking potion", "Bubbles float to the surface of the pick liquid.", 10, 7);
+        Potion duplication = new Potion("duplication potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
+        Potion remover = new Potion("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
+        Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
         
         Item eppeth = new Item("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2);
         Item riverCress = new Item("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2);
@@ -424,8 +426,34 @@ public class World {
         backyard.addItem(inneoShoot);
         backyard.addItem(ashClove);
         
+        shrinking.addIngredient(riverCress);
+        shrinking.addIngredient(hifefron);
+        shrinking.addIngredient(wratagrass);
+        
+        duplication.addIngredient(inneoShoot);
+        duplication.addIngredient(ashClove);
+        duplication.addIngredient(blisterFlower);
+        duplication.addIngredient(wratagrass);
+        
+        remover.addIngredient(wratagrass);
+        remover.addIngredient(clove);
+        remover.addIngredient(riverCress);
+        
+        unknown.addIngredient(taglisbi);
+        unknown.addIngredient(orreamin);
+        unknown.addIngredient(ashClove);
+        unknown.addIngredient(eppeth);
+        unknown.addIngredient(wratagrass);
+        
         Room fairy = getRoom("Fairy Herbs");
         fairy.addItem(orreamin);
+        
+        notes.addPage("shrinking potion", shrinking.toString());
+        notes.addPage("duplication potion", duplication.toString());
+        notes.addPage("scent remover", remover.toString());
+        wardBook.addPage("detection barrier", "");
+        wardBook.addPage("travel ward", "");
+        wardBook.addPage("invisibilty", "");
     }
     
 }

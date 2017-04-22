@@ -34,7 +34,15 @@ public enum CommandEnum
     /** The pack command. */
     PACK("pack"),
     /** The unpack command. */
-    UNPACK("unpack");
+    UNPACK("unpack"),
+    /** The make command. */
+    MAKE("make"),
+    /** The empty command. */
+    EMPTY("empty"),
+    /** The pour command. */
+    POUR("pour"),
+    /** The read command. */
+    READ("read");
     
     /** The text that the player enters in order to execute the command. */
     private String text;
