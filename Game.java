@@ -631,12 +631,12 @@ public class Game {
             Room currentRoom = player.getCurrentRoom();
             
             
-                if (!currentRoom.getName().equals("Cellar")) {
-                    Writer.println("You look around, but there is nothing here you can use to make potions.");
-                }
-                else {
+            if (!currentRoom.getName().equals("Cellar")) {
+                Writer.println("You look around, but there is nothing here you can use to make potions.");
+            }
+            else {
                         
-                }
+            }
         }
     }
     
@@ -735,7 +735,7 @@ public class Game {
                             secondItem = player.getItem(response);
                         }
                         
-                        if(!(secondItem instanceof PotionContainer)) {
+                        if (!(secondItem instanceof PotionContainer)) {
                             Writer.println("Why would you want to pour into that?");
                         }
                         else {

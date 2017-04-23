@@ -34,6 +34,7 @@ public class HerbContainer extends Container {
      * Adds the specified item to the herb container.
      * 
      * @param theItem The item to be added.
+     * @return Whether adding the item was successful.
      */
     public String addHerb(Item theItem) {
         String result = "You cannot safely put in any more herbs.";

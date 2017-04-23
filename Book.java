@@ -27,6 +27,7 @@ public class Book extends Item implements Readable {
      * Adds the specified page to the book.
      * 
      * @param page The specified page.
+     * @param information The information of the specified page.
      */
     public void addPage(String page, String information) {
         pages.put(page, information);
@@ -55,7 +56,7 @@ public class Book extends Item implements Readable {
         if (getName().equals("notes")) {
             result = "There are notes about:\n";
            
-             Iterator<String> iter = pages.keySet().iterator();
+            Iterator<String> iter = pages.keySet().iterator();
             
             while (iter.hasNext()) {
                 String current = iter.next();
@@ -70,7 +71,8 @@ public class Book extends Item implements Readable {
     /**
      * Gets the content of the specified page.
      * 
-     * @return the content of the specified page
+     * @param page The specified page.
+     * @return The content of the specified page
      */
     public String goTo(String page) {
         Iterator<String> iter = pages.keySet().iterator();

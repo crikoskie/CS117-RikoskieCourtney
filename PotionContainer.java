@@ -26,7 +26,7 @@ public class PotionContainer extends Container implements Emptiable {
     /**
      * Empties a specific container.
      * 
-     * @param container A container which can hold potions.
+     * @return Whether emptying the container was successful.
      */
     public String empty() {
         String result = "Emptied.";

@@ -1,6 +1,6 @@
 
 /**
- * Write a description of interface Emptiable here.
+ * Allows the user to empty and add potions to potion containers.
  * 
  * @author Courtney Rikoskie
  * @version Spring 2017
@@ -9,7 +9,7 @@ public interface Emptiable {
     /**
      * Empties a specific container.
      * 
-     * @param container A container which can hold potions.
+     * @return Whether emptying the item was successful.
      */
     public String empty();
     
@@ -24,7 +24,7 @@ public interface Emptiable {
      * Adds an item to the potion container.
      * 
      * @param theItem The name of the item to be added.
-     * @return A String containing whether or not adding the item was successful.
+     * @return Whether adding the item was successful.
      */
     public String addPotion(Item theItem);
 }

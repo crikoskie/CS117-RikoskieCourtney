@@ -16,7 +16,8 @@ public interface Readable {
     /**
      * Gets the content of the specified page.
      * 
-     * @return the content of the specified page
+     * @param page The specified page.
+     * @return The content of the specified page
      */
     public String goTo(String page);
 }
