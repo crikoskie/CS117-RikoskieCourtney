@@ -11,7 +11,7 @@ public interface Makeable {
      * 
      * @param ingredient An ingredient needed to make the potion.
      */
-    public abstract void addIngredient(Item ingredient);
+    public abstract void addIngredient(Ingredient ingredient);
     
     /**
      * Makes a potion, if all needed ingredients are available.

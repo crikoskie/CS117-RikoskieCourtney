@@ -487,7 +487,7 @@ public class Game {
                     Writer.println("This item is too heavy for you to move.");
                 }
                 else {
-                    Writer.println("With which container?");
+                    Writer.println("Into which container?");
                     
                     String response = Reader.getResponse();
                     
@@ -504,8 +504,32 @@ public class Game {
                             container = player.getItem(response);
                         }
                         
-                        if (!(container instanceof Container)) {
+                        if (!(container instanceof Container) || container instanceof PotionContainer) {
                             Writer.println("You can't pack things in that.");
+                        }
+                        else if (container instanceof HerbContainer) {
+                            HerbContainer aContainer = (HerbContainer)container;
+                            
+                            if (!(item instanceof Ingredient)) {
+                                Writer.println("You probably shouldn't try to put that in there.");
+                            }
+                            else {
+                                Ingredient ingredient = (Ingredient)item;
+                                
+                                if (player.isInInventory(itemName)) {
+                                    if (ingredient.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
+                                        Writer.println("You try to pick it up, but you're already carrying so much.");
+                                    }
+                                    else {
+                                        player.removeItem(itemName);
+                                        Writer.println(aContainer.addHerb(ingredient));
+                                    }
+                                }
+                                else {
+                                    currentRoom.removeItem(itemName);
+                                    Writer.println(aContainer.addHerb(ingredient));
+                                }
+                            }
                         }
                         else {
                             Container aContainer = (Container)container;
@@ -546,7 +570,7 @@ public class Game {
             Room currentRoom = player.getCurrentRoom();
             
             if (!(currentRoom.isInRoom(containerName) || player.isInInventory(containerName))) {
-                Writer.println("You don't see that container anywhere.");
+                Writer.println("You search the room and your pockets, but there is no such item to be found.");
             }
             else {
                 Item container = null;
@@ -558,7 +582,7 @@ public class Game {
                     container = player.getItem(containerName);
                 }
                 
-                if (!(container instanceof Container)) {
+                if (!(container instanceof Container) || container instanceof PotionContainer) {
                     Writer.println("You can't unpack that.");
                 }
                 else {
@@ -606,11 +630,12 @@ public class Game {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
             
+            
                 if (!currentRoom.getName().equals("Cellar")) {
                     Writer.println("You look around, but there is nothing here you can use to make potions.");
                 }
                 else {
-                    
+                        
                 }
         }
     }
@@ -651,7 +676,7 @@ public class Game {
                         Writer.println("It's already empty.");
                     }
                     else {
-                        Writer.println(container.empty(container));
+                        Writer.println(container.empty());
                     }
                 }
             }
@@ -703,25 +728,28 @@ public class Game {
                     else {
                         Item secondItem = null;
                 
-                        if (currentRoom.isInRoom(itemName)) {
-                            secondItem = currentRoom.getItem(itemName);
+                        if (currentRoom.isInRoom(response)) {
+                            secondItem = currentRoom.getItem(response);
                         }
-                        if (player.isInInventory(itemName)) {
-                            secondItem = player.getItem(itemName);
+                        if (player.isInInventory(response)) {
+                            secondItem = player.getItem(response);
                         }
                         
-                        if(!(container instanceof PotionContainer)) {
+                        if(!(secondItem instanceof PotionContainer)) {
                             Writer.println("Why would you want to pour into that?");
                         }
                         else {
-                            PotionContainer potionContainer = (PotionContainer)container;
+                            PotionContainer potionContainer = (PotionContainer)secondItem;
                             
                             if (!potionContainer.isEmpty()) {
                                 Writer.println("There's already something inside of that.");
                             }
                             else {
                                 PotionContainer previous = potion.getContainer();
-                                Writer.println(potionContainer.pour(potion, previous, potionContainer));
+                                if (previous != null) {
+                                    previous.empty();
+                                }
+                                Writer.println(potionContainer.addPotion(potion));
                             }
                         }
                     }

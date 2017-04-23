@@ -11,7 +11,7 @@ public interface Emptiable {
      * 
      * @param container A container which can hold potions.
      */
-    public String empty(Container container);
+    public String empty();
     
     /**
      * Returns whether or not the potion container is empty.
@@ -21,10 +21,10 @@ public interface Emptiable {
     public boolean isEmpty();
     
     /**
-     * Pours a specified potion into a specified potion container.
+     * Adds an item to the potion container.
      * 
-     * @param potion The specfied potion.
-     * @param container The specified potion container.
+     * @param theItem The name of the item to be added.
+     * @return A String containing whether or not adding the item was successful.
      */
-    public String pour(Potion potion, PotionContainer giver, PotionContainer receiver);
+    public String addPotion(Item theItem);
 }

@@ -8,7 +8,7 @@ import java.util.Iterator;
  */
 public class Potion extends Item implements Makeable {
     /** The ingredients needed to make the potion. */
-    private HashSet<Item> ingredients;
+    private HashSet<Ingredient> ingredients;
     /** The container that the potion is in. */
     private PotionContainer potionContainer;
     
@@ -22,7 +22,7 @@ public class Potion extends Item implements Makeable {
      */
     public Potion(String theName, String theDescription, int thePointValue, double theWeight) {
         super(theName, theDescription, thePointValue, theWeight);
-        ingredients = new HashSet<Item>();
+        ingredients = new HashSet<Ingredient>();
         potionContainer = null;
     }
     
@@ -31,8 +31,17 @@ public class Potion extends Item implements Makeable {
      * 
      * @param ingredient An ingredient needed to make the potion.
      */
-    public void addIngredient(Item ingredient) {
+    public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
+    }
+    
+    /**
+     * Sets the potion's container.
+     * 
+     * @param container The potion's container.
+     */
+    public void setContainer(PotionContainer container) {
+        potionContainer = container;
     }
     
     /**
@@ -57,7 +66,7 @@ public class Potion extends Item implements Makeable {
         boolean allFound = true;
         String result = null;
         
-        Iterator<Item> firstIter = ingredients.iterator();
+        Iterator<Ingredient> firstIter = ingredients.iterator();
         
         while (firstIter.hasNext() && allFound == true) {
             String itemName = firstIter.next().getName();
@@ -74,7 +83,7 @@ public class Potion extends Item implements Makeable {
             result = "You made a " + super.getName() + "\n\n";
             result += "To do so, you used:\n";
             
-            Iterator<Item> secondIter = ingredients.iterator();
+            Iterator<Ingredient> secondIter = ingredients.iterator();
         
             while (secondIter.hasNext()) {
                 Item current = secondIter.next();
@@ -110,7 +119,7 @@ public class Potion extends Item implements Makeable {
     public String toString() {
         String result = "Ingredients needed to make a " + getName() + ":\n";
         
-        Iterator<Item> iter = ingredients.iterator();
+        Iterator<Ingredient> iter = ingredients.iterator();
         
         while (iter.hasNext()) {
             Item current = iter.next();

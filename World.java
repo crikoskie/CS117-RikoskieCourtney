@@ -343,9 +343,9 @@ public class World {
         Room kitchen = getRoom("Kitchen");
         kitchen.addItem(garlic);
         
-        Item clove = new Item("garlic clove", "It's a clove of garlic.", 0, 0.125);
+        Ingredient clove = new Ingredient("garlic clove", "It's a clove of garlic.", 0, 0.125);
         
-        Container pouch = new Container("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
+        HerbContainer pouch = new HerbContainer("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
         Book notes = new Book("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4);
         Item coins = new Item("coin collection", "One of your cherished possessions, it is a jar filled with currency from far-off lands.  The coins are well-cared-for and shine brightly.", 0, 20);
         Room yourRoom = getRoom("Your Bedroom");
@@ -367,8 +367,8 @@ public class World {
         shed.addItem(rune);
         
         Book wardBook = new Book("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36);
-        Container cauldron = new Container("empty cauldon", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
-        Container vial = new Container("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
+        PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
+        PotionContainer vial = new PotionContainer("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
         Room cellar = getRoom("Cellar");
         cellar.addItem(wardBook);
         cellar.addItem(cauldron);
@@ -408,15 +408,15 @@ public class World {
         Potion remover = new Potion("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
         Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
         
-        Item eppeth = new Item("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2);
-        Item riverCress = new Item("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2);
-        Item blisterFlower = new Item("blister flower", "In spring, these plants bloom with brilliant red and orange flowers.", 0, 0.2);
-        Item wratagrass = new Item("wratagrass", "This tall grass is the staple of many potions, useful in its stabilizing capabilities.", 0, 0.2);
-        Item hifefron = new Item("hifefron", "Hifefron cacti are not suited for this climate, so Master has put a warming spell around them to keep them alive.", 0, 0.2);
-        Item taglisbi = new Item("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2);
-        Item inneoShoot = new Item("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2);
-        Item ashClove = new Item("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2);
-        Item orreamin = new Item("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2);
+        Ingredient eppeth = new Ingredient("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2);
+        Ingredient riverCress = new Ingredient("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2);
+        Ingredient blisterFlower = new Ingredient("blister flower", "In spring, these plants bloom with brilliant red and orange flowers.", 0, 0.2);
+        Ingredient wratagrass = new Ingredient("wratagrass", "This tall grass is the staple of many potions, useful in its stabilizing capabilities.", 0, 0.2);
+        Ingredient hifefron = new Ingredient("hifefron", "Hifefron cacti are not suited for this climate, so Master has put a warming spell around them to keep them alive.", 0, 0.2);
+        Ingredient taglisbi = new Ingredient("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2);
+        Ingredient inneoShoot = new Ingredient("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2);
+        Ingredient ashClove = new Ingredient("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2);
+        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2);
         backyard.addItem(eppeth);
         backyard.addItem(riverCress);
         backyard.addItem(blisterFlower);

@@ -32,6 +32,11 @@ public class Book extends Item implements Readable {
         pages.put(page, information);
     }
     
+    /**
+     * Gets the first page of the book and the content within it.
+     * 
+     * @return The first page of the book and the content within it.
+     */
     public String read() {
         String result = "You look at the first page.";
         
@@ -62,6 +67,11 @@ public class Book extends Item implements Readable {
         return result;
     }
     
+    /**
+     * Gets the content of the specified page.
+     * 
+     * @return the content of the specified page
+     */
     public String goTo(String page) {
         Iterator<String> iter = pages.keySet().iterator();
         String result = "That page doesn't exist.";

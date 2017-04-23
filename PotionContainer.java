@@ -19,7 +19,8 @@ public class PotionContainer extends Container implements Emptiable {
      */
     public PotionContainer(String theName, String theDescription, int thePointValue, double theWeight) {
         super(theName, theDescription, thePointValue, theWeight);
-        potion = null;
+        potion = new Potion("shrinking potion", "a potion", 0, 0);
+        addItem(potion);
     }    
     
     /**
@@ -27,11 +28,12 @@ public class PotionContainer extends Container implements Emptiable {
      * 
      * @param container A container which can hold potions.
      */
-    public String empty(Container container) {
+    public String empty() {
         String result = "Emptied.";
-        String potionName = potion.getName();
         
-        container.removeItem(potionName);
+        String potionName = potion.getName();
+        removeItem(potionName);
+        potion = null;
         
         return result;
     }
@@ -52,31 +54,23 @@ public class PotionContainer extends Container implements Emptiable {
     }
     
     /**
-     * Pours a specified potion into a specified potion container.
-     * 
-     * @param potion The specfied potion.
-     * @param container The specified potion container.
-     */
-    public String pour(Potion potion, PotionContainer giver, PotionContainer receiver) {
-        String result = "Poured.";
-        String potionName = potion.getName();
-        
-        receiver.addItem(potion);
-        giver.removeItem(potionName);
-        
-        return result;
-    }
-    
-    /**
      * Adds an item to the potion container.
      * 
      * @param theItem The name of the item to be added.
+     * @return A String containing whether or not adding the item was successful.
      */
-    public void addItem(Item theItem) {
+    public String addPotion(Item theItem) {
+        String result = null;
+        
         if (theItem instanceof Potion) {
             Potion thePotion = (Potion)theItem;
             
             potion = thePotion;
+            super.addItem(potion);
+            potion.setContainer(this);
+            result = "Poured.";
         }
+        
+        return result;
     }
 }
