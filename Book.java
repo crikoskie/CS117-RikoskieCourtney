@@ -9,6 +9,8 @@ import java.util.Iterator;
 public class Book extends Item implements Readable {
     /** The pages and the information contained of each page. */
     private HashMap<String, String> pages;
+    /** The intro text of the book. */
+    private String introText;
     
     /**
      * Constructs a new Book.
@@ -17,10 +19,12 @@ public class Book extends Item implements Readable {
      * @param theDescription The description of the book.
      * @param thePointValue The point value of the book.
      * @param theWeight The weight (in ounces) of the book.
+     * @param theIntro The intro text of the book.
      */
-    public Book(String theName, String theDescription, int thePointValue, double theWeight) {
+    public Book(String theName, String theDescription, int thePointValue, double theWeight, String theIntro) {
         super(theName, theDescription, thePointValue, theWeight);
         pages = new HashMap<String, String>();
+        introText = theIntro;
     }
     
     /**
@@ -39,30 +43,15 @@ public class Book extends Item implements Readable {
      * @return The first page of the book and the content within it.
      */
     public String read() {
-        String result = "You look at the first page.";
-        
-        if (getName().equals("book on warding and barriers")) {
-            result = "Table of Contents\n\n";
-            result += "Your master has circled some of the items in the table.  They are:\n";
+        String result = "You look at the first page.\n\n";
+        result += introText;
            
-            Iterator<String> iter = pages.keySet().iterator();
+        Iterator<String> iter = pages.keySet().iterator();
             
-            while (iter.hasNext()) {
-                String current = iter.next();
+        while (iter.hasNext()) {
+            String current = iter.next();
                 
-                result += "     " + current + "\n";
-            }
-        }
-        if (getName().equals("notes")) {
-            result = "There are notes about:\n";
-           
-            Iterator<String> iter = pages.keySet().iterator();
-            
-            while (iter.hasNext()) {
-                String current = iter.next();
-                
-                result += "     " + current + "\n";
-            }
+            result += "     " + current + "\n";
         }
         
         return result;
