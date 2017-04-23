@@ -93,7 +93,7 @@ public class Container extends Item {
         
         for (Item current : itemsContained) {
             String itemName = current.getName();
-            result += "       " + itemName;
+            result += "       " + itemName + "\n";
         }
         
         return result;
