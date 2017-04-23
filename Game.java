@@ -629,13 +629,37 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
-            
+                  
             if (!currentRoom.getName().equals("Cellar")) {
                 Writer.println("You look around, but there is nothing here you can use to make potions.");
             }
             else {
+                Item item = world.getPotion(itemName);
+                
+                if (item == null) {
+                    Writer.println("That isn't something you can make.");
+                }
+                else {
+                    Potion potion = (Potion)item;
+                    Container container = currentRoom.getContainer("empty cauldron");
+                    PotionContainer cauldron = (PotionContainer)container;
+                    
+                    if (!cauldron.isEmpty()) {
+                        Writer.println("There's already something in the cauldron.");
+                    }
+                    else {
+                        Container herbPouch = null;
                         
+                        if (player.isInInventory("herb pouch")) {
+                            herbPouch = player.getContainer("herbPouch");
+                        }
+                        else if (currentRoom.isInRoom("herb pouch")) {
+                            herbPouch = currentRoom.getContainer("herbPouch");
+                        }
+                        
+                        Writer.println(potion.makePotion(player, currentRoom, herbPouch, cauldron));
+                    }
+                }
             }
         }
     }

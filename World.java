@@ -14,12 +14,15 @@ import java.util.HashMap;
 public class World {
     /** The rooms in the world. */
     private HashMap<String, Room> rooms;
+    /** The buildable items. */
+    private HashMap<String, Potion> potions;
 
     /**
      * Constructor for the world.
      */
     public World() {
         rooms = new HashMap<String, Room>();
+        potions = new HashMap<String, Potion>();
         createRooms();
         createItems();
     }
@@ -359,7 +362,7 @@ public class World {
         masterRoom.addItem(jewelryBox);
         jewelryBox.addItem(cellarKey);
         
-        Container shed = new Container("shed", "A wooden shed stands at the end of the backyard.  It is weathered and beaten, looking like it could collapse any second.", 0, 0);
+        Container shed = new Container("shed", "A wooden shed stands at the end of the backyard.  It is weathered and beaten, looking like it could collapse any second.", 0, 129);
         Item rune = new Item("barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 0, 0);
         Item hiddenRune = new Item("hidden barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 15, 0);
         Room backyard = getRoom("Backyard");
@@ -454,6 +457,20 @@ public class World {
         wardBook.addPage("detection barrier", "");
         wardBook.addPage("travel ward", "");
         wardBook.addPage("invisibilty", "");
+        
+        potions.put("shrinking potion", shrinking);
+        potions.put("duplication potion", duplication);
+        potions.put("scent remover", remover);
+        potions.put("unknown potion", unknown);
     }
     
+    /**
+     * Gets the potion associated with the specified item name.
+     * 
+     * @param theName The name of the specified item.
+     * @return The potion associated with the specified item name.
+     */
+    public Potion getPotion(String theName) {
+        return potions.get(theName);
+    }
 }

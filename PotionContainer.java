@@ -19,8 +19,7 @@ public class PotionContainer extends Container implements Emptiable {
      */
     public PotionContainer(String theName, String theDescription, int thePointValue, double theWeight) {
         super(theName, theDescription, thePointValue, theWeight);
-        potion = new Potion("shrinking potion", "a potion", 0, 0);
-        addItem(potion);
+        potion = null;
     }    
     
     /**

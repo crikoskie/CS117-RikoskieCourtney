@@ -190,8 +190,10 @@ public class Player {
             
             if (current instanceof Container) {
                 Container container = (Container)current;
-                container.isInContainer(theName);
-                found = true;
+                
+                if (container.isInContainer(theName)) {
+                    found = true;
+                }
             }
         }
         

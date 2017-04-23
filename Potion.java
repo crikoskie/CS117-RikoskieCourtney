@@ -11,6 +11,8 @@ public class Potion extends Item implements Makeable {
     private HashSet<Ingredient> ingredients;
     /** The container that the potion is in. */
     private PotionContainer potionContainer;
+    /** Whether or not the potion has been made. */
+    private boolean made;
     
     /**
      * Constructs a new Potion.
@@ -24,6 +26,7 @@ public class Potion extends Item implements Makeable {
         super(theName, theDescription, thePointValue, theWeight);
         ingredients = new HashSet<Ingredient>();
         potionContainer = null;
+        made = false;
     }
     
     /**
@@ -61,7 +64,7 @@ public class Potion extends Item implements Makeable {
      * @param container A container that ingredients may be found in.
      * @param cauldron The container which holds newly made potions.
      */
-    public String makePotion(Player player, Room room, Container container, Container cauldron) {
+    public String makePotion(Player player, Room room, Container container, PotionContainer cauldron) {
         boolean found = false;
         boolean allFound = true;
         String result = null;
@@ -102,7 +105,8 @@ public class Potion extends Item implements Makeable {
                 }
             }
             
-            cauldron.addItem(this);
+            cauldron.addPotion(this);
+            made = true;
         }
         else {
             result = "You don't have the necessary ingredients.";
