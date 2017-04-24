@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.HashSet;
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  * 
@@ -20,9 +21,11 @@ public class Room {
     /** The name of this room.  Room names should be unique. */
     private String name;
     /** The description of this room. */
-    private String description;
+    private ArrayList<String> descriptions;
     /** The number of points that the player will receive upon entering a room. */
     private int points;
+    /** The active element. */
+    private int active;
 
     /** The room's exits. */
     private HashMap<String, Door> exits;
@@ -45,7 +48,9 @@ public class Room {
      */
     public Room(String name, String description) {
         this.name = name;
-        this.description = description;
+        descriptions = new ArrayList<String>();
+        descriptions.add(description);
+        active = 0;
         exits = new HashMap<String, Door>();
         points = 0;
         items = new HashSet<Item>();
@@ -67,7 +72,7 @@ public class Room {
      * @return The description of this room.
      */
     public String getDescription() {
-        return description;
+        return descriptions.get(active);
     }
 
     /**
@@ -315,5 +320,23 @@ public class Room {
         }
 
         return container;
+    }
+    
+    /**
+     * Adds a description.
+     * 
+     * @param theDescription The description to be added.
+     */
+    public void addDescription(String theDescription) {
+        descriptions.add(theDescription);
+    }
+    
+    /**
+     * Sets the active element, changing the description that is displayed.
+     * 
+     * @param element The new element.
+     */
+    public void setActive(int element) {
+        active = element;
     }
 }

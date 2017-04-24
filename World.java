@@ -336,6 +336,9 @@ public class World {
         
         this.createDoor(mainRoad, "east", library);
         this.createDoor(library, "west", mainRoad);
+        
+        southPath.addDescription("With the illuminated bulb, it is much easier to see.");
+        backyard.addDescription("Some of the herbs are starting to look bare.");
     }
     
     /**
@@ -462,6 +465,9 @@ public class World {
         potions.put("duplication potion", duplication);
         potions.put("scent remover", remover);
         potions.put("unknown potion", unknown);
+        
+        broadsword.addDescription("The sword is much smaller than it used to be.  You wonder if Tave has noticed its disappearance yet.");
+        duplicate.addDescription("It's much smaller than the original.");
     }
     
     /**

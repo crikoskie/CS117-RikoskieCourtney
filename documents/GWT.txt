@@ -560,7 +560,40 @@ READ Scenario #6: Content exists
 	 
 	 
 	 
-TRADE Scenario #1: Item is not specified
-	GIVEN : "trade" is entered
+USE Scenario #1: Item is not specified
+	GIVEN : "use" is entered
 	 WHEN : 
-	 THEN : appropriate message is displayed (trade what?)
+	 THEN : appropriate message is displayed (use what?)
+	 
+USE Scenario #2: Specified item is not available	
+	GIVEN : "use item" is entered
+	 WHEN : specified item is not in a room container
+	  and : specified item is not in an inventory container
+	 THEN : appropriate message is displayed (can't find it)
+	 
+USE Scenario #3: Specified item is not useable
+	GIVEN : "use item" is entered
+	 WHEN : specified item is in a room container
+	   or : specified item is in an inventory container
+	  and : specified item is not useable
+	 THEN : appropriate message is displayed (can't use it)
+	 
+USE Scenario #4: Specified item is useable
+	GIVEN : "use item" is entered
+	 WHEN : specified item is in a room container
+	   or : specified item is in an inventory container
+	  and : specified item is useable
+	 THEN : user is prompted for what to use the item on
+	 
+USE Scenario #5: Cannot use item on second item
+	GIVEN : "use item" has been entered
+	  and : user has been prompted for what to use the item on
+	 WHEN : item cannot be used on second item
+	 THEN : appropriate message is displayed (can't use it on this item)
+	 
+USE Scenario #6: Can use item on second item
+	GIVEN : "use item" has been entered
+	  and : user has been prompted for what to use the item on
+	 WHEN : item can be used on second item
+	 THEN : affects on item on second item are carried out
+	  and : appropriate message is displayed (you used it)

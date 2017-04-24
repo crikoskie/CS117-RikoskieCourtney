@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Represents an item within the game.
  * 
@@ -10,12 +10,14 @@ public class Item
     /** The name of the item. */
     private String name;
     /** The description of the item. */
-    private String description;
+    private ArrayList<String> descriptions;
     /** The point value of the item. */
     private int pointValue;
     /** The weight (in ounces) of the item. */
     private double weight;
-
+    /** The active element. */
+    private int active;
+    
     /**
      * Constructs a new Item.
      * 
@@ -26,7 +28,9 @@ public class Item
      */
     public Item(String theName, String theDescription, int thePointValue, double theWeight) {
         name = theName;
-        description = theDescription;
+        descriptions = new ArrayList<String>();
+        descriptions.add(theDescription);
+        active = 0;
         pointValue = thePointValue;
         weight = theWeight;
     }
@@ -46,7 +50,7 @@ public class Item
      * @return The description of the item.
      */
     public String getDescription() {
-        return description;
+        return descriptions.get(active);
     }
     
     /**
@@ -72,8 +76,8 @@ public class Item
      * 
      * @param theDescription The new description of the item.
      */
-    public void setDescription(String theDescription) {
-        description = theDescription;
+    public void setDescription(String theDescription, int element) {
+        descriptions.set(element, theDescription);
     }
     
     /**
@@ -91,8 +95,26 @@ public class Item
      * @return A complete description of the item.
      */
     public String toString() {
-        String result = name + ": " + description;
+        String result = name + ": " + descriptions.get(active);
         
         return result;
+    }
+    
+     /**
+     * Adds a description.
+     * 
+     * @param theDescription The description to be added.
+     */
+    public void addDescription(String theDescription) {
+        descriptions.add(theDescription);
+    }
+    
+     /**
+     * Sets the active element, changing the description that is displayed.
+     * 
+     * @param element The new element.
+     */
+    public void setActive(int element) {
+        active = element;
     }
 }

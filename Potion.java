@@ -6,7 +6,7 @@ import java.util.Iterator;
  * @author Courtney Rikoskie
  * @version Spring 2017
  */
-public class Potion extends Item implements Makeable {
+public class Potion extends Item implements Makeable, Useable {
     /** The ingredients needed to make the potion. */
     private HashSet<Ingredient> ingredients;
     /** The container that the potion is in. */
@@ -153,4 +153,40 @@ public class Potion extends Item implements Makeable {
         
         return result;
     }
+    
+    /**
+    * Uses a potion on specified item.
+    * 
+    * @param theItem The specified item.
+    * @return Whether the potion was successfully used on the item.
+    */
+    public String use(Player player, Room room, Item theItem) {
+        String result = "You used the" + getName() + ".";
+        
+        switch (getName()) {
+            case "shrinking potion":
+                double weight = theItem.getWeight();
+                theItem.setWeight(weight/4);
+                break;
+            case "duplication potion":
+                String itemName = theItem.getName();
+                
+                if (!(itemName.equals("shed") || itemName.equals("cat"))) {
+                    Item item = new Item(theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
+                    result += "\n\nA new " + itemName + " appeared in front of you.";
+                    room.add(item);
+                }
+                else {
+                    result = "You probably shouldn't use a duplication potion on that.  It's asking for trouble.";
+                }
+                break;
+            case "scent remover":
+                
+                break;
+        }
+        
+        return result;
+    }
+    
+   
 }
