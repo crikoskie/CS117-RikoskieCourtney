@@ -160,21 +160,40 @@ public class Potion extends Item implements Makeable, Useable {
     * @param theItem The specified item.
     * @return Whether the potion was successfully used on the item.
     */
-    public String use(Player player, Room room, Item theItem) {
+    public String use(Room room, Item theItem) {
         String result = "You used the" + getName() + ".";
+        String itemName = theItem.getName();
         
         switch (getName()) {
             case "shrinking potion":
-                double weight = theItem.getWeight();
-                theItem.setWeight(weight/4);
+                if (theItem instanceof Ingredient) {
+                    result = "You probably shouldn't use a shrinking potion on that.  It will mess up the porportion.";
+                }
+                else if (itemName.equals("empty cauldron")) {
+                    result = "You don't want to lessen the amount of potion you are able to make.";
+                }
+                else if (itemName.equals("vial")) {
+                    result = "You don't want to lessen the amoutn of potion you are able to carry around.";
+                }
+                else if (itemName.equals("jewelry box") || itemName.equals("cellar key") || itemName.equals("book on warding and barriers")) {
+                    result = "You don't want to mess around with Master's things.";
+                }
+                else if (itemName.equals("shed") || itemName.equals("cat")) {
+                    result = "It probably wouldn't be the smartest thing in the world to use a shrinking potion on that.";  
+                }
+                else if (itemName.equals("herb pouch")) {
+                    result = "Being able to carry less herbs is a bad thing.";
+                }
+                else {
+                    double weight = theItem.getWeight();
+                    theItem.setWeight(weight/4);
+                }
                 break;
-            case "duplication potion":
-                String itemName = theItem.getName();
-                
+            case "duplication potion":                
                 if (!(itemName.equals("shed") || itemName.equals("cat"))) {
-                    Item item = new Item(theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
+                    Item item = new Item("duplicate" + theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
                     result += "\n\nA new " + itemName + " appeared in front of you.";
-                    room.add(item);
+                    room.addItem(item);
                 }
                 else {
                     result = "You probably shouldn't use a duplication potion on that.  It's asking for trouble.";
