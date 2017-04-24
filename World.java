@@ -467,50 +467,48 @@ public class World {
         potions.put("unknown potion", unknown);
         
         // element is 1
-        garlic.addDescription(garlic.getDescription() + "  It's much smaller than it used to be.");
-        notes.addDescription("You have to squint to read the small papers.");
-        coins.addDescription("These coins probably aren't worth much anymore.");
-        rune.addDescription(rune.getDescription() + "  It's much smaller than it used to be.");
-        hiddenRune.addDescription(hiddenRune.getDescription() + "  It's much smaller than it used to be.");
-        gold.addDescription("While you did tehnically squander away a whole lot of gold for no reason other than curiosity, there's still a good amount left.");
-        bulb.addDescription(bulb.getDescription() + "  It's much smaller than it used to be.");
-        cloth.addDescription(cloth.getDescription() + "  It's much smaller than it used to be.  You hope the fairies won't be mad.");
-        card.addDescription(card.getDescription() + "  Despite it being shrunken, it is still valid.");
-        broadsword.addDescription("The sword is much smaller than it used to be, and it's easy for you to lift.");
+        garlic.setDescription(1, garlic.getDescription() + "  It's much smaller than it used to be.");
+        notes.setDescription(1, "You have to squint to read the small papers.");
+        coins.setDescription(1, "These coins probably aren't worth much anymore.");
+        rune.setDescription(1, rune.getDescription() + "  It's much smaller than it used to be.");
+        hiddenRune.setDescription(1, hiddenRune.getDescription() + "  It's much smaller than it used to be.");
+        gold.setDescription(1, "While you did tehnically squander away a whole lot of gold for no reason other than curiosity, there's still a good amount left.");
+        bulb.setDescription(1, bulb.getDescription() + "  It's much smaller than it used to be.");
+        cloth.setDescription(1, cloth.getDescription() + "  It's much smaller than it used to be.  You hope the fairies won't be mad.");
+        card.setDescription(1, card.getDescription() + "  Despite it being shrunken, it is still valid.");
+        broadsword.setDescription(1, "The sword is much smaller than it used to be, and it's easy for you to lift.");
         
         // element is 2
-        garlic.addDescription("Your nose thanks you.");
-        pouch.addDescription(pouch.getDescription() + "  It doesn't smell like much of anything.");
-        notes.addDescription(notes.getDescription() + "  It doesn't smell like much of anything.");
-        coins.addDescription(coins.getDescription() + "  It doesn't smell like much of anything.");
-        rune.addDescription(rune.getDescription() + "  It doesn't smell like much of anything.");
-        hiddenRune.addDescription(hiddenRune.getDescription() + "  It doesn't smell like much of anything.");
-        gold.addDescription(gold.getDescription() + "  It doesn't smell like much of anything.");
-        bulb.addDescription(bulb.getDescription() + "  It doesn't smell like much of anything.");
-        cloth.addDescription(cloth.getDescription() + "  It doesn't smell like much of anything.");
-        card.addDescription(card.getDescription() + "  It doesn't smell like much of anything.");
-        broadsword.addDescription(broadsword.getDescription() + "  It doesn't smell like much of anything.");
-        
-        // element is 1
-        eppeth.addDescription(eppeth.getDescription() + "  It doesn't smell like much of anything.");
-        riverCress.addDescription(riverCress.getDescription() + "  It doesn't smell like much of anything.");
-        blisterFlower.addDescription(blisterFlower.getDescription() + "  It doesn't smell like much of anything.");
-        wratagrass.addDescription(wratagrass.getDescription() + "  It doesn't smell like much of anything.");
-        hifefron.addDescription(hifefron.getDescription() + "  It doesn't smell like much of anything.");
-        taglisbi.addDescription("You mourn the loss of such a pleasant scent.");
-        inneoShoot.addDescription(inneoShoot.getDescription() + "  It doesn't smell like much of anything.");
-        ashClove.addDescription(ashClove.getDescription() + "  It doesn't smell like much of anything.");
-        orreamin.addDescription(orreamin.getDescription() + "  It doesn't smell like much of anything.");
-        cauldron.addDescription(cauldron.getDescription() + "  It doesn't smell like much of anything.");
-        vial.addDescription(vial.getDescription() + "  It doesn't smell like much of anything.");
-        jewelryBox.addDescription(jewelryBox.getDescription() + "  It doesn't smell like much of anything.");
-        cellarKey.addDescription("Your fingers thank you.");
-        shed.addDescription(shed.getDescription() + "  It doesn't smell like much of anything.");
-        cat.addDescription(cat.getDescription() + "  It doesn't smell like much of anything.");
-        wardBook.addDescription(wardBook.getDescription() + "  It doesn't smell like much of anything.");
+        garlic.setDescription(2, "Your nose thanks you.");
+        pouch.setDescription(2, pouch.getDescription() + "  It doesn't smell like much of anything.");
+        notes.setDescription(2, notes.getDescription() + "  It doesn't smell like much of anything.");
+        coins.setDescription(2, coins.getDescription() + "  It doesn't smell like much of anything.");
+        rune.setDescription(2, rune.getDescription() + "  It doesn't smell like much of anything.");
+        hiddenRune.setDescription(2, hiddenRune.getDescription() + "  It doesn't smell like much of anything.");
+        gold.setDescription(2, gold.getDescription() + "  It doesn't smell like much of anything.");
+        bulb.setDescription(2, bulb.getDescription() + "  It doesn't smell like much of anything.");
+        cloth.setDescription(2, cloth.getDescription() + "  It doesn't smell like much of anything.");
+        card.setDescription(2, card.getDescription() + "  It doesn't smell like much of anything.");
+        broadsword.setDescription(2, broadsword.getDescription() + "  It doesn't smell like much of anything.");
+        eppeth.setDescription(2, eppeth.getDescription() + "  It doesn't smell like much of anything.");
+        riverCress.setDescription(2, riverCress.getDescription() + "  It doesn't smell like much of anything.");
+        blisterFlower.setDescription(2, blisterFlower.getDescription() + "  It doesn't smell like much of anything.");
+        wratagrass.setDescription(2, wratagrass.getDescription() + "  It doesn't smell like much of anything.");
+        hifefron.setDescription(2, hifefron.getDescription() + "  It doesn't smell like much of anything.");
+        taglisbi.setDescription(2, "You mourn the loss of such a pleasant scent.");
+        inneoShoot.setDescription(2, inneoShoot.getDescription() + "  It doesn't smell like much of anything.");
+        ashClove.setDescription(2, ashClove.getDescription() + "  It doesn't smell like much of anything.");
+        orreamin.setDescription(2, orreamin.getDescription() + "  It doesn't smell like much of anything.");
+        cauldron.setDescription(2, cauldron.getDescription() + "  It doesn't smell like much of anything.");
+        vial.setDescription(2, vial.getDescription() + "  It doesn't smell like much of anything.");
+        jewelryBox.setDescription(2, jewelryBox.getDescription() + "  It doesn't smell like much of anything.");
+        cellarKey.setDescription(2, "Your fingers thank you.");
+        shed.setDescription(2, shed.getDescription() + "  It doesn't smell like much of anything.");
+        cat.setDescription(2, cat.getDescription() + "  It doesn't smell like much of anything.");
+        wardBook.setDescription(2, wardBook.getDescription() + "  It doesn't smell like much of anything.");
         
         // element is 3
-        broadsword.addDescription("You wonder if Tave has noticed its disappearance yet.");
+        broadsword.setDescription(3, "You wonder if Tave has noticed its disappearance yet.");
     }
     
     /**

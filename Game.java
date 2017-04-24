@@ -128,6 +128,9 @@ public class Game {
                 case READ:
                 read(command);
                 break;
+                case USE:
+                use(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -339,7 +342,7 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (currentRoom.isInRoom(itemName)) {
                 Item item = currentRoom.getItem(itemName);
                 boolean added = player.addToInventory(item);
@@ -614,7 +617,7 @@ public class Game {
                                 player.addToInventory(item);
                                 if (item instanceof Ingredient) {
                                     Ingredient ingredient = (Ingredient)item;
-                                    
+
                                     if (ingredient.getNumberInGroup() == 0) {
                                         aContainer.removeItem(response);
                                     }
@@ -629,7 +632,7 @@ public class Game {
                             player.addToInventory(item);
                             if (item instanceof Ingredient) {
                                 Ingredient ingredient = (Ingredient)item;
-                                    
+
                                 if (ingredient.getNumberInGroup() == 0) {
                                     aContainer.removeItem(response);
                                 }
@@ -848,6 +851,65 @@ public class Game {
                     String response = Reader.getResponse();
 
                     Writer.println(book.goTo(response));
+                }
+            }
+        }
+    }
+
+    /**
+     * Uses an item.
+     * 
+     * @param command The command to be processed.
+     */
+    private void use(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("What would you like to use?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+
+            if (!(currentRoom.isInRoomContainer(itemName) || player.isInInventoryContainer(itemName))) {
+                Writer.println("That isn't in any of the nearby containers.");
+            }
+            else {
+                Item item = null;
+                Container container = null;
+                
+                if (currentRoom.isInRoomContainer(itemName)) {
+                    container = currentRoom.getContainer(itemName);
+                    item = container.getItem(itemName);
+                }
+                if (player.isInInventoryContainer(itemName)) {
+                    container = player.getContainer(itemName);
+                    item = container.getItem(itemName);
+                }
+                
+                if (!(item instanceof Potion)) {
+                    Writer.println("You can't use that.");
+                }
+                else {
+                    Potion potion = (Potion)item;
+                    
+                    Writer.println("What would you like to use it on?");
+                    
+                    String response = Reader.getResponse();
+                    
+                    if (!(currentRoom.isInRoom(response) || player.isInInventory(response))) {
+                        Writer.println("You search the room and your pockets, but there is no such item to be found.");
+                    }
+                    else {
+                        Item secondItem = null;
+                        
+                        if (currentRoom.isInRoom(response)) {
+                            secondItem = currentRoom.getItem(response);
+                        }
+                        if (player.isInInventory(response)) {
+                            secondItem = player.getItem(response);
+                        }
+                        
+                        potion.use(currentRoom, secondItem);
+                    }
                 }
             }
         }

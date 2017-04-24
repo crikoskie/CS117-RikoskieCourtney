@@ -74,9 +74,10 @@ public class Item
     /**
      * Sets the description of the item.
      * 
+     * @param theElement The element.
      * @param theDescription The new description of the item.
      */
-    public void setDescription(String theDescription, int element) {
+    public void setDescription(int element, String theDescription) {
         descriptions.set(element, theDescription);
     }
     

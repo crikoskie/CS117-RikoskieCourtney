@@ -157,6 +157,7 @@ public class Potion extends Item implements Makeable, Useable {
     /**
     * Uses a potion on specified item.
     * 
+    * @param room The room that the player character is currently in.
     * @param theItem The specified item.
     * @return Whether the potion was successfully used on the item.
     */
@@ -173,7 +174,7 @@ public class Potion extends Item implements Makeable, Useable {
                     result = "You don't want to lessen the amount of potion you are able to make.";
                 }
                 else if (itemName.equals("vial")) {
-                    result = "You don't want to lessen the amoutn of potion you are able to carry around.";
+                    result = "You don't want to lessen the amount of potion you are able to carry around.";
                 }
                 else if (itemName.equals("jewelry box") || itemName.equals("cellar key") || itemName.equals("book on warding and barriers")) {
                     result = "You don't want to mess around with Master's things.";
@@ -187,6 +188,7 @@ public class Potion extends Item implements Makeable, Useable {
                 else {
                     double weight = theItem.getWeight();
                     theItem.setWeight(weight/4);
+                    theItem.setActive(1);
                 }
                 break;
             case "duplication potion":                
@@ -200,12 +202,12 @@ public class Potion extends Item implements Makeable, Useable {
                 }
                 break;
             case "scent remover":
-                
+                theItem.setActive(2);
+            case "unknown potion":
+                result = "No.";
                 break;
         }
         
         return result;
     }
-    
-   
 }

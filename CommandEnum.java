@@ -42,7 +42,9 @@ public enum CommandEnum
     /** The pour command. */
     POUR("pour"),
     /** The read command. */
-    READ("read");
+    READ("read"),
+    /** The use command. */
+    USE("use");
     
     /** The text that the player enters in order to execute the command. */
     private String text;
