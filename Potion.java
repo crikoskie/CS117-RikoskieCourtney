@@ -64,7 +64,7 @@ public class Potion extends Item implements Makeable {
      * @param container A container that ingredients may be found in.
      * @param cauldron The container which holds newly made potions.
      */
-    public String makePotion(Player player, Room room, Container container, PotionContainer cauldron) {
+    public String makePotion(Player player, Room room, World world, Container container, PotionContainer cauldron) {
         boolean found = false;
         boolean allFound = true;
         String result = null;
@@ -89,19 +89,38 @@ public class Potion extends Item implements Makeable {
             Iterator<Ingredient> secondIter = ingredients.iterator();
         
             while (secondIter.hasNext()) {
-                Item current = secondIter.next();
+                Ingredient current = secondIter.next();
+                Item ingredient = null;
                 String itemName = current.getName();
                 
                 result += "      " + itemName;
                 
                 if (player.isInInventory(itemName)) {
-                    player.removeItem(itemName);
+                    ingredient = player.getItem(itemName);
                 }
                 else if (room.isInRoom(itemName)) {
-                    room.removeItem(itemName);
+                    ingredient = room.getItem(itemName);
                 }
                 else if (container.isInContainer(itemName)) {
-                    container.removeItem(itemName);
+                    ingredient = container.getItem(itemName);
+                }
+                
+                Ingredient anIngredient = (Ingredient)ingredient;
+                anIngredient.setNumberInGroup(anIngredient.getNumberInGroup() - 1);
+                
+                int numberInGroup = anIngredient.getNumberInGroup();
+                String ingredientName = ingredient.getName();
+                
+                if (numberInGroup == 0) {
+                    if (player.isInInventory(ingredientName)) {
+                        player.removeItem(ingredientName);
+                    }
+                    else if (room.isInRoom(ingredientName)) {
+                        room.removeItem(ingredientName);
+                    }
+                    else if (container.isInContainer(ingredientName)) {
+                        container.removeItem(ingredientName);
+                    }
                 }
             }
             

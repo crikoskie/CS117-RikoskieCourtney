@@ -51,7 +51,7 @@ public class Room {
         items = new HashSet<Item>();
         counter++;
     }
-    
+
     /**
      * Returns the name of this room.
      * 
@@ -69,7 +69,7 @@ public class Room {
     public String getDescription() {
         return description;
     }
-    
+
     /**
      * Returns the number of rooms that have been created in the world.
      * @return The number of rooms that have been created in the wo rld.
@@ -77,7 +77,7 @@ public class Room {
     public static int getCounter() {
         return counter;
     }
-    
+
     /**
      * Returns a string description including all the details of a Room.
      * For example,
@@ -89,39 +89,39 @@ public class Room {
      */
     public String toString() {
         String roomDetails = "";
-        
+
         roomDetails += (getName() + ":" + "\n");
         roomDetails += (getDescription() + "\n");
-        
+
         if (items.size() != 0) {
             roomDetails += "Items: ";
-            
+
             for (Item current : items) {
                 String itemName = current.getName();
-                
+
                 roomDetails += itemName + "   ";
             }
-            
+
             roomDetails += "\n";
         }
-        
+
         roomDetails += "Exits: ";
 
         Iterator<String> iter = exits.keySet().iterator();
-        
+
         while (iter.hasNext()) {
             String current = iter.next();
-           
+
             if (getExit(current) != null) {
                 roomDetails += current + " ";
             }
         }
-        
+
         roomDetails += "\n";
-        
+
         return roomDetails;
     }
-    
+
     /**
      * Defines an exit from this room.
      * 
@@ -131,7 +131,7 @@ public class Room {
     public void setExit(String direction, Door neighbor) {
         exits.put(direction, neighbor);
     }
-    
+
     /**
      * Gets a door in a specified direction if it exists.
      * 
@@ -141,7 +141,7 @@ public class Room {
     public Door getExit(String direction) {
         return exits.get(direction);
     }
-    
+
     /**
      * Sets the number of points that a player will receive upon entering a room.
      * 
@@ -150,7 +150,7 @@ public class Room {
     public void setPoints(int thePoints) {
         points = thePoints;
     }
-    
+
     /**
      * Gets the number of points that a player will receive upon entering a room.
      * 
@@ -159,19 +159,42 @@ public class Room {
     public int getPoints() {
         int roomPoints = points;
         setPoints(0);
-        
+
         return roomPoints;
     }
-    
+
     /**
      * Adds the specified item to the room.
      * 
      * @param theItem The item to be added.
      */
     public void addItem(Item theItem) {
-        items.add(theItem);
+        if (theItem instanceof Ingredient) {
+            Ingredient ingredient = (Ingredient)theItem;
+            String itemName = ingredient.getName();
+            boolean found = false;
+
+            for (Item current : items) { 
+                String currentName = current.getName();
+
+                if (itemName.equals(currentName)) {
+                    found = true;
+
+                    Ingredient anIngredient = (Ingredient)current;
+
+                    anIngredient.setNumberInGroup(anIngredient.getNumberInGroup() + ingredient.getNumberInGroup());
+                }
+            }
+
+            if (!found) {
+                items.add(theItem);
+            }
+        }
+        else {
+            items.add(theItem);
+        }
     }
-    
+
     /**
      * Gets the specified item.
      * 
@@ -182,20 +205,20 @@ public class Room {
         Item item = null;
         boolean found = false;
         Iterator<Item> iter = items.iterator();
-        
+
         while (!found && iter.hasNext()) {
             Item current = iter.next();
             String itemName = current.getName();
-            
+
             if (itemName.equals(theName)) {
                 item = current;
                 found = true;
             }
         }
-        
+
         return item;
     }
-    
+
     /**
      * Removes the specified item from the room.
      * 
@@ -206,21 +229,21 @@ public class Room {
         Item item = null;
         boolean found = false;
         Iterator<Item> iter = items.iterator();
-        
+
         while (!found && iter.hasNext()) {
             Item current = iter.next();
             String itemName = current.getName();
-            
+
             if (itemName.equals(theName)) {
                 item = current;
                 iter.remove();
                 found = true;
             }
         }
-        
+
         return item;
     }
-    
+
     /**
      * Gets whether or not the specified item can be found in the room.
      * 
@@ -230,19 +253,19 @@ public class Room {
     public boolean isInRoom(String theName) {
         Iterator<Item> iter = items.iterator();
         boolean found = false;
-        
+
         while (!found && iter.hasNext()) {
             Item current = iter.next();
             String itemName = current.getName();
-            
+
             if (itemName.equals(theName)) {
                 found = true;
             }
         }
-        
+
         return found;
     }
-    
+
     /**
      * Gets whether or not the specified item can be found in a container within the room.
      * 
@@ -252,22 +275,22 @@ public class Room {
     public boolean isInRoomContainer(String theName) {
         Iterator<Item> iter = items.iterator();
         boolean found = false;
-        
+
         while (!found && iter.hasNext()) {
             Item current = iter.next();
-            
+
             if (current instanceof Container) {
                 Container container = (Container)current;
-                
+
                 if (container.isInContainer(theName)) {
                     found = true;
                 }
             }
         }
-        
+
         return found;
     }
-    
+
     /**
      * Gets the container that the specified item is found in.
      * 
@@ -278,19 +301,19 @@ public class Room {
         Iterator<Item> iter = items.iterator();
         boolean found = false;
         Container container = null;
-        
+
         while (!found && iter.hasNext()) {
             Item current = iter.next();
-            
+
             if (current instanceof Container) {
                 container = (Container)current;
-                
+
                 if (container.isInContainer(theName)) {
                     found = true;
                 }
             }
         }
-        
+
         return container;
     }
 }

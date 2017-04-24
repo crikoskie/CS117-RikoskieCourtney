@@ -72,65 +72,65 @@ public class Game {
         } 
         else {
             CommandEnum commandWord = command.getCommandWord();
-            
+
             switch(commandWord) {
                 case HELP:
-                    printHelp();
-                    break;
+                printHelp();
+                break;
                 case GO:
-                    goRoom(command);
-                    break;
+                goRoom(command);
+                break;
                 case QUIT:
-                    wantToQuit = quit(command);
-                    break;
+                wantToQuit = quit(command);
+                break;
                 case LOOK:
-                    look();
-                    break;
+                look();
+                break;
                 case STATUS:
-                    status();
-                    break;
+                status();
+                break;
                 case BACK:
-                    back();
-                    break;
+                back();
+                break;
                 case DROP:
-                    drop(command);
-                    break;
+                drop(command);
+                break;
                 case INVENTORY:
-                    inventory();
-                    break;
+                inventory();
+                break;
                 case EXAMINE:
-                    examine(command);
-                    break;
+                examine(command);
+                break;
                 case TAKE:
-                    take(command);
-                    break;
+                take(command);
+                break;
                 case UNLOCK:
-                    unlock(command);
-                    break;
+                unlock(command);
+                break;
                 case LOCK:
-                    lock(command);
-                    break;
+                lock(command);
+                break;
                 case PACK:
-                    pack(command);
-                    break;
+                pack(command);
+                break;
                 case UNPACK:
-                    unpack(command);
-                    break;
+                unpack(command);
+                break;
                 case MAKE:
-                    make(command);
-                    break;
+                make(command);
+                break;
                 case EMPTY:
-                    empty(command);
-                    break;
+                empty(command);
+                break;
                 case POUR:
-                    pour(command);
-                    break;
+                pour(command);
+                break;
                 case READ:
-                    read(command);
-                    break;
+                read(command);
+                break;
                 default:
-                    Writer.println(commandWord + " is not implemented yet!");
-                    break;
+                Writer.println(commandWord + " is not implemented yet!");
+                break;
             }
         }
         return wantToQuit;
@@ -155,7 +155,7 @@ public class Game {
         else {
             String direction = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             // Try to leave current.
             Door doorway = null;
             doorway = currentRoom.getExit(direction);
@@ -169,10 +169,10 @@ public class Game {
             else {
                 Room newRoom = doorway.getDestination();
                 player.setCurrentRoom(newRoom);
-                
+
                 int roomPoints = newRoom.getPoints();
                 score += roomPoints;
-                
+
                 printLocationInformation();
             }
         }
@@ -195,7 +195,7 @@ public class Game {
         Writer.println("You are lost. You are alone. You wander");
         Writer.println("around at the university.");
         Writer.println();
-        
+
         String commands = CommandWords.getCommandString();
         Writer.println(commands);
     }
@@ -234,17 +234,17 @@ public class Game {
      */
     private void printLocationInformation() { 
         Room currentRoom = player.getCurrentRoom();
-        
+
         Writer.println(currentRoom.toString());
     }
-    
+
     /**
      * Prints out the location information.
      */
     private void look() {
         printLocationInformation();
     }
-    
+
     /**
      * Prints out the player's status.
      */
@@ -253,13 +253,13 @@ public class Game {
         Writer.println();
         Writer.println(player.getCurrentRoom().toString());
     }
-    
+
     /**
      * Takes the player back to the previous room, if it exists.
      */
     private void back() {
         Room previous = player.getPreviousRoom();
-        
+
         if (previous != null) {
             player.setCurrentRoom(previous);
             Writer.println(player.getCurrentRoom().toString());
@@ -268,7 +268,7 @@ public class Game {
             Writer.println("You cannot go back.");
         }
     }
-    
+
     /**
      * Drops an item from the player character's inventory.
      * 
@@ -280,7 +280,7 @@ public class Game {
         }
         else {
             String itemName = command.getRestOfLine();
-            
+
             if (player.isInInventory(itemName)) {
                 Item item = player.getItem(itemName);
                 player.removeItem(itemName);
@@ -292,14 +292,14 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Prints out the player character's inventory.
      */
     private void inventory() {
         Writer.println(player.toString());        
     }
-    
+
     /**
      * Examines a specified item.
      * 
@@ -312,7 +312,7 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (player.isInInventory(itemName)) {
                 Item item = player.getItem(itemName);
                 Writer.println(item.toString());
@@ -326,7 +326,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Takes a specified item.
      * 
@@ -343,9 +343,19 @@ public class Game {
             if (currentRoom.isInRoom(itemName)) {
                 Item item = currentRoom.getItem(itemName);
                 boolean added = player.addToInventory(item);
-                
+
                 if (added) {
-                    currentRoom.removeItem(itemName);
+                    if (item instanceof Ingredient) {
+                        Ingredient ingredient = (Ingredient)item;
+
+                        if (ingredient.getNumberInGroup() == 0) {
+                            currentRoom.removeItem(itemName);
+                        }
+                    }
+                    else {
+                        currentRoom.removeItem(itemName);
+                    }
+
                     Writer.println("Taken.");
                 }
                 else {
@@ -362,7 +372,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Unlocks a specified door.
      * 
@@ -376,7 +386,7 @@ public class Game {
             String direction = command.getRestOfLine();
             Room room = player.getCurrentRoom();
             Door door = room.getExit(direction);
-            
+
             if (door == null) {
                 Writer.println("There is no door in that direction.");
             }
@@ -386,7 +396,7 @@ public class Game {
                     String response = Reader.getResponse();
                     Item key = door.getKey();
                     String keyName = key.getName();
-                    
+
                     if (player.isInInventory(response)) {
                         if (response.equals(keyName)) {
                             door.setLocked(false);
@@ -406,7 +416,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Locks a specified door.
      * 
@@ -420,7 +430,7 @@ public class Game {
             String direction = command.getRestOfLine();
             Room room = player.getCurrentRoom();
             Door door = room.getExit(direction);
-            
+
             if (door == null) {
                 Writer.println("There is no door in that direction.");
             }
@@ -430,7 +440,7 @@ public class Game {
                 }
                 else {
                     Item key = door.getKey();
-                    
+
                     if (key == null) {
                         Writer.println("The door cannot be locked.");
                     }
@@ -438,7 +448,7 @@ public class Game {
                         Writer.println("With which key?");
                         String keyName = key.getName();
                         String response = Reader.getResponse();
-                        
+
                         if (player.isInInventory(response)) {
                             if (response.equals(keyName)) {
                                 door.setLocked(true);
@@ -456,7 +466,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Packs the specified item into a container.
      * 
@@ -469,53 +479,53 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (!(currentRoom.isInRoom(itemName) || player.isInInventory(itemName))) {
                 Writer.println("You can't pack an item you don't have.");
             }
             else {
                 Item item = null;
-                
+
                 if (currentRoom.isInRoom(itemName)) {
                     item = currentRoom.getItem(itemName);
                 }
                 if (player.isInInventory(itemName)) {
                     item = player.getItem(itemName);
                 }
-                
+
                 if (item.getWeight() > Player.MAX_WEIGHT) {
                     Writer.println("This item is too heavy for you to move.");
                 }
                 else {
                     Writer.println("Into which container?");
-                    
+
                     String response = Reader.getResponse();
-                    
+
                     if (!(currentRoom.isInRoom(response) || player.isInInventory(response))) {
                         Writer.println("You don't see that container anywhere.");
                     }
                     else {
                         Item container = null;
-                        
+
                         if (currentRoom.isInRoom(response)) {
                             container = currentRoom.getItem(response);
                         }
                         if (player.isInInventory(response)) {
                             container = player.getItem(response);
                         }
-                        
+
                         if (!(container instanceof Container) || container instanceof PotionContainer) {
                             Writer.println("You can't pack things in that.");
                         }
                         else if (container instanceof HerbContainer) {
                             HerbContainer aContainer = (HerbContainer)container;
-                            
+
                             if (!(item instanceof Ingredient)) {
                                 Writer.println("You probably shouldn't try to put that in there.");
                             }
                             else {
                                 Ingredient ingredient = (Ingredient)item;
-                                
+
                                 if (player.isInInventory(itemName)) {
                                     if (ingredient.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
                                         Writer.println("You try to pick it up, but you're already carrying so much.");
@@ -533,7 +543,7 @@ public class Game {
                         }
                         else {
                             Container aContainer = (Container)container;
-                            
+
                             if (player.isInInventory(itemName)) {
                                 if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
                                     Writer.println("You try to pick it up, but you're already carrying so much.");
@@ -555,7 +565,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Unpacks the specified item from a container.
      * 
@@ -568,20 +578,20 @@ public class Game {
         else {
             String containerName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (!(currentRoom.isInRoom(containerName) || player.isInInventory(containerName))) {
                 Writer.println("You search the room and your pockets, but there is no such item to be found.");
             }
             else {
                 Item container = null;
-                
+
                 if (currentRoom.isInRoom(containerName)) {
                     container = currentRoom.getItem(containerName);
                 }
                 if (player.isInInventory(containerName)) {
                     container = player.getItem(containerName);
                 }
-                
+
                 if (!(container instanceof Container) || container instanceof PotionContainer) {
                     Writer.println("You can't unpack that.");
                 }
@@ -589,26 +599,44 @@ public class Game {
                     Writer.println("What item would you like to unpack from the " + containerName + "?");
                     String response = Reader.getResponse();
                     Container aContainer = (Container)container;
-                    
+
                     if (!aContainer.isInContainer(response)) {
                         Writer.println("You can't find that item in the " + containerName + ".");
                     }
                     else {
                         Item item = aContainer.getItem(response);
-                        
+
                         if (currentRoom.isInRoom(containerName)) {
                             if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
-                                Writer.println("You try to pick it up, but you're alreadt carrying so much.");
+                                Writer.println("You try to pick it up, but you're already carrying so much.");
                             }
                             else {
-                                aContainer.removeItem(response);
                                 player.addToInventory(item);
+                                if (item instanceof Ingredient) {
+                                    Ingredient ingredient = (Ingredient)item;
+                                    
+                                    if (ingredient.getNumberInGroup() == 0) {
+                                        aContainer.removeItem(response);
+                                    }
+                                }
+                                else {
+                                    aContainer.removeItem(response);
+                                }
                                 Writer.println("Unpacked.");
                             }
                         }
                         else {
-                            aContainer.removeItem(response);
                             player.addToInventory(item);
+                            if (item instanceof Ingredient) {
+                                Ingredient ingredient = (Ingredient)item;
+                                    
+                                if (ingredient.getNumberInGroup() == 0) {
+                                    aContainer.removeItem(response);
+                                }
+                            }
+                            else {
+                                aContainer.removeItem(response);
+                            }
                             Writer.println("Unpacked.");
                         }
                     }
@@ -616,7 +644,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Makes the specified item.
      * 
@@ -629,41 +657,41 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-                  
+
             if (!currentRoom.getName().equals("Cellar")) {
                 Writer.println("You look around, but there is nothing here you can use to make potions.");
             }
             else {
                 Item item = world.getPotion(itemName);
-                
+
                 if (item == null) {
                     Writer.println("That isn't something you can make.");
                 }
                 else {
                     Potion potion = (Potion)item;
-                    Container container = currentRoom.getContainer("empty cauldron");
+                    Item container = currentRoom.getItem("empty cauldron");
                     PotionContainer cauldron = (PotionContainer)container;
-                    
+
                     if (!cauldron.isEmpty()) {
                         Writer.println("There's already something in the cauldron.");
                     }
                     else {
                         Container herbPouch = null;
-                        
+
                         if (player.isInInventory("herb pouch")) {
                             herbPouch = player.getContainer("herbPouch");
                         }
                         else if (currentRoom.isInRoom("herb pouch")) {
                             herbPouch = currentRoom.getContainer("herbPouch");
                         }
-                        
-                        Writer.println(potion.makePotion(player, currentRoom, herbPouch, cauldron));
+
+                        Writer.println(potion.makePotion(player, currentRoom, world, herbPouch, cauldron));
                     }
                 }
             }
         }
     }
-    
+
     /**
      * Empties certain containers.
      * 
@@ -676,26 +704,26 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (!(player.isInInventory(itemName) || currentRoom.isInRoom(itemName))) {
                 Writer.println("You search the room and your pockets, but there is no such item to be found.");
             }
             else {
                 Item item = null;
-                
+
                 if (player.isInInventory(itemName)) {
                     item = player.getItem(itemName);
                 }
                 else {
                     item = currentRoom.getItem(itemName);
                 }
-                
+
                 if (!(item instanceof PotionContainer)) {
                     Writer.println("Why would you want to empty that?");
                 }
                 else {
                     PotionContainer container = (PotionContainer)item;
-                    
+
                     if (container.isEmpty()) {
                         Writer.println("It's already empty.");
                     }
@@ -706,7 +734,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Pours an item from one container into another.
      * 
@@ -719,14 +747,14 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (!(currentRoom.isInRoomContainer(itemName) || player.isInInventoryContainer(itemName))) {
                 Writer.println("That isn't in any of the nearby containers.");
             }
             else {
                 Item item = null;
                 Container container = null;
-                
+
                 if (currentRoom.isInRoomContainer(itemName)) {
                     container = currentRoom.getContainer(itemName);
                     item = container.getItem(itemName);
@@ -735,36 +763,36 @@ public class Game {
                     container = player.getContainer(itemName);
                     item = container.getItem(itemName);
                 }
-                
+
                 if (!(item instanceof Potion)) {
                     Writer.println("Why would you want to pour that?");
                 }
                 else {
                     Potion potion = (Potion)item;
-                    
+
                     Writer.println("What would you like to pour it into?");
-                    
+
                     String response = Reader.getResponse();
-                    
+
                     if (!(player.isInInventory(response) || currentRoom.isInRoom(response))) {
                         Writer.println("You search the room and your pockets, but there is no such item to be found.");
                     }
                     else {
                         Item secondItem = null;
-                
+
                         if (currentRoom.isInRoom(response)) {
                             secondItem = currentRoom.getItem(response);
                         }
                         if (player.isInInventory(response)) {
                             secondItem = player.getItem(response);
                         }
-                        
+
                         if (!(secondItem instanceof PotionContainer)) {
                             Writer.println("Why would you want to pour into that?");
                         }
                         else {
                             PotionContainer potionContainer = (PotionContainer)secondItem;
-                            
+
                             if (!potionContainer.isEmpty()) {
                                 Writer.println("There's already something inside of that.");
                             }
@@ -781,7 +809,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Reads a book.
      * 
@@ -794,31 +822,31 @@ public class Game {
         else {
             String itemName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
-            
+
             if (!(currentRoom.isInRoom(itemName) || player.isInInventory(itemName))) {
                 Writer.println("You search the room and your pockets, but there is no such item to be found.");
             }
             else {
                 Item item = null;
-                
+
                 if (currentRoom.isInRoom(itemName)) {
                     item = currentRoom.getItem(itemName);
                 }
                 if (player.isInInventory(itemName)) {
                     item = player.getItem(itemName);
                 }
-                
+
                 if (!(item instanceof Book)) {
                     Writer.println("Um, you can't read that.");
                 }
                 else {
                     Book book = (Book)item;
-                    
+
                     Writer.println(book.read());
                     Writer.println("What would you like to read about?");
-                    
+
                     String response = Reader.getResponse();
-                    
+
                     Writer.println(book.goTo(response));
                 }
             }

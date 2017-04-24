@@ -79,7 +79,14 @@ public class Player {
         for (Item current : inventory) {
             String itemName = current.getName();
             
-            result += "       " + itemName + "\n";
+            if (current instanceof Ingredient) {
+                Ingredient ingredient = (Ingredient)current;
+                
+                result += "       " + ingredient.getNumberInGroup() + " " + itemName + "\n";
+            }
+            else {
+                result += "       " + itemName + "\n";
+            }
         }
         
         return result;
@@ -95,7 +102,32 @@ public class Player {
         boolean added = false;
         
         if (getTotalWeight() + theItem.getWeight() < MAX_WEIGHT) {
-            inventory.add(theItem);
+            if (theItem instanceof Ingredient) {
+                Ingredient ingredient = (Ingredient)theItem;
+                String itemName = ingredient.getName();
+                boolean found = false;
+                
+                for (Item current : inventory) { 
+                    String currentName = current.getName();
+                    
+                    if (itemName.equals(currentName)) {
+                        found = true;
+                        
+                        Ingredient anIngredient = (Ingredient)current;
+                        
+                        anIngredient.setNumberInGroup(anIngredient.getNumberInGroup() + 1);
+                        ingredient.setNumberInGroup(ingredient.getNumberInGroup() - 1);
+                    }
+                }
+                
+                if (!found) {
+                     theItem = ingredient.split(1);
+                     inventory.add(theItem);
+                }
+            }
+            else {
+                inventory.add(theItem);
+            }
             added = true;
         }
         

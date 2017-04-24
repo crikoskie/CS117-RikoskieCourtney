@@ -346,7 +346,7 @@ public class World {
         Room kitchen = getRoom("Kitchen");
         kitchen.addItem(garlic);
         
-        Ingredient clove = new Ingredient("garlic clove", "It's a clove of garlic.", 0, 0.125);
+        Ingredient clove = new Ingredient("garlic clove", "It's a clove of garlic.", 0, 0.125, 12);
         
         HerbContainer pouch = new HerbContainer("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
         Book notes = new Book("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4, "There are notes about:\n");
@@ -411,15 +411,15 @@ public class World {
         Potion remover = new Potion("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
         Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
         
-        Ingredient eppeth = new Ingredient("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2);
-        Ingredient riverCress = new Ingredient("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2);
-        Ingredient blisterFlower = new Ingredient("blister flower", "In spring, these plants bloom with brilliant red and orange flowers.", 0, 0.2);
-        Ingredient wratagrass = new Ingredient("wratagrass", "This tall grass is the staple of many potions, useful in its stabilizing capabilities.", 0, 0.2);
-        Ingredient hifefron = new Ingredient("hifefron", "Hifefron cacti are not suited for this climate, so Master has put a warming spell around them to keep them alive.", 0, 0.2);
-        Ingredient taglisbi = new Ingredient("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2);
-        Ingredient inneoShoot = new Ingredient("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2);
-        Ingredient ashClove = new Ingredient("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2);
-        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2);
+        Ingredient eppeth = new Ingredient("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2, 10);
+        Ingredient riverCress = new Ingredient("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2, 10);
+        Ingredient blisterFlower = new Ingredient("blister flower", "In spring, these plants bloom with brilliant red and orange flowers.", 0, 0.2, 10);
+        Ingredient wratagrass = new Ingredient("wratagrass", "This tall grass is the staple of many potions, useful in its stabilizing capabilities.", 0, 0.2, 10);
+        Ingredient hifefron = new Ingredient("hifefron", "Hifefron cacti are not suited for this climate, so Master has put a warming spell around them to keep them alive.", 0, 0.2, 10);
+        Ingredient taglisbi = new Ingredient("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2, 10);
+        Ingredient inneoShoot = new Ingredient("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2, 10);
+        Ingredient ashClove = new Ingredient("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2, 10);
+        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2, 3);
         backyard.addItem(eppeth);
         backyard.addItem(riverCress);
         backyard.addItem(blisterFlower);

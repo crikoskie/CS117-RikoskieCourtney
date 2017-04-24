@@ -18,9 +18,10 @@ public interface Makeable {
      * 
      * @param player The player character.
      * @param room The current room.
+     * @param world The world.
      * @param container A container that ingredients may be found in.
      * @param cauldron The container which holds newly made potions.
      * @return Whether making the potion was successful.
      */
-    public String makePotion(Player player, Room room, Container container, PotionContainer cauldron);    
+    public String makePotion(Player player, Room room, World world, Container container, PotionContainer cauldron);    
 }
