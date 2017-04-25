@@ -44,8 +44,9 @@ public enum CommandEnum
     /** The read command. */
     READ("read"),
     /** The use command. */
-    USE("use");
-    
+    USE("use"),
+    /** The talk command. */
+    TALK("talk");
     /** The text that the player enters in order to execute the command. */
     private String text;
     

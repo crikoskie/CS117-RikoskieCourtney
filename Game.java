@@ -131,6 +131,9 @@ public class Game {
                 case USE:
                 use(command);
                 break;
+                case TALK:
+                talk(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -911,6 +914,30 @@ public class Game {
                         potion.use(currentRoom, secondItem);
                     }
                 }
+            }
+        }
+    }
+    
+    /**
+     * Begans a conversation with the specified non-player character.
+     * 
+     * @param command The command to be processed.
+     */
+    private void talk(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("Who do you want to talk to?");
+        }
+        else {
+            String characterName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+            Character character = currentRoom.getCharacter(characterName);
+            
+            if (character == null) {
+                Writer.println("Um, who?");
+            }
+            else {
+               Conversation conversation = world.getConversation(character);
+               String keyValue = conversation.startConversation("hi");
             }
         }
     }

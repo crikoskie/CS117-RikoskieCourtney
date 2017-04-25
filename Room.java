@@ -26,6 +26,8 @@ public class Room {
     private int points;
     /** The active element. */
     private int active;
+    /** The non-player character found in the room. */
+    private Character character;
 
     /** The room's exits. */
     private HashMap<String, Door> exits;
@@ -51,6 +53,7 @@ public class Room {
         descriptions = new ArrayList<String>();
         descriptions.add(description);
         active = 0;
+        character = null;
         exits = new HashMap<String, Door>();
         points = 0;
         items = new HashSet<Item>();
@@ -339,4 +342,24 @@ public class Room {
     public void setActive(int element) {
         active = element;
     }
+    
+    /**
+     * Adds a character to the room.
+     * 
+     * @param theCharacter The character to be added.
+     */
+    public void addCharacter(Character theCharacter) {
+        character = theCharacter;
+    }
+    
+    /**
+     * Gets the specified character in the room.
+     * 
+     * @param theName The name of the specified character.
+     * @return The specified character in the room.
+     */
+    public Character getCharacter(String theName) {
+        return character;
+    }
+    
 }
