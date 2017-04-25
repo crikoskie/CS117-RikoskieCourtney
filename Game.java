@@ -911,7 +911,10 @@ public class Game {
                             secondItem = player.getItem(response);
                         }
                         
-                        potion.use(currentRoom, secondItem);
+                        Writer.println(potion.use(currentRoom, secondItem));
+                        
+                        String potionName = potion.getName();
+                        container.removeItem(potionName);
                     }
                 }
             }

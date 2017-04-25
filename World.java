@@ -377,7 +377,7 @@ public class World {
         shed.addItem(rune);
         
         Book wardBook = new Book("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36, "Table of Contents\n\n Your master has circled some of the items in the table.  They are:\n");
-        PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 0); 
+        PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 129); 
         PotionContainer vial = new PotionContainer("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
         Room cellar = getRoom("Cellar");
         cellar.addItem(wardBook);
@@ -385,7 +385,7 @@ public class World {
         cellar.addItem(vial);
         
         Door yardToCellar = backyard.getExit("down");
-        yardToCellar.setLocked(true);
+        yardToCellar.setLocked(false);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
@@ -470,35 +470,6 @@ public class World {
         potions.put("scent remover", remover);
         potions.put("unknown potion", unknown);
         
-        // element is 0
-        garlic.addDescription(garlic.getDescription());
-        pouch.addDescription(garlic.getDescription());
-        notes.addDescription(notes.getDescription());
-        coins.addDescription(coins.getDescription());
-        rune.addDescription(rune.getDescription());
-        hiddenRune.addDescription(hiddenRune.getDescription());
-        gold.addDescription(gold.getDescription());
-        bulb.addDescription(bulb.getDescription());
-        cloth.addDescription(cloth.getDescription());
-        card.addDescription(card.getDescription());
-        broadsword.addDescription(broadsword.getDescription());
-        eppeth.addDescription(eppeth.getDescription());
-        riverCress.addDescription(riverCress.getDescription());
-        blisterFlower.addDescription(blisterFlower.getDescription());
-        wratagrass.addDescription(wratagrass.getDescription());
-        hifefron.addDescription(hifefron.getDescription());
-        taglisbi.addDescription(taglisbi.getDescription());
-        inneoShoot.addDescription(inneoShoot.getDescription());
-        ashClove.addDescription(ashClove.getDescription());
-        orreamin.addDescription(orreamin.getDescription());
-        cauldron.addDescription(cauldron.getDescription());
-        vial.addDescription(vial.getDescription());
-        jewelryBox.addDescription(jewelryBox.getDescription());
-        cellarKey.addDescription(cellarKey.getDescription());
-        shed.addDescription(shed.getDescription());
-        cat.addDescription(cat.getDescription());
-        wardBook.addDescription(wardBook.getDescription());
-        
         // element is 1
         garlic.addDescription(garlic.getDescription() + "  It's much smaller than it used to be.");
         pouch.addDescription("");
@@ -527,7 +498,6 @@ public class World {
         shed.addDescription("");
         cat.addDescription("");
         wardBook.addDescription("");
-        
         
         // element is 2
         garlic.addDescription("Your nose thanks you.");
@@ -577,7 +547,7 @@ public class World {
      */
     public void createCharacters() {
         Conversation taveCon = new Conversation("Tave", "See ya, Kid.");
-        Conversation fairyCon = new Conversation("Fairy", "");
+        Conversation fairyCon = new Conversation("Fairy", "Goodbye, insolent child.");
         Conversation guardianCon = new Conversation("Forest Guardian", "Please do come back soon.");
         Conversation lizardCon = new Conversation("Lizard", "Bye, small human.");
         Conversation guardsmanCon = new Conversation("Guardsman", "Now, leave me to my work.");
@@ -610,7 +580,11 @@ public class World {
         characters.put(guardsman, guardsmanCon);
         characters.put(official, officialCon);
         
-        fairyCon.addReply("hi", "What are you doing here? \n A: That's none of your business. \n B: I'm looking for a cat. \n C: Just admiring, you know, things. \n");
+        fairyCon.addReply("hi", "What are you doing here? \n\n A: That's none of your business. \n B: I'm looking for a cat. \n C: Just admiring, you know, things. \n");
+        fairyCon.addReply("hia", "Goodbye, insolent child.");
+        fairyCon.addReply("hib", "Was it gray with white feet? \n\n A: Yes! \n B: No... \n");
+        fairyCon.addReply("hiba", "Oh, I've never seen a cat of that coloring.  How wonderful. \n");
+        fairyCon.addReply("hibb", "That's too bad.  I just saw one like that pass by a few moments ago. \n");
     }
     
     /**
