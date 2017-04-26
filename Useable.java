@@ -11,7 +11,8 @@ public interface Useable {
     * 
     * @param room The room that the player character is currently in.
     * @param theItem The specified item.
+    * @param world The world.
     * @return The effects of the use.
     */
-   public String use(Room room, Item theItem);
+   public String use(Room room, Item theItem, World world);
 }

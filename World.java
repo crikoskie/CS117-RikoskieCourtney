@@ -1,10 +1,8 @@
 import java.util.HashMap;
-
+import java.util.HashSet;
 /**
- * This class represents the entire world that makes up the "Campus of Kings"
- * application. "Campus of Kings" is a very simple, text based adventure game.
- * Users can walk around some scenery. That's all. It should really be extended
- * to make it more interesting!
+ * This class represents the entire world that makes up the "Cat"
+ * application. "Cat" is a text-based adventure game.
  * 
  * This world class creates the world where the game takes place.
  * 
@@ -16,8 +14,14 @@ public class World {
     private HashMap<String, Room> rooms;
     /** The buildable items. */
     private HashMap<String, Potion> potions;
-    /** The non-player characters in the world. */
-    private HashMap<Character, Conversation> characters;
+    /** The non-player character's items. */
+    private HashSet<Item> npcItems;
+    /** The items that the player character can trade. */
+    private HashSet<Item> tradeItems;
+    /** The non-player characters' conversations. */
+    private HashMap<Character, Conversation> conversations;
+    /** The non-player characters ib the world. */
+    private HashMap<String, Character> characters;
     
     /**
      * Constructor for the world.
@@ -25,7 +29,10 @@ public class World {
     public World() {
         rooms = new HashMap<String, Room>();
         potions = new HashMap<String, Potion>();
-        characters = new HashMap<Character, Conversation>();
+        npcItems = new HashSet<Item>();
+        tradeItems = new HashSet<Item>();
+        conversations = new HashMap<Character, Conversation>();
+        characters = new HashMap<String, Character>();
         createRooms();
         createItems();
         createCharacters();
@@ -362,6 +369,7 @@ public class World {
         yourRoom.addItem(pouch);
         yourRoom.addItem(notes);
         yourRoom.addItem(coins);
+        tradeItems.add(coins);
         
         Container jewelryBox = new Container("jewelry box", "Though it is made of wood and has a simple design, it must have been expensive.  Its emblem, a small bird embossed with delicate silver on its lid, marks its maker as one of the renowned jewelers within the country.", 0, 48);
         Item cellarKey = new Item("cellar key", "The steel key sits heavily in the palm of your hand.  It looks a bit rusted and makes your fingers smell gross.", 15, 5);
@@ -376,6 +384,9 @@ public class World {
         backyard.addItem(shed);
         shed.addItem(rune);
         
+        Room clearing = getRoom("Clearing");
+        clearing.addItem(hiddenRune);
+        
         Book wardBook = new Book("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36, "Table of Contents\n\n Your master has circled some of the items in the table.  They are:\n");
         PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 129); 
         PotionContainer vial = new PotionContainer("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
@@ -385,38 +396,40 @@ public class World {
         cellar.addItem(vial);
         
         Door yardToCellar = backyard.getExit("down");
-        yardToCellar.setLocked(false);
+        yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
         cellarToYard.setKey(cellarKey);
         
         Item gold = new Item("gold", "The small bag is heavy for its size.  The gold inside jingles whenever you move.", 15, 13);
-        Room guardian = getRoom("Forest Guardian");
+        npcItems.add(gold);
+        tradeItems.add(gold);
         
         Item bulb = new Item("illuminated bulb", "It's the bulb of a sun blossom.  As they are native to only the southern part of the country, the lizard must have found one that had fallen off a travelling merchant cart.", 10, 2.5);
-        Room lizard = getRoom("Lizard");
-        lizard.addItem(bulb);
+        npcItems.add(bulb);
         
         Item cloth = new Item("soft cloth", "Made from the silk of volcanic worms, this cloth is revered as one of the softest that has ever graced the country.  It's rumored that the Duke of Nightwood sold his first child just to be able to touch the shimmering blue fabric.", 10, 16);
-        Room townSquare = getRoom("Town Square");
+        npcItems.add(cloth);
+        tradeItems.add(cloth);
         
         Item broadsword = new Item("broadsword", "After the last time, you don't trust yourself to pick up the broadsword without some assistance.  The weight, combined with the fact that it is longer than you are tall, makes it quite unwieldy.", 0, 129);
-        Item duplicate = new Item("duplicate broadsword", "It is a perfect physical copy of the original but lacks the enchantments that made such an amazing weapon.", 0, 129);
         Room weapons = getRoom("Fairsway Weapons");
         weapons.addItem(broadsword);
         
         Item card = new Item("citizenship card", "Providing your name, age, and picture, this card is proof that you are a citizen of Fairsway.  Despite costing you so much gold, it is made up of some kind of flimsy material.  Hopefully, someone has cast some spells on it to prevent its destruction.", 15, 1);
-        Room office = getRoom("Government Office");
+        npcItems.add(card);
         
         Item cat = new Item("your cat", "It stares back at you smugly.  You scowl and look away.", 50, 125);
         Room library = getRoom("Library");
         library.addItem(cat);
         
+        Potion revealer = new Potion("revealing potion", "It is entirely clear, the only proof of its existence the reflecting light.", 10, 7);
         Potion shrinking = new Potion("shrinking potion", "Bubbles float to the surface of the pick liquid.", 10, 7);
         Potion duplication = new Potion("duplication potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
         Potion remover = new Potion("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
         Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
+        tradeItems.add(unknown);
         
         Ingredient eppeth = new Ingredient("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2, 10);
         Ingredient riverCress = new Ingredient("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2, 10);
@@ -426,7 +439,7 @@ public class World {
         Ingredient taglisbi = new Ingredient("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2, 10);
         Ingredient inneoShoot = new Ingredient("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2, 10);
         Ingredient ashClove = new Ingredient("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2, 10);
-        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2, 3);
+        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2, 1);
         backyard.addItem(eppeth);
         backyard.addItem(riverCress);
         backyard.addItem(blisterFlower);
@@ -435,6 +448,10 @@ public class World {
         backyard.addItem(taglisbi);
         backyard.addItem(inneoShoot);
         backyard.addItem(ashClove);
+        npcItems.add(orreamin);
+        
+        revealer.addIngredient(inneoShoot);
+        revealer.addIngredient(hifefron);
         
         shrinking.addIngredient(riverCress);
         shrinking.addIngredient(hifefron);
@@ -461,10 +478,12 @@ public class World {
         notes.addPage("shrinking potion", shrinking.toString());
         notes.addPage("duplication potion", duplication.toString());
         notes.addPage("scent remover", remover.toString());
+        notes.addPage("revealing potion", revealer.toString());
         wardBook.addPage("detection barrier", "");
         wardBook.addPage("travel ward", "");
         wardBook.addPage("invisibilty", "");
         
+        potions.put("revealing potion", revealer);
         potions.put("shrinking potion", shrinking);
         potions.put("duplication potion", duplication);
         potions.put("scent remover", remover);
@@ -548,10 +567,11 @@ public class World {
     public void createCharacters() {
         Conversation taveCon = new Conversation("Tave", "See ya, Kid.");
         Conversation fairyCon = new Conversation("Fairy", "Goodbye, insolent child.");
-        Conversation guardianCon = new Conversation("Forest Guardian", "Please do come back soon.");
+        Conversation guardianCon = new Conversation("Forest Guardian", "Please do come talk again soon.");
         Conversation lizardCon = new Conversation("Lizard", "Bye, small human.");
         Conversation guardsmanCon = new Conversation("Guardsman", "Now, leave me to my work.");
         Conversation officialCon = new Conversation("Official Camret", "Don't be a stranger.");
+        Conversation sylCon = new Conversation("Syl", "Bye-bye, little lady");
         
         Character tave = new Character("Tave", taveCon);
         Character fairy = new Character("Fairy", fairyCon);
@@ -559,9 +579,18 @@ public class World {
         Character lizard = new Character("Lizard", lizardCon);
         Character guardsman = new Character("Guardsman", guardsmanCon);
         Character official = new Character("Official Camret", officialCon);
+        Character syl = new Character("Syl", sylCon);
+        
+        characters.put("Tave", tave);
+        characters.put("Fairy", fairy);
+        characters.put("Forest Guardian", guardian);
+        characters.put("Lizard", lizard);
+        characters.put("Guardsman", guardsman);
+        characters.put("Official Camret", official);
+        characters.put("Syl", syl);
         
         Room lizardRoom = getRoom("Lizard");
-        lizardRoom.addCharacter(lizard);
+        lizardRoom.addCharacter(lizard);        
         Room weaponsRoom = getRoom("Fairsway Weapons");
         weaponsRoom.addCharacter(tave);
         Room fairyRoom = getRoom("Fairy Herbs");
@@ -572,19 +601,84 @@ public class World {
         guardsmanRoom.addCharacter(guardsman);
         Room officialRoom = getRoom("Government Office");
         officialRoom.addCharacter(official);
-            
-        characters.put(tave, taveCon);
-        characters.put(fairy, fairyCon);
-        characters.put(guardian, guardianCon);
-        characters.put(lizard, lizardCon);
-        characters.put(guardsman, guardsmanCon);
-        characters.put(official, officialCon);
+        Room sylRoom = getRoom("Town Square");
+        sylRoom.addCharacter(syl);
         
-        fairyCon.addReply("hi", "What are you doing here? \n\n A: That's none of your business. \n B: I'm looking for a cat. \n C: Just admiring, you know, things. \n");
+        for (Item current : npcItems) {
+            String itemName = current.getName();
+            
+            if (itemName.equals("illuminated bulb")) {
+                lizard.setInventory(current);
+            }
+            else if (itemName.equals("soft cloth")) {
+                syl.setInventory(current);
+            }
+            else if (itemName.equals("gold")) {
+                guardian.setInventory(current);
+            }
+            else if (itemName.equals("citizenship card")) {
+                official.setInventory(current);
+            }
+            else {
+                fairy.setInventory(current);
+            }
+        }
+        
+        for (Item current : tradeItems) {
+            String itemName = current.getName();
+            
+            if (itemName.equals("coin collection")) {
+                lizard.addTradeItem(current);
+            }
+            else if (itemName.equals("broadsword")) {
+                syl.addTradeItem(current);
+            }
+            else if (itemName.equals("unknown potion")) {
+                guardian.addTradeItem(current);
+            }
+            else if (itemName.equals("gold")) {
+                official.addTradeItem(current);
+            }
+            else {
+                fairy.addTradeItem(current);
+            }
+        }
+        
+        conversations.put(tave, taveCon);
+        conversations.put(fairy, fairyCon);
+        conversations.put(guardian, guardianCon);
+        conversations.put(lizard, lizardCon);
+        conversations.put(guardsman, guardsmanCon);
+        conversations.put(official, officialCon);
+        
+        fairyCon.addReply("hi", "What are you doing here? \n\n\tA: That's none of your business.\n\tB: I'm looking for a cat.\n\tC: Just admiring, you know, things. \n");
         fairyCon.addReply("hia", "Goodbye, insolent child.");
-        fairyCon.addReply("hib", "Was it gray with white feet? \n\n A: Yes! \n B: No... \n");
-        fairyCon.addReply("hiba", "Oh, I've never seen a cat of that coloring.  How wonderful. \n");
-        fairyCon.addReply("hibb", "That's too bad.  I just saw one like that pass by a few moments ago. \n");
+        fairyCon.addReply("hib", "Was it gray with white feet? \n\n\tA: Yes!\n\tB: No... \n");
+        fairyCon.addReply("hic", "You flatterer.  Though, yes, I am quite beautiful. \n\n\tA: I was actually talking about the plants.\n\tB: Nothing can compare.\n\tC: Are you? I'm not good at judging fairy beauty since I'm, uh, human.\n\tD: No, you're not.\n");
+        fairyCon.addReply("hiba", "Oh, I've never seen a cat of that coloring.  How wonderful. \n\n\tA: Never?  Are you sure? \n\tB: Um, that's too bad?\n\tC: Liar. \n");
+        fairyCon.addReply("hibaa", "What are you implying?  Goodbye, insolent child.");
+        fairyCon.addReply("hibab", "Yes, a shame.\n\n\tA: I'm just going to leave.\n\tB: If I ever see one in the woods, I'll bring it to you.\n");
+        fairyCon.addReply("hibaba", "And you are also incredibly rude.  Goodbye, insolent child.");
+        fairyCon.addReply("hibabb", "You are quite naive.  I almost feel pity, but I don't.\n\n\tA: I regret trying to be nice.\n\tB: Don't worry.  I know you need all that pity for yourself.\n");
+        fairyCon.addReply("hibabba", "I regret indulging you and this worthless conversation.  Goodbye, insolent child.");
+        fairyCon.addReply("hibabbb", "You think you're clever, do you?  Goodbye, insolent child.");
+        fairyCon.addReply("hibac", "Who are you to assume that I am lying?  Goodbye, insolent child.");
+        fairyCon.addReply("hibb", "That's too bad.  I just saw one like that pass by a few moments ago. \n\n\tA: Uh, good for you?\n\tB: Would you happen to know what direction it went in?\n");
+        fairyCon.addReply("hibba", "No reaction?  I could have sworn your cat looked like that.  Well, nevermind.  Goodbye, insolent child.");
+        fairyCon.addReply("hibbb", "Maybe I do.  The real question is what would you do for that information?\n\n\tA: Absolutely nothing. You're horrid.\n\tB: What do you want me to do?\n");
+        fairyCon.addReply("hibbba", "You, who would prefer to let your cat wander the forest alone than do a small errand, seems much more horrid to me.  Goodbye, insolent child.");
+        fairyCon.addReply("hibbbb", "Get me the softest cloth known to all creatures.  Can you do that?  Of course, you, especially you, can't.  You're cat will just have to suffer alone.  Goodbye, insolent child.");
+        fairyCon.addReply("hica", "Oh, yes, well.  The orreamin have bloomed wonderfully this year.\n\n\tA: Can I have some?\n\tB: They're kind of tiny, though.\n");
+        fairyCon.addReply("hicaa", "Of course not!  We have used our very own magic to grow these plants.  There's like our children, and we do not part with them easily.\n\n\tA: Don't you give some to Master?\n\tB:So that's a 'no'?\n");
+        fairyCon.addReply("hicaaa", "This and that are entirely different.  She pays for them, while you don't seem to have such plans.  Goodbye, insolent child.");
+        fairyCon.addReply("hicaab", "You do, at the very least, have a small amount of sense.  Goodbye, insolent child.");
+        fairyCon.addReply("hicb", "You seem to be in need of some self-reflection.  Goodbye, insolent child.");
+        fairyCon.addReply("hicc", "Well, we all have our faults.  You, particularly, have many.\n\n\tA: I don't view my humanity as a fault. \n\tB: Has anyone ever told you that you're unpleasant?\n");
+        fairyCon.addReply("hicca", "Yes, most humans do not, which is yet another fault.  It's something you should go work on.  Goodbye, you insolent child.");
+        fairyCon.addReply("hiccb", "I've been very kind, engaging in such an insipid conversation just to entertain you, and this is how you treat me?  Goodbye, insolent child.");
+        fairyCon.addReply("hicd", "I have never been more disrespected in my life!  Goodbye, insolent child.");
+        
+        guardianCon.addReply("hi", "Oh, Faye, hello.\n\n\tA: You make me uncomfortable.\tB: Hello, uh, sir.\n");
     }
     
     /**
@@ -594,6 +688,16 @@ public class World {
      * @return The conversation associated with the character.
      */
     public Conversation getConversation(Character theCharacter) {
-        return characters.get(theCharacter);
+        return conversations.get(theCharacter);
+    }
+    
+    /**
+     * Gets the specified character.
+     * 
+     * @param theName The name of the specified character.
+     * @return The character.
+     */
+    public Character getCharacter(String theName) {
+        return characters.get(theName);
     }
 }

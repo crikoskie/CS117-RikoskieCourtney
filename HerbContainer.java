@@ -39,10 +39,23 @@ public class HerbContainer extends Container {
     public String addHerb(Item theItem) {
         String result = "You cannot safely put in any more herbs.";
         
-        if (herbCounter < MAX_HERBS) {
-            super.addItem(theItem);
-            result = "Packed.";
-            herbCounter += 1;
+        if (theItem instanceof Ingredient) {
+            Ingredient ingredient = (Ingredient)theItem;
+            int numberInGroup = ingredient.getNumberInGroup();
+            
+            if (herbCounter + numberInGroup < MAX_HERBS) {
+                super.addItem(theItem);
+                result = "Packed.";
+                herbCounter += numberInGroup;
+            }
+            else {
+                int numberToPut = MAX_HERBS - herbCounter;
+                Ingredient put = ingredient.split(numberToPut);
+                if (put.getNumberInGroup() != 0) {
+                    super.addItem(put);
+                }
+                result = "You packed as many as you could.";
+            }
         }
         
         return result;

@@ -1,10 +1,8 @@
 import java.util.Iterator;
 import java.util.HashSet;
 /**
- * This class is the main class of the "Campus of Kings" application.
- * "Campus of Kings" is a very simple, text based adventure game. Users can walk
- * around some scenery. That's all. It should really be extended to make it more
- * interesting!
+ * This class is the main class of the "Cat" application.
+ * "Cat" is a text-based adventure game.
  * 
  * This game class creates and initializes all the others: it creates all rooms,
  * creates the parser and starts the game. It also evaluates and executes the
@@ -24,6 +22,8 @@ public class Game {
     private int turns;
     /** The player character. */
     private Player player;
+    /** Ends the game if set to false. */
+    private boolean wantToContinue;
 
     /**
      * Create the game and initialize its internal map.
@@ -34,6 +34,7 @@ public class Game {
         player = new Player(world.getRoom("Front Porch"));
         score = 0;
         turns = 0;
+        wantToContinue = true;
     }
 
     /**
@@ -45,7 +46,7 @@ public class Game {
         // Enter the main game loop. Here we repeatedly read commands and
         // execute them until the game is over.
         boolean wantToQuit = false;
-        while (!wantToQuit) {
+        while (!wantToQuit && wantToContinue) {
             Command command = Reader.getCommand();
             wantToQuit = processCommand(command);
             turns += 1;
@@ -134,6 +135,9 @@ public class Game {
                 case TALK:
                 talk(command);
                 break;
+                case TRADE:
+                trade(command);
+                break;
                 default:
                 Writer.println(commandWord + " is not implemented yet!");
                 break;
@@ -172,14 +176,38 @@ public class Game {
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-            else {
-                Room newRoom = doorway.getDestination();
-                player.setCurrentRoom(newRoom);
+            else {                 
+                if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+                    Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+                }
+                else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+                    Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+                }
+                else {                    
+                    Room newRoom = doorway.getDestination();                    
+                    player.setCurrentRoom(newRoom);          
+                    
+                    if (newRoom.getName().equals("South Path") && (player.isInInventory("illuminated bulb") || newRoom.isInRoom("illuminated bulb"))) {
+                        currentRoom.setActive(1);
+                    }
 
-                int roomPoints = newRoom.getPoints();
-                score += roomPoints;
+                    Room clearing = world.getRoom("Clearing");
+                    Item clearingItem = clearing.getItem("hidden barrier rune");
 
-                printLocationInformation();
+                    if (newRoom.getName().equals("North Path") && clearingItem != null) {
+                        Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+                        Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+                        Writer.println();
+                        
+                        wantToContinue = false;
+                    }
+                    else {
+                        int roomPoints = newRoom.getPoints();
+                        score += roomPoints;
+
+                        printLocationInformation();
+                    }
+                }
             }
         }
     }
@@ -189,8 +217,7 @@ public class Game {
      */
     private void printGoodbye() {
         Writer.println("You have earned " + score + " in " + (turns - 1) + " turns.");
-        Writer.println("I hope you weren't too bored here on the Campus of Kings!");
-        Writer.println("Thank you for playing.  Good bye.");
+        Writer.println("Thank you for playing.  Goodbye.");
     }
 
     /**
@@ -198,8 +225,7 @@ public class Game {
      * message and a list of the command words.
      */
     private void printHelp() {
-        Writer.println("You are lost. You are alone. You wander");
-        Writer.println("around at the university.");
+        Writer.println("You idle for a bit.");
         Writer.println();
 
         String commands = CommandWords.getCommandString();
@@ -211,9 +237,15 @@ public class Game {
      */
     private void printWelcome() {
         Writer.println();
-        Writer.println("Welcome to the Campus of Kings!");
-        Writer.println("Campus of Kings is a new, incredibly boring adventure game.");
-        Writer.println("Type 'help' if you need help.");
+        Writer.print("You flip to the next page of your book. Your eyes skim the page, unfocused, and the chair creaks as you rock back and forth.\n\nIt’s been a while since you've felt this bored.\n\n");
+        Writer.print("Your master has gone off into town without you for once, and you have been left alone in your little cottage in the woods. Relocating yourself to the front porch has done little to alleviate the mind-numbing-ness of The Uses of Wratagrass, "); 
+        Writer.print("but there was quite literally nothing else to do, barred from making potions as you were. You decide to take a break and close the book with a thwump. Your neck is a bit stiff from looking down for so long, which you pout about. \n\n");
+        Writer.print("'I’m only ten,' you grumble.\n\nThe green of the forest is a welcome sight, and you're tempted to go for a walk against your master’s wishes until you see a clear shimmering wall reflected in the light.");
+        Writer.print(" Indignation rises up inside of you. \n\nA barrier. Most likely to warn Master if you leave, as if the babysitter wasn’t enough. Even now, you can feel the invisible eyes of Master’s cat watching your every move. \n\n");
+        Writer.print("'I’m already ten!' you say.\n\nThen, as if purposefully trying to worsen your mood, your own cat appears along the edge of the forest, past the barrier, somewhere he definitely wasn’t supposed to be.\n\n");
+        Writer.print("You jump up. 'What are you doing? If you get spirited away or something, I’m the one who’s going to get into trouble!' \n\n He stares at you for a moment before turning with utmost indifference toward the forest.");
+        Writer.print("\n\n 'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he’s disappeared into the trees.");
+        Writer.println();
         Writer.println();
         printLocationInformation();
     }
@@ -339,6 +371,8 @@ public class Game {
      * @param command The command to be processed.
      */
     private void take(Command command) {
+        String result = "Taken.";
+        
         if (!command.hasSecondWord()) {
             Writer.println("What would you like to take?");
         }
@@ -354,15 +388,24 @@ public class Game {
                     if (item instanceof Ingredient) {
                         Ingredient ingredient = (Ingredient)item;
 
+                        if (ingredient.getNumberInGroup() < 3 && currentRoom.getName().equals("Backyard")) {
+                            currentRoom.setActive(1);
+                        }
                         if (ingredient.getNumberInGroup() == 0) {
                             currentRoom.removeItem(itemName);
+                        }
+                        if (currentRoom.getName().equals("Backyard") && !currentRoom.isInRoom(itemName)) {
+                            Writer.print("You've made quite a mess of the garden, and you're master is sure to notice.");
+                            Writer.println(" She'll definitely think that you're irresponsible. Even if you do get your cat back, what's the point?");
+                            wantToContinue = false;
+                            result = "";
                         }
                     }
                     else {
                         currentRoom.removeItem(itemName);
                     }
 
-                    Writer.println("Taken.");
+                    Writer.println(result);
                 }
                 else {
                     if (item.getWeight() > Player.MAX_WEIGHT) {
@@ -878,7 +921,7 @@ public class Game {
             else {
                 Item item = null;
                 Container container = null;
-                
+
                 if (currentRoom.isInRoomContainer(itemName)) {
                     container = currentRoom.getContainer(itemName);
                     item = container.getItem(itemName);
@@ -887,32 +930,32 @@ public class Game {
                     container = player.getContainer(itemName);
                     item = container.getItem(itemName);
                 }
-                
+
                 if (!(item instanceof Potion)) {
                     Writer.println("You can't use that.");
                 }
                 else {
                     Potion potion = (Potion)item;
-                    
+
                     Writer.println("What would you like to use it on?");
-                    
+
                     String response = Reader.getResponse();
-                    
+
                     if (!(currentRoom.isInRoom(response) || player.isInInventory(response))) {
                         Writer.println("You search the room and your pockets, but there is no such item to be found.");
                     }
                     else {
                         Item secondItem = null;
-                        
+
                         if (currentRoom.isInRoom(response)) {
                             secondItem = currentRoom.getItem(response);
                         }
                         if (player.isInInventory(response)) {
                             secondItem = player.getItem(response);
                         }
-                        
-                        Writer.println(potion.use(currentRoom, secondItem));
-                        
+
+                        Writer.println(potion.use(currentRoom, secondItem, world));
+
                         String potionName = potion.getName();
                         container.removeItem(potionName);
                     }
@@ -920,7 +963,7 @@ public class Game {
             }
         }
     }
-    
+
     /**
      * Begans a conversation with the specified non-player character.
      * 
@@ -934,13 +977,64 @@ public class Game {
             String characterName = command.getRestOfLine();
             Room currentRoom = player.getCurrentRoom();
             Character character = currentRoom.getCharacter(characterName);
-            
+
             if (character == null) {
                 Writer.println("Um, who?");
             }
             else {
-               Conversation conversation = world.getConversation(character);
-               String keyValue = conversation.startConversation("hi");
+                Conversation conversation = world.getConversation(character);
+                String keyValue = conversation.startConversation("hi");
+            }
+        }
+    }
+
+    /**
+     * Trades an item in the player's inventory for one in a non-player character's.
+     * 
+     * @param command The command to be processed.
+     */
+    private void trade(Command command) {
+        if (!command.hasSecondWord()) {
+            Writer.println("Who do you want to trade with?");
+        }
+        else {
+            String itemName = command.getRestOfLine();
+            Room currentRoom = player.getCurrentRoom();
+
+            if (!(player.isInInventory(itemName))) {
+                Writer.println("You search your pockets, but there is no such item to be found.");
+            }
+            else {
+                Item item = player.getItem(itemName);
+
+                Writer.println("Who do you wish to trade with?");
+
+                String response = Reader.getResponse();
+                Character character = currentRoom.getCharacter(response);
+
+                if (character == null) {
+                    Writer.println("Um, who?");
+                }
+                else {
+                    Item npcItem = character.getItem();
+
+                    if (npcItem == null) {
+                        Writer.println("They don't have anything to trade.");
+                    }
+                    else if (npcItem.getWeight() + player.getTotalWeight() < Player.MAX_WEIGHT) {
+                        if (character.isTradeItem(item)) {
+                            player.addToInventory(npcItem);
+                            player.removeItem(itemName);
+                            Writer.println("You traded.");
+                        }
+                        else {
+                            Writer.println("They don't want to trade for that.");
+                        }
+                    }
+                    else {
+                        Writer.println("You can't carry their item along with what you already have.");
+                    }
+                }
             }
         }
     }

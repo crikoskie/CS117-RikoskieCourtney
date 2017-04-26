@@ -1,8 +1,7 @@
 /**
  * Class Door - a door or portal between two Rooms in an adventure game.
  * 
- * This class is part of the "Campus of Kings" application. "Campus of Kings" is a
- * very simple, text based adventure game.
+ * This class is part of the "Cat" application. "Cat" is a text-based adventure game.
  * 
  * A "Door" represents a door or portal between two locations of the game.
  * It stores a reference to the neighboring room and whether that door

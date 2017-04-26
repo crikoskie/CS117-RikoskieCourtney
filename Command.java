@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * This class is part of the "Campus of Kings" application. "Campus of Kings" is a
- * very simple, text based adventure game.
+ * This class is part of the "Cat" application. "Cat" is a text-based adventure game.
  * 
  * This class holds information about a command that was issued by the user. A
  * command currently consists of two strings: a command word and a second word

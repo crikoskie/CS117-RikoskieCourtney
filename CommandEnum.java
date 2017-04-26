@@ -46,7 +46,10 @@ public enum CommandEnum
     /** The use command. */
     USE("use"),
     /** The talk command. */
-    TALK("talk");
+    TALK("talk"),
+    /** The trade command. */
+    TRADE("trade");
+    
     /** The text that the player enters in order to execute the command. */
     private String text;
     

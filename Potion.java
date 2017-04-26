@@ -165,53 +165,69 @@ public class Potion extends Item implements Makeable, Useable {
      * 
      * @param room The room that the player character is currently in.
      * @param theItem The specified item.
+     * @param world The world.
      * @return Whether the potion was successfully used on the item.
      */
-    public String use(Room room, Item theItem) {
+    public String use(Room room, Item theItem, World world) {
         String result = "You used the " + getName() + ".";
         String itemName = theItem.getName();
 
         switch (getName()) {
             case "shrinking potion":
-            if (theItem instanceof Ingredient) {
-                result = "You probably shouldn't use a shrinking potion on that.  It will mess up the porportion.";
-            }
-            else if (itemName.equals("empty cauldron")) {
-                result = "You don't want to lessen the amount of potion you are able to make.";
-            }
-            else if (itemName.equals("vial")) {
-                result = "You don't want to lessen the amount of potion you are able to carry around.";
-            }
-            else if (itemName.equals("jewelry box") || itemName.equals("cellar key") || itemName.equals("book on warding and barriers")) {
-                result = "You don't want to mess around with Master's things.";
-            }
-            else if (itemName.equals("shed") || itemName.equals("cat")) {
-                result = "It probably wouldn't be the smartest thing in the world to use a shrinking potion on that.";  
-            }
-            else if (itemName.equals("herb pouch")) {
-                result = "Being able to carry less herbs is a bad thing.";
-            }
-            else {
-                double weight = theItem.getWeight();
-                theItem.setWeight(weight/4);
-                theItem.setActive(1);
-            }
-            break;
+                if (theItem instanceof Ingredient) {
+                    result = "You probably shouldn't use a shrinking potion on that.  It will mess up the porportion.";
+                }
+                else if (itemName.equals("empty cauldron")) {
+                    result = "You don't want to lessen the amount of potion you are able to make.";
+                }
+                else if (itemName.equals("vial")) {
+                    result = "You don't want to lessen the amount of potion you are able to carry around.";
+                }
+                else if (itemName.equals("jewelry box") || itemName.equals("cellar key") || itemName.equals("book on warding and barriers")) {
+                    result = "You don't want to mess around with Master's things.";
+                }
+                else if (itemName.equals("shed") || itemName.equals("cat")) {
+                    result = "It probably wouldn't be the smartest thing in the world to use a shrinking potion on that.";  
+                }
+                else if (itemName.equals("herb pouch")) {
+                    result = "Being able to carry less herbs is a bad thing.";
+                }
+                else {
+                    double weight = theItem.getWeight();
+                    theItem.setWeight(weight/4);
+                    theItem.setActive(1);
+                }
+                break;
             case "duplication potion":                
-            if (!(itemName.equals("shed") || itemName.equals("cat"))) {
-                Item item = new Item("duplicate" + theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
-                result += "\n\nA new " + itemName + " appeared in front of you.";
-                room.addItem(item);
-            }
-            else {
-                result = "You probably shouldn't use a duplication potion on that.  It's asking for trouble.";
-            }
-            break;
+                if (!(itemName.equals("shed") || itemName.equals("cat"))) {
+                    Item item = new Item("duplicate" + theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
+                    result += "\n\nA new " + itemName + " appeared in front of you.";
+                    room.addItem(item);
+                    
+                    if (itemName.equals("broadsword")) {
+                        Character tave = world.getCharacter("Tave");
+                        tave.addTradeItem(item);
+                    }
+                }
+                else {
+                    result = "You probably shouldn't use a duplication potion on that.  It's asking for trouble.";
+                }
+                break;
             case "scent remover":
-            theItem.setActive(2);
+                theItem.setActive(2);
             case "unknown potion":
-            result = "No.";
-            break;
+                result = "No.";
+                break;
+            case "revealing potion":
+                if (!(itemName.equals("barrier rune"))) {
+                    result += "\n\nIt doesn't seem to do anything.";
+                }
+                else {
+                    Room clearing = world.getRoom("Clearing");
+                    clearing.removeItem("hidden barrier rune");
+                    
+                    result += "\n\nIn a quick flash, another rune appears next to the old one.  It burns up into nothing.";
+                }
         }
 
         return result;
