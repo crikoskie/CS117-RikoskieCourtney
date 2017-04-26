@@ -565,12 +565,12 @@ public class World {
      * Creates the non-player characters.
      */
     public void createCharacters() {
-        Conversation taveCon = new Conversation("Tave", "Stay sharp, kid.");
-        Conversation fairyCon = new Conversation("Fairy", "Goodbye, insolent child.");
-        Conversation guardianCon = new Conversation("Forest Guardian", "Please do come talk again soon.");
-        Conversation lizardCon = new Conversation("Lizard", "Leave me, small human.");
-        Conversation guardsmanCon = new Conversation("Guardsman", "Leave me to my work.");
-        Conversation officialCon = new Conversation("Official Camret", "Don't be a stranger.");
+        Conversation taveCon = new Conversation("Tave", "Stay sharp, kid");
+        Conversation fairyCon = new Conversation("Fairy", "Goodbye, insolent child");
+        Conversation guardianCon = new Conversation("Forest Guardian", "Please do come by again soon");
+        Conversation lizardCon = new Conversation("Lizard", "Leave me, small human");
+        Conversation guardsmanCon = new Conversation("Guardsman", "Leave me to my work");
+        Conversation officialCon = new Conversation("Official Camret", "Thank you for your visit to the Fairsway Government Office");
         Conversation sylCon = new Conversation("Syl", "Bye-bye, little lady");
         
         Character tave = new Character("Tave", taveCon);
@@ -679,10 +679,40 @@ public class World {
         fairyCon.addReply("hiccb", "I've been very kind, engaging in such an insipid conversation just to entertain you, and this is how you treat me?  Goodbye, insolent child.");
         fairyCon.addReply("hicd", "I have never been more disrespected in my life!  Goodbye, insolent child.");
         
-        guardianCon.addReply("hi", "Oh, Faye, hello.\n\n\tA: You make me uncomfortable.\tB: Hello, uh, sir.\n");
+        guardianCon.addReply("hi", "Oh, Faye, hello.\n\n\tA: You make me uncomfortable.\tB: Hello, uh, sir.\n\tC: You know my cat, right? Is he is the forest?");
+        guardianCon.addReply("hia", "You'll do me a favor, won't you?\n\n\tA: Uh, sure?\n\tB: No?\n\tC: Are we ignoring the uncomfortable thing?\n");
+        guardianCon.addReply("hiaa", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiaaa", "Please do come by again soon.");
+        guardianCon.addReply("hiaab", "Please do come by again soon.");
+        guardianCon.addReply("hiab", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiaba", "Please do come by again soon.");
+        guardianCon.addReply("hiabb", "Please do come by again soon.");
+        guardianCon.addReply("hiac", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiaba", "Please do come by again soon.");
+        guardianCon.addReply("hiabb", "Please do come by again soon.");
+        guardianCon.addReply("hib", "You'll do me a favor, won't you?\n\n\tA: Uh, sure?\n\tB: No?\n\tC: Goodbye, sir.\n");
+        guardianCon.addReply("hiba", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hibaa", "Please do come by again soon.");
+        guardianCon.addReply("hibab", "Please do come by again soon.");
+        guardianCon.addReply("hibb", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hibba", "Please do come by again soon.");
+        guardianCon.addReply("hibbb", "Please do come by again soon.");
+        guardianCon.addReply("hibc", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hibba", "Please do come by again soon.");
+        guardianCon.addReply("hibbb", "Please do come by again soon.");
+        guardianCon.addReply("hic", "You'll do me a favor, won't you?\n\n\tA: Uh, sure?\n\tB: No?\n\tC: I, um, asked you a question?\n");
+        guardianCon.addReply("hica", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hicaa", "Please do come by again soon.");
+        guardianCon.addReply("hicab", "Please do come by again soon.");
+        guardianCon.addReply("hicb", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hicba", "Please do come by again soon.");
+        guardianCon.addReply("hicbb", "Please do come by again soon.");
+        guardianCon.addReply("hicc", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hicba", "Please do come by again soon.");
+        guardianCon.addReply("hicbb", "Please do come by again soon.");
         
         taveCon.addReply("hi", "Hey, Faye. Where's the older miss?\n\n\tA: Talking to Syl.\n\tB: Don't know.\n\tC: Have you seen a cat around?\n");
-        taveCon.addReply("hic", "Smooth deflection there.\n\nYeah, well, there are a whole bunch of strays around, but I don't think that's what you were going for.\n\n\tA: I'm looking for my cat.\n\tB: Strays?\n");
+        taveCon.addReply("hic", "Smooth deflection there. But yeah, well, there are a whole bunch of strays around, but I don't think that's what you were going for.\n\n\tA: I'm looking for my cat.\n\tB: Strays?\n");
         taveCon.addReply("hica", "I didn't know you had one, unless we're talking about the older miss's.\n\n\tA: Master just recently got it for me. I have to learn how to be responsible, she say.\n\tB: No, she's still at the cottage somewhere.\n");
         taveCon.addReply("hicaa", "Responsible, eh? Maybe you shouldn't be out alone then. Stay sharp, kid.");
         taveCon.addReply("hicab", "With your master?\n\n\tA: ...\n\tB:Yeah, sure.\n\tC: No, Master's in town.\n");
@@ -729,10 +759,56 @@ public class World {
         guardsmanCon.addReply("hic", "How childish. I know for a fact that they are not.\n\n\tA: Let me guess. You're going to tell me why you know?\n\tB: But they are.\n");
         guardsmanCon.addReply("hica", "These glasses have been enchanted by Demle, one of the finest wizards in the country. Not only are they smudge-resistant, but they can see through any disguise.\n\n\tA: Good for you.\n\tB: Wow, that's amazing.\n");
         guardsmanCon.addReply("hicaa", "Your sarcasm is noted. Now, leave me to my work.");
-        guardsmanCon.addReply("hicab", "Isn't it?! \n\n Excuse me, I got a little too excited there. Very unprofessional. Now, leave me to my work.");
+        guardsmanCon.addReply("hicab", "Isn't it?! Oh, excuse me, I got a little too excited there. Very unprofessional. Now, leave me to my work.");
         guardsmanCon.addReply("hicb", "...Leave me to my work.");
         
+        officialCon.addReply("hi", "Do I know you from somewhere?\n\n\tA: That seems unprofessional to ask.\n\tB: Maybe you've seen me around town.\n");
+        officialCon.addReply("hia", "Ah, please excuse me. May I help you, young lady?\n\n\tA: How do I become a 'proper citizen' of Fairsway?\n\tB: No, I don't want your help.\n");
+        officialCon.addReply("hiaa", "Well, you just need official documentation, which you can get right here.\n\n\tA: Where do I sign?\n\tB: Master says most things in life cost money.\n");
+        officialCon.addReply("hiaaa", "Oh, no, you don't sign anything. I need to caste a spell on you, and then, Fairsway will judge you.\n\n\tA: Spell?\n\tB: Uh, judge? Sounds omin--ominous.\n");
+        officialCon.addReply("hiaaaa", "It's nothing dangerous, I promise. But, the thing is, you still need to pay for it. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
+        officialCon.addReply("hiaaaaa", "Well, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaaaab", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaab", "Ah, sorry. It's not really a judgement per se. The town was enchanted hundreds of years ago to be somewhat sentient. It looks to see if it views you as one of its children.\n\n\tA: I don't want to do that.\n\tOkay, cast the spell.\n");
+        officialCon.addReply("hiaaba", "I understand. Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaabb", "Well, ah, you kind of need to pay for the spell. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
+        officialCon.addReply("hiaabba", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaabbb", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaab", "Master...? Well, I mean, it does cost a small fee. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
+        officialCon.addReply("hiaaba", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaabb", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiab", "Oh, well, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hib", "That hat! You're Faye, aren't you?\n\n\tA: Yes. How did you know?\n\tB: No, who's Faye?\n");
+        officialCon.addReply("hiba", "There are rumors floating around town about you. People say you're a fairy.\n\n\tA: Gross.\n\tB: They're right.\n");
+        officialCon.addReply("hibaa", "Well, what do you need?\n\n\tA: Proof that I'm a citizen of Fairsway.\n\tB: Nothing in particular.\n");
+        officialCon.addReply("hibaaa", "You'll need to pay for something like that. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
+        officialCon.addReply("hiaaaaa", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaaaab", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hibaab", "Um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hibab", "Oh... Thank you for visiting Fairsway Government Office!");
+        officialCon.addReply("hibb", "I'm actually a bit disappointed. They're just a child people in town have been talking about.\n\n\tA: What do they say?\n\tB: Who gossips about a child?\n");
+        officialCon.addReply("hibbb", "You know, people. People who lead very fulfilled lives. Thank you for visiting Fairsway Government Office!");
+        officialCon.addReply("hibba", "Well, she lives in the forest for one. With how dangerous that is, people say the reason she's still alive is because she's a fairy.\n\n\tA: Gross.\n\tB: They're right, I am.\n");
+        officialCon.addReply("hibbaa", "Why gross...? Anyway, what do you need?\n\n\tA: Proof that I'm a citizen of Fairsway.\n\tB: Nothing in particular.\n");
+        officialCon.addReply("hibbaaa", "You'll need to pay for something like that. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
+        officialCon.addReply("hibbaaaa", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hibbaaab", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hibbaab", "Um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hibbab", "Oh... Thank you for visiting Fairsway Government Office!");
         
+        sylCon.addReply("hi", "There's a sight for sore eyes. What you doing in the Square, little miss?\n\n\tA: I came to see my favorite merchant.\n\tB: I wanted to look at your wares.");
+        sylCon.addReply("hib", "Sadly, I think they're a bit too pricy for you.\n\n\tA: What's a little bit of money between friends?\n\tB: I doubt they're that expensive.\n");
+        sylCon.addReply("hiba", "Bye-bye, little lady.");
+        sylCon.addReply("hibb", "Maybe not everything, but I did get my hands on quite the beauty.\n\n\tA: What is it?\n\tB: Can't say I care.\n");
+        sylCon.addReply("hibba", "Verian cloth, made of the softest known material.\n\n\tA: That doesn't very interesting.\n\tB: Can I touch it?\n");
+        sylCon.addReply("hibbaa", "Then, I guess I'll go tell some other kid about it. Bye-bye, little lady.");
+        sylCon.addReply("hibbb", "Sorry, but it's under lock and key. Even I only got to feel it for a split second. You'd have to ask the buyer.\n\n\tA: Who's buying it?\n\tB: How stingy.\n");
+        sylCon.addReply("hibbba", "No one yet. We're going to be heading off to the captial soon. And speaking of, I've got things to pack up. Bye-bye, little lady.");
+        sylCon.addReply("hibbbb", "Not my rules. Now, sorry to cut this shory, but I've gotta get moving. Bye-bye, little lady.");
+        sylCon.addReply("hibbb", "Wow, shot right through the heart. It seems I need to be more cautious around you. Bye-bye, little lady.");
+        sylCon.addReply("hia", "Your favorite? That's quite the honor.\n\n\tA: When I ask you things, you don't yell at me.\n\tB: Don't get to overconfident. Falden is catching up to you.\n");
+        sylCon.addReply("hiaa", "There's just getting cranky in their old age. You're no trouble. But, you know, I should be packing up, so bye-bye, little lady.");
+        sylCon.addReply("hiab", "Falden, huh? I've got some sabotage to do. Bye-bye, little lady.");       
     }
     
     /**
