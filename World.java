@@ -565,11 +565,11 @@ public class World {
      * Creates the non-player characters.
      */
     public void createCharacters() {
-        Conversation taveCon = new Conversation("Tave", "See ya, Kid.");
+        Conversation taveCon = new Conversation("Tave", "Stay sharp, kid.");
         Conversation fairyCon = new Conversation("Fairy", "Goodbye, insolent child.");
         Conversation guardianCon = new Conversation("Forest Guardian", "Please do come talk again soon.");
-        Conversation lizardCon = new Conversation("Lizard", "Bye, small human.");
-        Conversation guardsmanCon = new Conversation("Guardsman", "Now, leave me to my work.");
+        Conversation lizardCon = new Conversation("Lizard", "Leave me, small human.");
+        Conversation guardsmanCon = new Conversation("Guardsman", "Leave me to my work.");
         Conversation officialCon = new Conversation("Official Camret", "Don't be a stranger.");
         Conversation sylCon = new Conversation("Syl", "Bye-bye, little lady");
         
@@ -650,6 +650,7 @@ public class World {
         conversations.put(lizard, lizardCon);
         conversations.put(guardsman, guardsmanCon);
         conversations.put(official, officialCon);
+        conversations.put(syl, sylCon);
         
         fairyCon.addReply("hi", "What are you doing here? \n\n\tA: That's none of your business.\n\tB: I'm looking for a cat.\n\tC: Just admiring, you know, things. \n");
         fairyCon.addReply("hia", "Goodbye, insolent child.");
@@ -679,6 +680,59 @@ public class World {
         fairyCon.addReply("hicd", "I have never been more disrespected in my life!  Goodbye, insolent child.");
         
         guardianCon.addReply("hi", "Oh, Faye, hello.\n\n\tA: You make me uncomfortable.\tB: Hello, uh, sir.\n");
+        
+        taveCon.addReply("hi", "Hey, Faye. Where's the older miss?\n\n\tA: Talking to Syl.\n\tB: Don't know.\n\tC: Have you seen a cat around?\n");
+        taveCon.addReply("hic", "Smooth deflection there.\n\nYeah, well, there are a whole bunch of strays around, but I don't think that's what you were going for.\n\n\tA: I'm looking for my cat.\n\tB: Strays?\n");
+        taveCon.addReply("hica", "I didn't know you had one, unless we're talking about the older miss's.\n\n\tA: Master just recently got it for me. I have to learn how to be responsible, she say.\n\tB: No, she's still at the cottage somewhere.\n");
+        taveCon.addReply("hicaa", "Responsible, eh? Maybe you shouldn't be out alone then. Stay sharp, kid.");
+        taveCon.addReply("hicab", "With your master?\n\n\tA: ...\n\tB:Yeah, sure.\n\tC: No, Master's in town.\n");
+        taveCon.addReply("hicaba", "You're a really bad liar, aren't you? Stay sharp, kid.");
+        taveCon.addReply("hicabb", "You do realize that you just admitted to not having anyone with you, right? Stay sharp, kid.");
+        taveCon.addReply("hicabc", "Let's say I believe that. Where exactly is she?\n\n\tA: ...Fairsway Potions.\n\tB: Maril's?\n\tC: The Southeast Market.\n");
+        taveCon.addReply("hicabca", "A likely place, but try not to take so long to answer next time. Stay sharp, kid.");
+        taveCon.addReply("hicabcb", "Not entirely implausible. Just need to work on the delivery. Stay sharp, kid.");
+        taveCon.addReply("hicabcc", "Kid, why would she be there?\n\n\tA: Buying fruit! And, you know, stuff.\n\tB: Meeting a friend.\n");
+        taveCon.addReply("hicabcca", "Are we talking about the same person? Faye, you know she doesn't trust other people to touch her food. Stay sharp, kid.");
+        taveCon.addReply("hicabccb", "I have known the older miss for over twenty years, and she still doesn't consider us friends. I admit that I'm jealous. Stay sharp, kid.");
+        taveCon.addReply("hicb", "Yeah, they prowl around in the alleyways. They're not friendly, so don't try to pet them. Stay sharp, kid.");
+        taveCon.addReply("hib", "I worry about you sometimes, Faye. Go home, and stay sharp, kid.");
+        taveCon.addReply("hia", "Oh, that guy.\n\n\tA: You don't sound too happy.\n\tB: You two know each other?\n");
+        taveCon.addReply("hiaa", "I'm fine, Faye. Ignore me.\n\n\tA: Do I need to have a talk with him?\n\tB: Okay.\n");
+        taveCon.addReply("hiaaa", "Cute, but no. Stay sharp, kid.");
+        taveCon.addReply("hiaab", "Stay sharp, kid.");
+        taveCon.addReply("hiab", "He's wants me to sell him my masterpiece.\n\n\tA: Are you?\n\tB: So sell it.\n");
+        taveCon.addReply("hiaba", "No, I don't want to give away this sword to someone who just wants to make a profit in the capital. Only a true adventurer should own it. Stay sharp, kid.");
+        taveCon.addReply("hiabb", "It's not that simple, Faye. Stay sharp, kid.");
+        
+        lizardCon.addReply("hi", "Who goes there?\n\n\tA: You're a talking lizard.\n\tB: Um, Faye.\n\tC: Can I have that sun blossom bulb?\n\tD: Why are you talking like that?\n");
+        lizardCon.addReply("hia", "I am a mighty dragon, not a simple lizard. If you are going to be rude, then leave me, small human.");
+        lizardCon.addReply("hib", "Hello, human Faye. I can understand your hesitance. This must be the first time you've seen such a magnificent dragon.\n\n\tA: Yeah, that's it.\n\tB: You're not a dragon.\n");
+        lizardCon.addReply("hiba", "I don't wish for your face to get stuck like that. It looks painful. Leave me, small human.");
+        lizardCon.addReply("hibb", "A common mistake. I am of the fire-wing family.\n\n\tA: Where are your wings then?\n\tB: Never heard of it.\n");
+        lizardCon.addReply("hibba", "I lost them in a tragic accident when I was just a small hatchling. Oh, I'm tearing up. Leave me, small human.");
+        lizardCon.addReply("hibbb", "So if you've never heard of something, then it doesn't exist? Is that how it is? Leave me, small human.");
+        lizardCon.addReply("hic", "This is my hoard, not whatever a 'sun blossom bulb' is.\n\n\tA: Right, of course, but what if I bring you an even better hoard? Can I have it then?\n\tB: You're hoard is a 'sun blossom bulb'.\n");
+        lizardCon.addReply("hica", "If my follower brings me an offering worthy of my great stature, then I suppose I will be gracious and grant her wish. Though, I am not easily pleased, I warn. Now, leave me, small human.");
+        lizardCon.addReply("hicb", "I am kind, so I will not burn you to a crisp with my fiery breath. Leave me, small human.");
+        lizardCon.addReply("hid", "Like what?\n\n\tA: You sound like you're recovering from a week-long cold.\n\tB: All scary and, uh, deep.\n");
+        lizardCon.addReply("hida", "Do you talk to your parents with such disrespect? Leave me, small human.");
+        lizardCon.addReply("hidb", "Ah, my natural voice is quite ferocious. I don't wish to frighten you. Leave me, small human.");
+        
+        guardsmanCon.addReply("hi", "Faye.\n\n\tA: Happy to see me?\n\tB: Who spat on your lapel?\n\tC: Your glasses are smudged.");
+        guardsmanCon.addReply("hia", "You know very well how I feel right now. And no, you can't cross the bridge.\n\n\tA: I didn't ask!\n\tB: For the record, that is still completely unfair.\n");
+        guardsmanCon.addReply("hiaa", "Are you saying you don't wish to enter the Citizen District?\n\n\tA: Yes!\n\tB: No, I do.\n\tC: I refuse to answer.\n");
+        guardsmanCon.addReply("hiaaa", "Good. Now, leave me to my work.");
+        guardsmanCon.addReply("hiaab", "Well, you can't. My job is to keep the non-citizens out. Do you have the proper papers? No? Then, leave me to my work.");
+        guardsmanCon.addReply("hiaac", "That's fine. Now, stop blocking the path and leave me to my work.");
+        guardsmanCon.addReply("hiab", "No matter how long you have lived in the nearby forest, you are still not a proper citizen, Faye. How many times must we have this talk? Now, leave me to my work.");
+        guardsmanCon.addReply("hib", "I thought I had washed the stain out. Do your job properly, and you just get treated with disrespect. Thank you for bringing it to my attention. Now, leave me to my work.");
+        guardsmanCon.addReply("hic", "How childish. I know for a fact that they are not.\n\n\tA: Let me guess. You're going to tell me why you know?\n\tB: But they are.\n");
+        guardsmanCon.addReply("hica", "These glasses have been enchanted by Demle, one of the finest wizards in the country. Not only are they smudge-resistant, but they can see through any disguise.\n\n\tA: Good for you.\n\tB: Wow, that's amazing.\n");
+        guardsmanCon.addReply("hicaa", "Your sarcasm is noted. Now, leave me to my work.");
+        guardsmanCon.addReply("hicab", "Isn't it?! \n\n Excuse me, I got a little too excited there. Very unprofessional. Now, leave me to my work.");
+        guardsmanCon.addReply("hicb", "...Leave me to my work.");
+        
+        
     }
     
     /**

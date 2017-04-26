@@ -597,3 +597,88 @@ USE Scenario #6: Can use item on second item
 	 WHEN : item can be used on second item
 	 THEN : affects on item on second item are carried out
 	  and : appropriate message is displayed (you used it)
+	  and : item is removed from its room container
+	   or : item is removed from its inventory container
+	   
+	 
+	 
+TALK Scenario #1: Character is not specified
+	GIVEN : "talk" is entered
+	 WHEN :
+	 THEN : appropriate message is displayed (talk to who?)
+	 
+TALK Scenario #2: What is specified is not a character in the room
+	GIVEN : "talk word" is entered
+	 WHEN : word is not a character in the room
+	 THEN : appropriate message is displayed (who?)
+	 
+TALK Scenario #3: What is specified is a character in the room
+	GIVEN : "talk word" is entered
+	 WHEN : word is a character in the room
+	 THEN : conversation is begun
+	 
+	 
+	 
+TRADE Scenario #1: Item is not specified
+	GIVEN : "trade" is entered
+	 WHEN :
+	 THEN : appropriate message is displayed (trade what?)
+	 
+TRADE Scenario #2: Item is not in player's inventory
+	GIVEN : "trade item" is entered
+	 WHEN : item is not in player's inventory
+	 THEN : appropriate message is displayed (you don't have that to trade)
+	 
+TRADE Scenario #3: Item is in player's inventory
+	GIVEN : "trade item" is entered
+	 WHEN : item is in player's inventory
+	 THEN : user is prompted for who to trade with 
+	 
+TRADE Scenario #4: Specified character is not in room
+	GIVEN : "trade item" has been entered
+	  and : user has been prompted for who to trade with
+	 WHEN : specified character is not in room
+	 THEN : appropriate message is displayed (who?)
+	 
+TRADE Scenario #5: Specified character no longer has any items to trade
+	GIVEN : "trade item" has been entered
+	  and : user has been prompted for who to trade with
+	 WHEN : specified character is in room
+	  and : specified character does not have any items
+	 THEN : appropriate message is displayed (they don't have anything to trade)
+	 
+TRADE Scenario #5: Specified character no longer has any items to trade
+	GIVEN : "trade item" has been entered
+	  and : user has been prompted for who to trade with
+	 WHEN : specified character is in room
+	  and : specified character does not have any items
+	 THEN : appropriate message is displayed (they don't have anything to trade)
+	 
+TRADE Scenario #6: Taking character's item would put player over max weight
+	GIVEN : "trade item" has been entered
+	  and : user has been prompted for who to trade with
+	 WHEN : specified character is in room
+	  and : specified character has an item
+	  and : adding character's item to your inventory would put you over max weight
+	 THEN : appropriate message is displayed (you're carrying too much)
+	 
+Scenario #6: Item is not one that the character will trade for
+	GIVEN : "trade item" has been entered
+	  and : user has been prompted for who to trade with
+	 WHEN : specified character is in room
+	  and : specified character has an item
+	  and : adding character's item to your inventory would not put you over max weight
+	  and : item is not one that the character will trade for
+	 THEN : appropriate message is displayed (they won't trade)
+	 
+TRADE Scenario #7: Player is not carrying too much
+	GIVEN : "trade item" has been entered
+	  and : user has been prompted for who to trade with
+	 WHEN : specified character is in room
+	  and : specified character has an item
+	  and : adding character's item to your inventory would not put you over max weight
+	  and : item is one that the character will trade for
+	 THEN : item from character's inventory is added to yours
+	  and : appropriate message is displayed (you traded)
+
+	   
