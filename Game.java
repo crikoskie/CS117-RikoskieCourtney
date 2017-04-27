@@ -190,11 +190,28 @@ public class Game {
                     if (newRoom.getName().equals("South Path") && (player.isInInventory("illuminated bulb") || newRoom.isInRoom("illuminated bulb"))) {
                         currentRoom.setActive(1);
                     }
+                    
+                    Room weapons = world.getRoom("Fairsway Weapons");
+                    
+                    if (newRoom.getName().equals("Welcome to the Citizen District") && !weapons.isInRoom("broadsword")) {
+                        weapons.removeCharacter("Tave");
+                        
+                        Room taveHouse = world.getRoom("Tave's House");
+                        Character tave = world.getCharacter("Tave");
+                        taveHouse.addCharacter(tave);
+                        
+                        Conversation taveSecondCon = new Conversation("Tave", "I don't feel like talking right now");
+                        taveSecondCon.addReply("hi", "Someone stole my broadsword.\n\n\tA: I'm sorry\n\tB: Who would do that?\n");
+                        taveSecondCon.addReply("hia", "Faye, I--I don't feel like talking right now.");
+                        taveSecondCon.addReply("hib", "Faye, I--I don't feel like talking right now.");
+                        
+                        tave.setResponses(taveSecondCon);
+                        taveHouse.setActive(1);
+                    }
 
                     Room clearing = world.getRoom("Clearing");
-                    Item clearingItem = clearing.getItem("hidden barrier rune");
 
-                    if (newRoom.getName().equals("North Path") && clearingItem != null) {
+                    if (newRoom.getName().equals("North Path") && clearing.isInRoom("hidden barrier rune")) {
                         Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
                         Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
                         Writer.println();
@@ -982,8 +999,8 @@ public class Game {
                 Writer.println("Um, who?");
             }
             else {
-                Conversation conversation = world.getConversation(character);
-                String keyValue = conversation.startConversation("hi");
+                Conversation conversation = character.getResponses();
+                conversation.startConversation("hi");
             }
         }
     }
@@ -1016,13 +1033,13 @@ public class Game {
                     Writer.println("Um, who?");
                 }
                 else {
-                    Item npcItem = character.getItem();
+                    Item npcItem = character.getInventory();
 
                     if (npcItem == null) {
                         Writer.println("They don't have anything to trade.");
                     }
                     else if (npcItem.getWeight() + player.getTotalWeight() < Player.MAX_WEIGHT) {
-                        if (character.isTradeItem(item)) {
+                        if (character.isTradeItem(itemName)) {
                             player.addToInventory(npcItem);
                             player.removeItem(itemName);
                             Writer.println("You traded.");

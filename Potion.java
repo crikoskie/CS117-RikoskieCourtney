@@ -205,8 +205,8 @@ public class Potion extends Item implements Makeable, Useable {
                     room.addItem(item);
                     
                     if (itemName.equals("broadsword")) {
-                        Character tave = world.getCharacter("Tave");
-                        tave.addTradeItem(item);
+                        Character syl = world.getCharacter("Syl");
+                        syl.addTradeItem(item);
                     }
                 }
                 else {

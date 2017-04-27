@@ -26,8 +26,8 @@ public class Room {
     private int points;
     /** The active element. */
     private int active;
-    /** The non-player character found in the room. */
-    private Character character;
+    /** The non-player characters found in the room. */
+    private HashSet<Character> characters;
 
     /** The room's exits. */
     private HashMap<String, Door> exits;
@@ -53,7 +53,7 @@ public class Room {
         descriptions = new ArrayList<String>();
         descriptions.add(description);
         active = 0;
-        character = null;
+        characters = new HashSet<Character>();
         exits = new HashMap<String, Door>();
         points = 0;
         items = new HashSet<Item>();
@@ -349,7 +349,7 @@ public class Room {
      * @param theCharacter The character to be added.
      */
     public void addCharacter(Character theCharacter) {
-        character = theCharacter;
+        characters.add(theCharacter);
     }
     
     /**
@@ -359,7 +359,38 @@ public class Room {
      * @return The specified character in the room.
      */
     public Character getCharacter(String theName) {
+        Iterator<Character> iter = characters.iterator();
+        boolean found = false;
+        Character character = null;
+        
+        while (iter.hasNext() && !found) {
+            Character current = iter.next();
+            String characterName = current.getName();
+            
+            if (characterName.equals(theName)) {
+                character = current;
+            }
+        }
+        
         return character;
-    }
+    }   
     
+    /**
+     * Removes the specified character from the room.
+     * 
+     * @param theName The name of the specified character.
+     */
+    public void removeCharacter(String theName) {
+        Iterator<Character> iter = characters.iterator();
+        boolean found = false;
+        
+        while (iter.hasNext() && !found) {
+            Character current = iter.next();
+            String characterName = current.getName();
+            
+            if (characterName.equals(theName)) {
+                characters.remove(current);
+            }
+        }
+    }
 }

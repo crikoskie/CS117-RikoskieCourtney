@@ -18,9 +18,7 @@ public class World {
     private HashSet<Item> npcItems;
     /** The items that the player character can trade. */
     private HashSet<Item> tradeItems;
-    /** The non-player characters' conversations. */
-    private HashMap<Character, Conversation> conversations;
-    /** The non-player characters ib the world. */
+    /** The non-player characters in the world. */
     private HashMap<String, Character> characters;
     
     /**
@@ -31,7 +29,6 @@ public class World {
         potions = new HashMap<String, Potion>();
         npcItems = new HashSet<Item>();
         tradeItems = new HashSet<Item>();
-        conversations = new HashMap<Character, Conversation>();
         characters = new HashMap<String, Character>();
         createRooms();
         createItems();
@@ -350,6 +347,7 @@ public class World {
         
         southPath.addDescription("With the illuminated bulb, it is much easier to see.");
         backyard.addDescription("Some of the herbs are starting to look bare.");
+        taveHouse.addDescription("");
     }
     
     /**
@@ -580,7 +578,7 @@ public class World {
         Character guardsman = new Character("Guardsman", guardsmanCon);
         Character official = new Character("Official Camret", officialCon);
         Character syl = new Character("Syl", sylCon);
-        
+         
         characters.put("Tave", tave);
         characters.put("Fairy", fairy);
         characters.put("Forest Guardian", guardian);
@@ -644,13 +642,13 @@ public class World {
             }
         }
         
-        conversations.put(tave, taveCon);
-        conversations.put(fairy, fairyCon);
-        conversations.put(guardian, guardianCon);
-        conversations.put(lizard, lizardCon);
-        conversations.put(guardsman, guardsmanCon);
-        conversations.put(official, officialCon);
-        conversations.put(syl, sylCon);
+        tave.setResponses(taveCon);
+        fairy.setResponses(fairyCon);
+        guardian.setResponses(guardianCon);
+        lizard.setResponses(lizardCon);
+        guardsman.setResponses(guardsmanCon);
+        official.setResponses(officialCon);
+        syl.setResponses(sylCon);
         
         fairyCon.addReply("hi", "What are you doing here? \n\n\tA: That's none of your business.\n\tB: I'm looking for a cat.\n\tC: Just admiring, you know, things. \n");
         fairyCon.addReply("hia", "Goodbye, insolent child.");
@@ -812,20 +810,10 @@ public class World {
     }
     
     /**
-     * Gets the conversation associated with the character.
-     * 
-     * @param theCharacter The character.
-     * @return The conversation associated with the character.
-     */
-    public Conversation getConversation(Character theCharacter) {
-        return conversations.get(theCharacter);
-    }
-    
-    /**
      * Gets the specified character.
      * 
      * @param theName The name of the specified character.
-     * @return The character.
+     * @return The specified character.
      */
     public Character getCharacter(String theName) {
         return characters.get(theName);

@@ -30,9 +30,38 @@ public class Character {
     }
     
     /**
-     * Gets the item from the non-player character's inventory.
+     * Gets the non-player character's name.
+     * 
+     * @return The non-player character's name.
      */
-    public Item getItem() {
+    public String getName() {
+        return name;
+    }
+    
+    /**
+     * Gets the non-player character's responses.
+     * 
+     * @return The non-player character's responses.
+     */
+    public Conversation getResponses() {
+        return responses;
+    }
+    
+    /**
+     * Sets the non-player character's responses.
+     * 
+     * @param theResponses The new responses.
+     */
+    public void setResponses(Conversation theResponses) {
+        responses = theResponses;
+    }
+    
+    /**
+     * Gets the non-player character's inventory.
+     *
+     * @return The non-player character's inventory.
+     */
+    public Item getInventory() {
         return inventory;
     }
     
@@ -48,17 +77,18 @@ public class Character {
     /**
      * Gets whether or not the specified item is one that the non-player character will trade for.
      * 
-     * @param theItem The specified item.
+     * @param theName The name of the specified item.
      * @return Whether or not the specified item is one that the non-player character will trade for.
      */
-    public boolean isTradeItem(Item theItem) {
+    public boolean isTradeItem(String theName) {
         boolean found = false;
         Iterator<Item> iter = tradeItems.iterator();
         
         while (iter.hasNext() && !found) {
             Item current = iter.next();
+            String itemName = current.getName();
             
-            if (theItem.equals(current)) {
+            if (theName.equals(itemName)) {
                 found = true;
             }
         }
