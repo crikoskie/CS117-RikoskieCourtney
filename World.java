@@ -571,13 +571,13 @@ public class World {
         Conversation officialCon = new Conversation("Official Camret", "Thank you for your visit to the Fairsway Government Office");
         Conversation sylCon = new Conversation("Syl", "Bye-bye, little lady");
         
-        Character tave = new Character("Tave", taveCon);
-        Character fairy = new Character("Fairy", fairyCon);
-        Character guardian = new Character("Forest Guardian", guardianCon);
-        Character lizard = new Character("Lizard", lizardCon);
-        Character guardsman = new Character("Guardsman", guardsmanCon);
-        Character official = new Character("Official Camret", officialCon);
-        Character syl = new Character("Syl", sylCon);
+        Character tave = new Character("tave", taveCon);
+        Character fairy = new Character("fairy", fairyCon);
+        Character guardian = new Character("forest Guardian", guardianCon);
+        Character lizard = new Character("lizard", lizardCon);
+        Character guardsman = new Character("guardsman", guardsmanCon);
+        Character official = new Character("official camret", officialCon);
+        Character syl = new Character("syl", sylCon);
          
         characters.put("Tave", tave);
         characters.put("Fairy", fairy);
@@ -671,6 +671,7 @@ public class World {
         fairyCon.addReply("hicaa", "Of course not!  We have used our very own magic to grow these plants.  There's like our children, and we do not part with them easily.\n\n\tA: Don't you give some to Master?\n\tB:So that's a 'no'?\n");
         fairyCon.addReply("hicaaa", "This and that are entirely different.  She pays for them, while you don't seem to have such plans.  Goodbye, insolent child.");
         fairyCon.addReply("hicaab", "You do, at the very least, have a small amount of sense.  Goodbye, insolent child.");
+        fairyCon.addReply("hicab", "Do you enjoy when someone comes into your home and insults your belongings? Goodbye, insolent child.");
         fairyCon.addReply("hicb", "You seem to be in need of some self-reflection.  Goodbye, insolent child.");
         fairyCon.addReply("hicc", "Well, we all have our faults.  You, particularly, have many.\n\n\tA: I don't view my humanity as a fault. \n\tB: Has anyone ever told you that you're unpleasant?\n");
         fairyCon.addReply("hicca", "Yes, most humans do not, which is yet another fault.  It's something you should go work on.  Goodbye, you insolent child.");

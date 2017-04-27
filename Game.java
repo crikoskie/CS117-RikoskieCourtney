@@ -188,7 +188,7 @@ public class Game {
                     player.setCurrentRoom(newRoom);          
                     
                     if (newRoom.getName().equals("South Path") && (player.isInInventory("illuminated bulb") || newRoom.isInRoom("illuminated bulb"))) {
-                        currentRoom.setActive(1);
+                        newRoom.setActive(1);
                     }
                     
                     Room weapons = world.getRoom("Fairsway Weapons");
@@ -233,7 +233,7 @@ public class Game {
      * Print out the closing message for the player.
      */
     private void printGoodbye() {
-        Writer.println("You have earned " + score + " in " + (turns - 1) + " turns.");
+        Writer.println("You have earned " + score + " points in " + turns + " turns.");
         Writer.println("Thank you for playing.  Goodbye.");
     }
 
