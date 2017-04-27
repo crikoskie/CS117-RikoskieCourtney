@@ -61,8 +61,10 @@ public class Potion extends Item implements Makeable, Useable {
      * 
      * @param player The player character.
      * @param room The current room.
+     * @param world The world.
      * @param container A container that ingredients may be found in.
      * @param cauldron The container which holds newly made potions.
+     * @return The ingredients used to make the potion.
      */
     public String makePotion(Player player, Room room, World world, Container container, PotionContainer cauldron) {
         boolean found = false;
@@ -194,7 +196,7 @@ public class Potion extends Item implements Makeable, Useable {
                 }
                 else {
                     double weight = theItem.getWeight();
-                    theItem.setWeight(weight/4);
+                    theItem.setWeight(weight / 4);
                     theItem.setActive(1);
                 }
                 break;
@@ -215,6 +217,7 @@ public class Potion extends Item implements Makeable, Useable {
                 break;
             case "scent remover":
                 theItem.setActive(2);
+                break;
             case "unknown potion":
                 result = "No.";
                 break;

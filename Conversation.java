@@ -61,16 +61,16 @@ public class Conversation {
     public String startConversation(String trigger) {
         boolean done = false;
         String keyValue = trigger;
-        while(!done) {
+        while (!done) {
             keyValue = keyValue.toLowerCase();
             // comment out the following line once you have it all working
             Writer.println("key: " + keyValue);
             String response = replies.get(keyValue);
-            if(response == null) {
+            if (response == null) {
                 Writer.println(name + " looks confused at your response and stops talking to you.");
                 done = true;
             }
-            else if(response.toLowerCase().contains(signoff)) {
+            else if (response.toLowerCase().contains(signoff)) {
                 Writer.println(name + ": " + response);
                 done = true;
             }

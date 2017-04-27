@@ -121,8 +121,8 @@ public class Player {
                 }
                 
                 if (!found) {
-                     theItem = ingredient.split(1);
-                     inventory.add(theItem);
+                    theItem = ingredient.split(1);
+                    inventory.add(theItem);
                 }
             }
             else {

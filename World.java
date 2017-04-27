@@ -118,7 +118,7 @@ public class World {
         Room northwestRoad = new Room("Northwest Road", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the west and east.");
         Room northMarket = new Room("North Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The town square opens up to the south, and the street continues to the north.");
         Room townSquare = new Room("Town Square", "You are in an especially lively part of town.  A large fountain spouts water in the center of the square.  A merchant caravan is taking a rest by it, and you see Syl amongst them.  A large building looms in the east, the famous Fairsway Potions.  The district continues to the west, north, and south.");
-        Room potions = new Room("Fairsway Potions", "As you enter, you are roughly shoved aside by a crowd heading out the door.  To the east is the town square, and to the west, you can see the town gate.");
+        Room potionsShop = new Room("Fairsway Potions", "As you enter, you are roughly shoved aside by a crowd heading out the door.  To the east is the town square, and to the west, you can see the town gate.");
         Room southMarket = new Room("South Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The town square opens up to the north, and the street continues to the south.  Fairsway Weapons and Maril’s Apparel are to the west and east, respectively.");
         Room weapons = new Room("Fairsway Weapons", "Glass display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right.  The owner stands behind the counter and greets you when you walk in.  The exit is to the east.");
         Room apparel = new Room("Maril's Apparel", "Brightly colored walls assault your eyes.  Tables are placed sporadically throughout the store, and on them, various styles of shirts and pants are folded in neat squares.  Elegant dresses are displayed on the walls.  Maril, the owner, is arguing with a customer.  The exit is to the west.");
@@ -174,7 +174,7 @@ public class World {
         this.addRoom(northwestRoad);
         this.addRoom(northMarket);
         this.addRoom(townSquare);
-        this.addRoom(potions);
+        this.addRoom(potionsShop);
         this.addRoom(southMarket);
         this.addRoom(weapons);
         this.addRoom(apparel);
@@ -306,11 +306,11 @@ public class World {
         this.createDoor(northMarket, "south", townSquare);
         this.createDoor(townSquare, "north", northMarket);
         
-        this.createDoor(townSquare, "east", potions);
-        this.createDoor(potions, "west", townSquare);
+        this.createDoor(townSquare, "east", potionsShop);
+        this.createDoor(potionsShop, "west", townSquare);
         
-        this.createDoor(potions, "east", frontOfBridge);
-        this.createDoor(frontOfBridge, "west", potions);
+        this.createDoor(potionsShop, "east", frontOfBridge);
+        this.createDoor(frontOfBridge, "west", potionsShop);
         
         this.createDoor(townSquare, "west", gate);
         this.createDoor(gate, "east", townSquare);
