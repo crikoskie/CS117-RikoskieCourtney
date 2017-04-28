@@ -192,7 +192,7 @@ public class Game {
                 Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
             }
             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
-                Writer.println("I don't mind a little mischief, but that sword doesn't leave this store.");
+                Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
             }
             else {                               
                 Room newRoom = doorway.getDestination();                    
@@ -1034,9 +1034,25 @@ public class Game {
                     }
                     else if (npcItem.getWeight() + player.getTotalWeight() < Player.MAX_WEIGHT) {
                         if (character.isTradeItem(itemName)) {
-                            player.addToInventory(npcItem);
-                            player.removeItem(itemName);
-                            Writer.println(character.getTradeMessage());
+                            if (character.getName().equals("Forest Guardian")) {
+                                Item tradeItem = character.getTradeItem(itemName);
+                                
+                                if (tradeItem instanceof PotionContainer) {
+                                    PotionContainer potionContainer = (PotionContainer)tradeItem;
+                                    Potion potion = potionContainer.getPotion();
+                                    
+                                    if (potion.getName().equals("unknown potion")) {
+                                        player.addToInventory(npcItem);
+                                        player.removeItem(itemName);
+                                        Writer.println(character.getTradeMessage());
+                                    }
+                                }
+                            }
+                            else {
+                                player.addToInventory(npcItem);
+                                player.removeItem(itemName);
+                                Writer.println(character.getTradeMessage());
+                            }
                         }
                         else {
                             Writer.println("They don't want to trade for that.");

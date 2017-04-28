@@ -125,4 +125,27 @@ public class Character {
     public void setTradeMessage(String theMessage) {
         tradeMessage = theMessage;
     }
+    
+    /**
+     * Gets the specified trade item.
+     * 
+     * @param theName The name of the trade item.
+     * @return The specified trade item.
+     */
+    public Item getTradeItem(String theName) {
+        Iterator<Item> iter = tradeItems.iterator();
+        Item item = null;
+        boolean found = false;
+        
+        while (!found && iter.hasNext()) {
+            Item current = iter.next();
+            String currentName = current.getName();
+            
+            if (theName.equals(currentName)) {
+                item = current;
+            }
+        }
+        
+        return item;
+    }
 }

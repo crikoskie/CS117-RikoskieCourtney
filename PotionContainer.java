@@ -32,7 +32,6 @@ public class PotionContainer extends Container implements Emptiable {
         
         String potionName = potion.getName();
         removeItem(potionName);
-        potion = null;
         
         return result;
     }
@@ -71,5 +70,26 @@ public class PotionContainer extends Container implements Emptiable {
         }
         
         return result;
+    }
+    
+    /**
+     * Removes the potion from the contianer.
+     *
+     * @param thePotion The name of the potion to be removed.
+     */
+    public Item removeItem(String thePotion) {
+        Item potionRemoved = potion;
+        potion = null;
+        super.removeItem(thePotion);
+        return potionRemoved;
+    }
+    
+    /**
+     * Gets the potion within the container.
+     * 
+     * @return The potion within the container.
+     */
+    public Potion getPotion() {
+        return potion;
     }
 }

@@ -389,13 +389,17 @@ public class World {
         Book wardBook = new Book("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36, "Table of Contents\n\n Your master has circled some of the items in the table.  They are:\n");
         PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 129); 
         PotionContainer vial = new PotionContainer("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
+        PotionContainer phial = new PotionContainer("phial", "The glass is a deep red.  Master puts potions that are going to be sold in bottles like these.", 0, 3);
         Room cellar = getRoom("Cellar");
         cellar.addItem(wardBook);
         cellar.addItem(cauldron);
         cellar.addItem(vial);
-        
+        cellar.addItem(phial);
+        tradeItems.add(vial);
+        tradeItems.add(phial);
+
         Door yardToCellar = backyard.getExit("down");
-        yardToCellar.setLocked(true);
+//         yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
@@ -429,7 +433,6 @@ public class World {
         Potion duplication = new Potion("duplication potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
         Potion remover = new Potion("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
         Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
-        tradeItems.add(unknown);
         
         Ingredient eppeth = new Ingredient("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2, 10);
         Ingredient riverCress = new Ingredient("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2, 10);
@@ -471,9 +474,6 @@ public class World {
         unknown.addIngredient(ashClove);
         unknown.addIngredient(eppeth);
         unknown.addIngredient(wratagrass);
-        
-        Room fairy = getRoom("Fairy Herbs");
-        fairy.addItem(orreamin);
         
         notes.addPage("shrinking potion", shrinking.toString());
         notes.addPage("duplication potion", duplication.toString());
@@ -630,7 +630,7 @@ public class World {
             else if (itemName.equals("broadsword")) {
                 syl.addTradeItem(current);
             }
-            else if (itemName.equals("unknown potion")) {
+            else if (itemName.equals("vial") || itemName.equals("phial")) {
                 guardian.addTradeItem(current);
             }
             else if (itemName.equals("gold")) {

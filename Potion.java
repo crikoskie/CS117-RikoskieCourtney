@@ -178,14 +178,16 @@ public class Potion extends Item implements Makeable, Useable {
     public String use(Player player, Room room, Item theItem, World world) {
         String result = "You used the " + getName() + ".";
         String itemName = theItem.getName();
-        Container container = null;
+        Container theContainer = null;
 
         if (room.isInRoomContainer(getName())) {
-            container = room.getContainer(itemName);
+            theContainer = room.getContainer(itemName);
         }
         if (player.isInInventoryContainer(getName())) {
-            container = player.getContainer(itemName);
+            theContainer = player.getContainer(itemName);
         }
+        
+        PotionContainer container = (PotionContainer)theContainer;
         
         switch (getName()) {
             case "shrinking potion":
@@ -195,7 +197,7 @@ public class Potion extends Item implements Makeable, Useable {
                 else if (itemName.equals("empty cauldron")) {
                     result = "You don't want to lessen the amount of potion you are able to make.";
                 }
-                else if (itemName.equals("vial")) {
+                else if (itemName.equals("vial") || itemName.equals("phial")) {
                     result = "You don't want to lessen the amount of potion you are able to carry around.";
                 }
                 else if (itemName.equals("jewelry box") || itemName.equals("cellar key") || itemName.equals("book on warding and barriers")) {
@@ -217,7 +219,7 @@ public class Potion extends Item implements Makeable, Useable {
                 break;
             case "duplication potion":                
                 if (!(itemName.equals("shed") || itemName.equals("cat"))) {
-                    Item item = new Item("duplicate" + theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
+                    Item item = new Item("duplicate " + theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
                     result += "\n\nA new " + itemName + " appeared in front of you.";
                     room.addItem(item);
                     
@@ -226,6 +228,7 @@ public class Potion extends Item implements Makeable, Useable {
                         syl.addTradeItem(item);
                     }
                     
+                    potionContainer = null;
                     container.removeItem(getName());
                 }
                 else {
@@ -241,13 +244,15 @@ public class Potion extends Item implements Makeable, Useable {
             case "revealing potion":
                 if (!(itemName.equals("barrier rune"))) {
                     result += "\n\nIt doesn't seem to do anything.";
+                    potionContainer = null;
+                    container.removeItem(getName());
                 }
                 else {
                     Room clearing = world.getRoom("Clearing");
                     clearing.removeItem("hidden barrier rune");
                     
                     result += "\n\nIn a quick flash, another rune appears next to the old one.  It burns up into nothing.";
-                    
+                    potionContainer = null;
                     container.removeItem(getName());
                 }
         }
