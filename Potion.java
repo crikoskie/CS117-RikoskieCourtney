@@ -74,13 +74,14 @@ public class Potion extends Item implements Makeable, Useable {
         Iterator<Ingredient> firstIter = ingredients.iterator();
 
         while (firstIter.hasNext() && allFound == true) {
-            String itemName = firstIter.next().getName();
+            String ingredientName = firstIter.next().getName();
+            found = false;
 
-            if (player.isInInventory(itemName) || room.isInRoom(itemName)) {
+            if (player.isInInventory(ingredientName) || room.isInRoom(ingredientName)) {
                 found = true;
             }
             else if (container != null) {
-                if (container.isInContainer(itemName)) {
+                if (container.isInContainer(ingredientName)) {
                     found = true;
                 }
             }
@@ -99,25 +100,28 @@ public class Potion extends Item implements Makeable, Useable {
             while (secondIter.hasNext()) {
                 Ingredient current = secondIter.next();
                 Item ingredient = null;
-                String itemName = current.getName();
+                String ingredientName = current.getName();
 
-                result += "      " + itemName;
+                result += "      " + ingredientName;
 
-                if (player.isInInventory(itemName)) {
-                    ingredient = player.getItem(itemName);
+                if (player.isInInventory(ingredientName)) {
+                    ingredient = player.getItem(ingredientName);
                 }
-                else if (room.isInRoom(itemName)) {
-                    ingredient = room.getItem(itemName);
+                else if (room.isInRoom(ingredientName)) {
+                    ingredient = room.getItem(ingredientName);
                 }
-                else if (container.isInContainer(itemName)) {
-                    ingredient = container.getItem(itemName);
+                else {
+                    if (container != null) {
+                        if (container.isInContainer(ingredientName)) {
+                            ingredient = container.getItem(ingredientName);
+                        }
+                    }
                 }
 
                 Ingredient anIngredient = (Ingredient)ingredient;
                 anIngredient.setNumberInGroup(anIngredient.getNumberInGroup() - 1);
 
                 int numberInGroup = anIngredient.getNumberInGroup();
-                String ingredientName = ingredient.getName();
 
                 if (numberInGroup == 0) {
                     if (player.isInInventory(ingredientName)) {
@@ -132,6 +136,7 @@ public class Potion extends Item implements Makeable, Useable {
                 }
             }
 
+            potionContainer = cauldron;
             cauldron.addPotion(this);
             made = true;
         }
@@ -170,10 +175,18 @@ public class Potion extends Item implements Makeable, Useable {
      * @param world The world.
      * @return Whether the potion was successfully used on the item.
      */
-    public String use(Room room, Item theItem, World world) {
+    public String use(Player player, Room room, Item theItem, World world) {
         String result = "You used the " + getName() + ".";
         String itemName = theItem.getName();
+        Container container = null;
 
+        if (room.isInRoomContainer(getName())) {
+            container = room.getContainer(itemName);
+        }
+        if (player.isInInventoryContainer(getName())) {
+            container = player.getContainer(itemName);
+        }
+        
         switch (getName()) {
             case "shrinking potion":
                 if (theItem instanceof Ingredient) {
@@ -198,6 +211,8 @@ public class Potion extends Item implements Makeable, Useable {
                     double weight = theItem.getWeight();
                     theItem.setWeight(weight / 4);
                     theItem.setActive(1);
+                    potionContainer = null;
+                    container.removeItem(getName());
                 }
                 break;
             case "duplication potion":                
@@ -210,6 +225,8 @@ public class Potion extends Item implements Makeable, Useable {
                         Character syl = world.getCharacter("Syl");
                         syl.addTradeItem(item);
                     }
+                    
+                    container.removeItem(getName());
                 }
                 else {
                     result = "You probably shouldn't use a duplication potion on that.  It's asking for trouble.";
@@ -230,6 +247,8 @@ public class Potion extends Item implements Makeable, Useable {
                     clearing.removeItem("hidden barrier rune");
                     
                     result += "\n\nIn a quick flash, another rune appears next to the old one.  It burns up into nothing.";
+                    
+                    container.removeItem(getName());
                 }
         }
 

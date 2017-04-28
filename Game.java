@@ -169,62 +169,59 @@ public class Game {
             // Try to leave current.
             Door doorway = null;
             doorway = currentRoom.getExit(direction);
-
+            Room weapons = world.getRoom("Fairsway Weapons");
+            Room clearing = world.getRoom("Clearing");
+            
             if (doorway == null) {
                 Writer.println("There is no door!");
             } 
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-            else {                 
-                if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
-                    Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
-                }
-                else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
-                    Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
-                }
-                else {                    
-                    Room newRoom = doorway.getDestination();                    
-                    player.setCurrentRoom(newRoom);          
+            else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
+                Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+                Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+                Writer.println();
+                        
+                wantToContinue = false;
+            }
+            else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+                Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+            }
+            else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+                Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+            }
+            else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
+                Writer.println("I don't mind a little mischief, but that sword doesn't leave this store.");
+            }
+            else {                               
+                Room newRoom = doorway.getDestination();                    
+                player.setCurrentRoom(newRoom);          
                     
-                    if (newRoom.getName().equals("South Path") && (player.isInInventory("illuminated bulb") || newRoom.isInRoom("illuminated bulb"))) {
-                        newRoom.setActive(1);
-                    }
-                    
-                    Room weapons = world.getRoom("Fairsway Weapons");
-                    
-                    if (newRoom.getName().equals("Welcome to the Citizen District") && !weapons.isInRoom("broadsword")) {
-                        weapons.removeCharacter("Tave");
-                        
-                        Room taveHouse = world.getRoom("Tave's House");
-                        Character tave = world.getCharacter("Tave");
-                        taveHouse.addCharacter(tave);
-                        
-                        Conversation taveSecondCon = new Conversation("Tave", "I don't feel like talking right now");
-                        taveSecondCon.addReply("hi", "Someone stole my broadsword.\n\n\tA: I'm sorry\n\tB: Who would do that?\n");
-                        taveSecondCon.addReply("hia", "Faye, I--I don't feel like talking right now.");
-                        taveSecondCon.addReply("hib", "Faye, I--I don't feel like talking right now.");
-                        
-                        tave.setResponses(taveSecondCon);
-                        taveHouse.setActive(1);
-                    }
-
-                    Room clearing = world.getRoom("Clearing");
-
-                    if (newRoom.getName().equals("North Path") && clearing.isInRoom("hidden barrier rune")) {
-                        Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
-                        Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
-                        Writer.println();
-                        
-                        wantToContinue = false;
-                    }
-                    else {
-                        int roomPoints = newRoom.getPoints();
-                        score += roomPoints;
-
-                        printLocationInformation();
-                    }
+                if (newRoom.getName().equals("South Path") && (player.isInInventory("illuminated bulb") || newRoom.isInRoom("illuminated bulb"))) {
+                    newRoom.setActive(1);
                 }
+                    
+                if (newRoom.getName().equals("Welcome to the Citizen District") && !weapons.isInRoom("broadsword")) {
+                    weapons.removeCharacter("Tave");
+                        
+                    Room taveHouse = world.getRoom("Tave's House");
+                    Character tave = world.getCharacter("Tave");
+                    taveHouse.addCharacter(tave);
+                        
+                    Conversation taveSecondCon = new Conversation("Tave", "I don't feel like talking right now");
+                    taveSecondCon.addReply("hi", "Someone stole my broadsword.\n\n\tA: I'm sorry\n\tB: Who would do that?\n");
+                    taveSecondCon.addReply("hia", "Faye, I--I don't feel like talking right now.");
+                    taveSecondCon.addReply("hib", "Faye, I--I don't feel like talking right now.");
+                        
+                    tave.setResponses(taveSecondCon);
+                    taveHouse.setActive(1);
+                }
+                
+                int roomPoints = newRoom.getPoints();
+                score += roomPoints;
+
+                printLocationInformation();
             }
         }
     }
@@ -971,10 +968,7 @@ public class Game {
                             secondItem = player.getItem(response);
                         }
 
-                        Writer.println(potion.use(currentRoom, secondItem, world));
-
-                        String potionName = potion.getName();
-                        container.removeItem(potionName);
+                        Writer.println(potion.use(player, currentRoom, secondItem, world));
                     }
                 }
             }
@@ -1042,7 +1036,7 @@ public class Game {
                         if (character.isTradeItem(itemName)) {
                             player.addToInventory(npcItem);
                             player.removeItem(itemName);
-                            Writer.println("You traded.");
+                            Writer.println(character.getTradeMessage());
                         }
                         else {
                             Writer.println("They don't want to trade for that.");

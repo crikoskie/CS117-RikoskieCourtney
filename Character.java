@@ -15,6 +15,8 @@ public class Character {
     private Item inventory;
     /** The items that the non-player character will trade for. */
     private HashSet<Item> tradeItems;
+    /** The message that will be displayed after a trade has occurred. */
+    private String tradeMessage;
     
     /**
      * Constructs a new Character.
@@ -27,6 +29,7 @@ public class Character {
         responses = theResponses;
         inventory = null;
         tradeItems = new HashSet<Item>();
+        tradeMessage = null;
     }
     
     /**
@@ -103,5 +106,23 @@ public class Character {
      */
     public void addTradeItem(Item theItem) {
         tradeItems.add(theItem);
+    }
+    
+    /**
+     * Gets the trade message.
+     * 
+     * @return The trade message.
+     */
+    public String getTradeMessage() {
+        return tradeMessage;
+    }
+    
+    /**
+     * Sets the trade message.
+     * 
+     * @param theMessage The new trade message.
+     */
+    public void setTradeMessage(String theMessage) {
+        tradeMessage = theMessage;
     }
 }

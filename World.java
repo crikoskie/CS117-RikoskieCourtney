@@ -345,6 +345,7 @@ public class World {
         this.createDoor(mainRoad, "east", library);
         this.createDoor(library, "west", mainRoad);
         
+        // element is 1
         southPath.addDescription("With the illuminated bulb, it is much easier to see.");
         backyard.addDescription("Some of the herbs are starting to look bare.");
         taveHouse.addDescription("");
@@ -414,6 +415,7 @@ public class World {
         Item broadsword = new Item("broadsword", "After the last time, you don't trust yourself to pick up the broadsword without some assistance.  The weight, combined with the fact that it is longer than you are tall, makes it quite unwieldy.", 0, 129);
         Room weapons = getRoom("Fairsway Weapons");
         weapons.addItem(broadsword);
+        tradeItems.add(broadsword);
         
         Item card = new Item("citizenship card", "Providing your name, age, and picture, this card is proof that you are a citizen of Fairsway.  Despite costing you so much gold, it is made up of some kind of flimsy material.  Hopefully, someone has cast some spells on it to prevent its destruction.", 15, 1);
         npcItems.add(card);
@@ -544,9 +546,6 @@ public class World {
         shed.addDescription(shed.getDescription() + "  It doesn't smell like much of anything.");
         cat.addDescription(cat.getDescription() + "  It doesn't smell like much of anything.");
         wardBook.addDescription(wardBook.getDescription() + "  It doesn't smell like much of anything.");
-        
-        // element is 3
-        broadsword.addDescription("You wonder if Tave has noticed its disappearance yet.");
     }
     
     /**
@@ -641,6 +640,12 @@ public class World {
                 fairy.addTradeItem(current);
             }
         }
+        
+        fairy.setTradeMessage("So you're not entirely useless.");
+        guardian.setTradeMessage("You're such a nice child, Faye.");
+        lizard.setTradeMessage("I suppose this is good enough to be my hoard.");
+        official.setTradeMessage("Congratulations, you were accepted! Here you go.");
+        syl.setTradeMessage("I don't know how you were able to convince Tave, but I'm not going to question it. You want the cloth, right? This is more than worth it.");
         
         tave.setResponses(taveCon);
         fairy.setResponses(fairyCon);
