@@ -92,7 +92,7 @@ public class Potion extends Item implements Makeable, Useable {
         }
 
         if (allFound == true) {
-            result = "You made a " + super.getName() + "\n\n";
+            result = "You made a " + super.getName() + ".\n\n";
             result += "To do so, you used:\n";
 
             Iterator<Ingredient> secondIter = ingredients.iterator();
@@ -181,10 +181,10 @@ public class Potion extends Item implements Makeable, Useable {
         Container theContainer = null;
 
         if (room.isInRoomContainer(getName())) {
-            theContainer = room.getContainer(itemName);
+            theContainer = room.getContainer(getName());
         }
         if (player.isInInventoryContainer(getName())) {
-            theContainer = player.getContainer(itemName);
+            theContainer = player.getContainer(getName());
         }
         
         PotionContainer container = (PotionContainer)theContainer;
@@ -213,8 +213,8 @@ public class Potion extends Item implements Makeable, Useable {
                     double weight = theItem.getWeight();
                     theItem.setWeight(weight / 4);
                     theItem.setActive(1);
+                    container.empty();
                     potionContainer = null;
-                    container.removeItem(getName());
                 }
                 break;
             case "duplication potion":                
@@ -228,8 +228,8 @@ public class Potion extends Item implements Makeable, Useable {
                         syl.addTradeItem(item);
                     }
                     
+                    container.empty();
                     potionContainer = null;
-                    container.removeItem(getName());
                 }
                 else {
                     result = "You probably shouldn't use a duplication potion on that.  It's asking for trouble.";
@@ -244,17 +244,18 @@ public class Potion extends Item implements Makeable, Useable {
             case "revealing potion":
                 if (!(itemName.equals("barrier rune"))) {
                     result += "\n\nIt doesn't seem to do anything.";
+                    container.empty();
                     potionContainer = null;
-                    container.removeItem(getName());
                 }
                 else {
                     Room clearing = world.getRoom("Clearing");
                     clearing.removeItem("hidden barrier rune");
                     
                     result += "\n\nIn a quick flash, another rune appears next to the old one.  It burns up into nothing.";
+                    container.empty();
                     potionContainer = null;
-                    container.removeItem(getName());
                 }
+                break;
         }
 
         return result;

@@ -349,6 +349,7 @@ public class World {
         southPath.addDescription("With the illuminated bulb, it is much easier to see.");
         backyard.addDescription("Some of the herbs are starting to look bare.");
         taveHouse.addDescription("");
+        weapons.addDescription("It seems that Tave has left. The sign on the front door has been changed to say 'closed.'");
     }
     
     /**
@@ -572,19 +573,19 @@ public class World {
         
         Character tave = new Character("tave", taveCon);
         Character fairy = new Character("fairy", fairyCon);
-        Character guardian = new Character("forest Guardian", guardianCon);
+        Character guardian = new Character("forest guardian", guardianCon);
         Character lizard = new Character("lizard", lizardCon);
         Character guardsman = new Character("guardsman", guardsmanCon);
         Character official = new Character("official camret", officialCon);
         Character syl = new Character("syl", sylCon);
          
-        characters.put("Tave", tave);
-        characters.put("Fairy", fairy);
-        characters.put("Forest Guardian", guardian);
-        characters.put("Lizard", lizard);
-        characters.put("Guardsman", guardsman);
-        characters.put("Official Camret", official);
-        characters.put("Syl", syl);
+        characters.put("tave", tave);
+        characters.put("fairy", fairy);
+        characters.put("forest guardian", guardian);
+        characters.put("lizard", lizard);
+        characters.put("guardsman", guardsman);
+        characters.put("official camret", official);
+        characters.put("syl", syl);
         
         Room lizardRoom = getRoom("Lizard");
         lizardRoom.addCharacter(lizard);        
@@ -773,11 +774,11 @@ public class World {
         officialCon.addReply("hiaaaa", "It's nothing dangerous, I promise. But, the thing is, you still need to pay for it. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
         officialCon.addReply("hiaaaaa", "Well, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
         officialCon.addReply("hiaaaab", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
-        officialCon.addReply("hiaab", "Ah, sorry. It's not really a judgement per se. The town was enchanted hundreds of years ago to be somewhat sentient. It looks to see if it views you as one of its children.\n\n\tA: I don't want to do that.\n\tOkay, cast the spell.\n");
-        officialCon.addReply("hiaaba", "I understand. Thank you for visiting Fairsway Government Office.");
-        officialCon.addReply("hiaabb", "Well, ah, you kind of need to pay for the spell. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
-        officialCon.addReply("hiaabba", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
-        officialCon.addReply("hiaabbb", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaaab", "Ah, sorry. It's not really a judgement per se. The town was enchanted hundreds of years ago to be somewhat sentient. It looks to see if it views you as one of its children.\n\n\tA: I don't want to do that.\n\tOkay, cast the spell.\n");
+        officialCon.addReply("hiaaaba", "I understand. Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaaabb", "Well, ah, you kind of need to pay for the spell. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
+        officialCon.addReply("hiaaabba", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
+        officialCon.addReply("hiaaabbb", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
         officialCon.addReply("hiaab", "Master...? Well, I mean, it does cost a small fee. Do you have money?\n\n\tA: Yes!\n\tB: No.\n");
         officialCon.addReply("hiaaba", "Then, just give it to me, and we'll get started! Oh, and I forgot: Thank you for visiting Fairsway Government Office.");
         officialCon.addReply("hiaabb", "I'm sorry. I can't help you without payment. But, um, thank you for visiting Fairsway Government Office.");
@@ -806,9 +807,9 @@ public class World {
         sylCon.addReply("hibb", "Maybe not everything, but I did get my hands on quite the beauty.\n\n\tA: What is it?\n\tB: Can't say I care.\n");
         sylCon.addReply("hibba", "Verian cloth, made of the softest known material.\n\n\tA: That doesn't very interesting.\n\tB: Can I touch it?\n");
         sylCon.addReply("hibbaa", "Then, I guess I'll go tell some other kid about it. Bye-bye, little lady.");
-        sylCon.addReply("hibbb", "Sorry, but it's under lock and key. Even I only got to feel it for a split second. You'd have to ask the buyer.\n\n\tA: Who's buying it?\n\tB: How stingy.\n");
-        sylCon.addReply("hibbba", "No one yet. We're going to be heading off to the captial soon. And speaking of, I've got things to pack up. Bye-bye, little lady.");
-        sylCon.addReply("hibbbb", "Not my rules. Now, sorry to cut this shory, but I've gotta get moving. Bye-bye, little lady.");
+        sylCon.addReply("hibbab", "Sorry, but it's under lock and key. Even I only got to feel it for a split second. You'd have to ask the buyer.\n\n\tA: Who's buying it?\n\tB: How stingy.\n");
+        sylCon.addReply("hibbaba", "No one yet. We're going to be heading off to the captial soon. And speaking of, I've got things to pack up. Bye-bye, little lady.");
+        sylCon.addReply("hibbabb", "Not my rules. Now, sorry to cut this shory, but I've gotta get moving. Bye-bye, little lady.");
         sylCon.addReply("hibbb", "Wow, shot right through the heart. It seems I need to be more cautious around you. Bye-bye, little lady.");
         sylCon.addReply("hia", "Your favorite? That's quite the honor.\n\n\tA: When I ask you things, you don't yell at me.\n\tB: Don't get to overconfident. Falden is catching up to you.\n");
         sylCon.addReply("hiaa", "There's just getting cranky in their old age. You're no trouble. But, you know, I should be packing up, so bye-bye, little lady.");

@@ -178,22 +178,22 @@ public class Game {
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-            else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
-                Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
-                Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
-                Writer.println();
-                        
-                wantToContinue = false;
-            }
-            else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
-                Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
-            }
-            else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
-                Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
-            }
-            else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
-                Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
-            }
+//             else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
+//                 Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+//                 Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+//                 Writer.println();
+//                         
+//                 wantToContinue = false;
+//             }
+//             else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+//                 Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+//             }
+//             else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+//                 Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+//             }
+//             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
+//                 Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
+//             }
             else {                               
                 Room newRoom = doorway.getDestination();                    
                 player.setCurrentRoom(newRoom);          
@@ -201,12 +201,17 @@ public class Game {
                 if (newRoom.getName().equals("South Path") && (player.isInInventory("illuminated bulb") || newRoom.isInRoom("illuminated bulb"))) {
                     newRoom.setActive(1);
                 }
+                if (newRoom.getName().equals("Alley") && player.isInInventory("illuminated bulb")) {
+                    Item bulb = player.removeItem("illuminated bulb");
+                    currentRoom.addItem(bulb);
+                    Writer.println("You leave the illuminated bulb behind.\n");
+                }
                     
                 if (newRoom.getName().equals("Welcome to the Citizen District") && !weapons.isInRoom("broadsword")) {
-                    weapons.removeCharacter("Tave");
+                    weapons.removeCharacter("tave");
                         
                     Room taveHouse = world.getRoom("Tave's House");
-                    Character tave = world.getCharacter("Tave");
+                    Character tave = world.getCharacter("tave");
                     taveHouse.addCharacter(tave);
                         
                     Conversation taveSecondCon = new Conversation("Tave", "I don't feel like talking right now");
@@ -216,6 +221,7 @@ public class Game {
                         
                     tave.setResponses(taveSecondCon);
                     taveHouse.setActive(1);
+                    weapons.setActive(1);
                 }
                 
                 int roomPoints = newRoom.getPoints();
@@ -1006,7 +1012,7 @@ public class Game {
      */
     private void trade(Command command) {
         if (!command.hasSecondWord()) {
-            Writer.println("Who do you want to trade with?");
+            Writer.println("What do you want to trade?");
         }
         else {
             String itemName = command.getRestOfLine();
@@ -1034,24 +1040,31 @@ public class Game {
                     }
                     else if (npcItem.getWeight() + player.getTotalWeight() < Player.MAX_WEIGHT) {
                         if (character.isTradeItem(itemName)) {
-                            if (character.getName().equals("Forest Guardian")) {
+                            if (character.getName().equals("forest guardian")) {
                                 Item tradeItem = character.getTradeItem(itemName);
                                 
                                 if (tradeItem instanceof PotionContainer) {
                                     PotionContainer potionContainer = (PotionContainer)tradeItem;
                                     Potion potion = potionContainer.getPotion();
                                     
-                                    if (potion.getName().equals("unknown potion")) {
-                                        player.addToInventory(npcItem);
-                                        player.removeItem(itemName);
-                                        Writer.println(character.getTradeMessage());
+                                    if (potion != null) {
+                                        if (potion.getName().equals("unknown potion")) {
+                                            player.addToInventory(npcItem);
+                                            player.removeItem(itemName);
+                                            character.setInventory(null);
+                                            Writer.println(character.getName() + ": " + character.getTradeMessage());
+                                        }
+                                    }
+                                    else {
+                                        Writer.println("Forest Guardian: I'm sure you know this, but that's the wrong potion.");
                                     }
                                 }
                             }
                             else {
                                 player.addToInventory(npcItem);
                                 player.removeItem(itemName);
-                                Writer.println(character.getTradeMessage());
+                                character.setInventory(null);
+                                Writer.println(character.getName() + ": " + character.getTradeMessage());
                             }
                         }
                         else {
