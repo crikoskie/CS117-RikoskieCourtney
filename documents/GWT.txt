@@ -662,7 +662,7 @@ TRADE Scenario #6: Taking character's item would put player over max weight
 	  and : adding character's item to your inventory would put you over max weight
 	 THEN : appropriate message is displayed (you're carrying too much)
 	 
-Scenario #6: Item is not one that the character will trade for
+TRADE Scenario #7: Item is not one that the character will trade for
 	GIVEN : "trade item" has been entered
 	  and : user has been prompted for who to trade with
 	 WHEN : specified character is in room
@@ -671,7 +671,7 @@ Scenario #6: Item is not one that the character will trade for
 	  and : item is not one that the character will trade for
 	 THEN : appropriate message is displayed (they won't trade)
 	 
-TRADE Scenario #7: Player is not carrying too much
+TRADE Scenario #8: Player is not carrying too much
 	GIVEN : "trade item" has been entered
 	  and : user has been prompted for who to trade with
 	 WHEN : specified character is in room

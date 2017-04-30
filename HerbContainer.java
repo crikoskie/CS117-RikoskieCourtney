@@ -31,33 +31,13 @@ public class HerbContainer extends Container {
     }
     
     /**
-     * Adds the specified item to the herb container.
+     * Adds an ingredient to the herb container.
      * 
-     * @param theItem The item to be added.
-     * @return Whether adding the item was successful.
+     * @param theItem The ingredient to be added.
      */
-    public String addHerb(Item theItem) {
-        String result = "You cannot safely put in any more herbs.";
-        
+    public void addItem(Item theItem) {        
         if (theItem instanceof Ingredient) {
-            Ingredient ingredient = (Ingredient)theItem;
-            int numberInGroup = ingredient.getNumberInGroup();
-            
-            if (herbCounter + numberInGroup < MAX_HERBS) {
-                super.addItem(theItem);
-                result = "Packed.";
-                herbCounter += numberInGroup;
-            }
-            else {
-                int numberToPut = MAX_HERBS - herbCounter;
-                Ingredient put = ingredient.split(numberToPut);
-                if (put.getNumberInGroup() != 0) {
-                    super.addItem(put);
-                }
-                result = "You packed as many as you could.";
-            }
+            super.addItem(theItem);
         }
-        
-        return result;
     }
 }

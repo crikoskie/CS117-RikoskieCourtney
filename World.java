@@ -79,55 +79,57 @@ public class World {
      */
     private void createRooms() {
         // Creating all the rooms.
-        Room frontPorch = new Room("Front Porch", "The porch is small, only about half the length of the actual house, and the worn wood creaks beneath your feet.  There are no furnishings besides an inelegant wooden chair sitting to the left and a sign which hangs on the door.  Behind the chair, a window peers into the living room, but green curtains block the view.  The forest begins down the stairs."); 
-        Room livingRoom = new Room("Living Room", "Curtains hang over the window, making it a bit difficult to see.  The fireplace is unlit, but the warm weather outside makes it feel temperate.  Out the door to the south is the front porch.  To the north is the downstairs hall.");
-        Room dHall = new Room("Downstairs Hall", "A painting of a sunset is on the wall to your left.  To the south is the living room.  Light shines from the kitchen to the east.  There are stairs to the second floor.");
-        Room kitchen = new Room("Kitchen", "The counter is cluttered with pots and pans, and a head of garlic sits amidst them.  Light streams in through uncovered windows.  The downstairs hall is to the west.  Out the door to the north is the back porch.");
-        Room backPorch = new Room("Back Porch", "The wood creaks under your feet.  Down the stairs is the backyard.  Through the door is the back porch.");
-        Room backyard = new Room("Backyard", "Rows of plants are spread along the yard, convenient walking paths among them.  A shed stands at the back.  A locked hatch is by the stairs.");
-        Room cellar = new Room("Cellar", "Fizzling cauldrons sit on tables which line the walls.  Above your head, a shining plant bulbs provide you the ability to see.  A single empty cauldron is by the far wall.  A book on warding and barriers sits beside it.  There are stairs up to the first floor.");
-        Room landing = new Room("Second Floor Landing", "A small cabinet sits on the landing.  There are stairs to the downstairs hall.  To the south is the upstairs hall.  Your bedroom is to the east.");
-        Room yourRoom = new Room("Your Bedroom", "Your bed is still unmade.  On your desk is your potion notes, containing information on the ones you know how to make perfectly.  Your herb pouch hangs off your chair.  A jar peaks out from underneath your bed.  The second floor landing is to the west.");
-        Room uHall = new Room("Upstairs Hall", "A railing lines one side of the hall.  The closed door of the bathroom is on the other.  To the north is the second floor landing.  You can see your master’s bedroom to the south.");
-        Room masterRoom = new Room("Master's Bedroom", "The bedroom is pristine, unlike your own.  A jewelry box looks out of place, sitting askew on the armoire.  The upstairs hall is to the north.");
-        Room northPath = new Room("North Path", "You stand on a trodden down path.  There are stairs up to the front porch, and through the trees to the south is a clearing.");
-        Room clearing = new Room("Clearing", "You enter a grassy clearing in the trees.  There are paths to the north, south, east, and west.");
-        Room westPath = new Room("West Path", "You stand on a trodden down path.  Through the trees to the east is a clearing.  The path opens up to a field of rare herbs to the west.  To the southwest is a small patch of flowers.");
-        Room herbs = new Room("Fairy Herbs", "There are enough rare herbs to fill your pouch a thousand times over.  To the east is a path.  To the south is a small patch of flowers. ");
-        Room flower = new Room("Flower Patch", "Flowers add a bit of color among the green and brown of the forest.  As far as you know, they are of no use in potion-making, but they are pretty.  To the northeast is a path.  To the west is the guardian of the forest");
-        Room guardian = new Room("Forest Guardian", "There is a man lounging on a chair made out wood.  To the west is a patch of flowers.");
-        Room eastPath = new Room("East Path", "You stand on a trodden down path.  Through the trees to the west is a clearing.  To the east is an odd lizard.");
-        Room lizard = new Room("Lizard", "A lizard is basking on a stump.  Its body is wrapped around a shining bulb.  To the west is a path.");
-        Room southPath = new Room("South Path", "You think that you stand on a trodden down path.  It is too dark to see.  Through the trees to the north is a clearing.  ");
-        Room alley = new Room("Alley", "The narrow alley makes you feel a bit anxious.  To the north is a path.  If you go south, the alley opens up into a stone road.");
-        Room frontOfAlley = new Room("In Front of Alley", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the south, east, and west.  The alley leading to the forest is to the north.");
-        Room northeastRoad = new Room("Northeast Road", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the east and west.");
-        Room northeastCorner = new Room("Northeast Corner", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the south and west.");
-        Room northeastMarket = new Room("Northeast Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the south and north.");
-        Room frontOfBridge = new Room("In Front of Bridge", "The noise of the Merchant District has quieted down, and less people surround you.  A guard is standing watch.  The district continues to the south and north.  To the west, Fairsway Potions looms.  The bridge to the Citizen District is to the east.");
-        Room southeastMarket = new Room("Southeast Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the south and north.");
-        Room southeastCorner = new Room("Southeast Corner", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the east and north.");
-        Room southeastRoad = new Room("Southeast Road", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the west and east.");
-        Room frontOfOffice = new Room("In Front of Government Office", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the west, north, and east.  Amongst the citizen-owned businesses to the south is the government office.");
-        Room southwestRoad = new Room("Southwest Road", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the north and south.");
-        Room southwestCorner = new Room("Southwest Corner", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the north and east.");
-        Room southwestMarket = new Room("Southwest Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the west and east.");
-        Room gate = new Room("In Front Of Town Gate", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the east, north, and south. ");
-        Room northwestMarket = new Room("Northwest Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the north and south.");
-        Room northwestCorner = new Room("Northwest Corner", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the west and south.");
-        Room northwestRoad = new Room("Northwest Road", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The district continues to the west and east.");
-        Room northMarket = new Room("North Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The town square opens up to the south, and the street continues to the north.");
-        Room townSquare = new Room("Town Square", "You are in an especially lively part of town.  A large fountain spouts water in the center of the square.  A merchant caravan is taking a rest by it, and you see Syl amongst them.  A large building looms in the east, the famous Fairsway Potions.  The district continues to the west, north, and south.");
-        Room potionsShop = new Room("Fairsway Potions", "As you enter, you are roughly shoved aside by a crowd heading out the door.  To the east is the town square, and to the west, you can see the town gate.");
-        Room southMarket = new Room("South Market", "You are in the midst of Fairsway’s Merchant District.  People from all around the country bustle along and an assortment of businesses display their wares.  The town square opens up to the north, and the street continues to the south.  Fairsway Weapons and Maril’s Apparel are to the west and east, respectively.");
-        Room weapons = new Room("Fairsway Weapons", "Glass display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right.  The owner stands behind the counter and greets you when you walk in.  The exit is to the east.");
-        Room apparel = new Room("Maril's Apparel", "Brightly colored walls assault your eyes.  Tables are placed sporadically throughout the store, and on them, various styles of shirts and pants are folded in neat squares.  Elegant dresses are displayed on the walls.  Maril, the owner, is arguing with a customer.  The exit is to the west.");
-        Room office = new Room("Government Office", "Compared to the shops, this place is void of people.  Two men whisper to each other harshly in a corner.  There is no line in order before the main desk.  A lady sits behind it, resting her head on her cheek and looking bored.  The exit is to the north.");
-        Room bridge = new Room("Bridge", "You stand over a calm river.  The Merchant District is to the east, and the Citizen District is to the west.");
-        Room welcome = new Room("Welcome to the Citizen District", "A sign hangs across two short, adjacent poles.  The main road is to the east.  The bridge heading to the Merchant District is to the east.");
-        Room mainRoad = new Room("Main Road", "Plain houses dot the street, eerily similar in their appearances. Few personal additions by the owners set them apart.  The library is to the east, Tave’s house is to the north, and the exit to the District is to the west.");
-        Room taveHouse = new Room("Tave's House", "There is a banner set up along the path toward the porch.  The main road is to the south.");
-        Room library = new Room("Library", "You are overwhelmed by the size and number of bookshelves.  Your cat sits upon one of the tables, licking it paw.  The main road is to the west.");
+        String marketDescription = "People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.";
+        
+        Room frontPorch = new Room("Front Porch", "The porch is small, only about half the length of the actual house, and the worn wood creaks beneath your feet.  There are no furnishings besides an inelegant wooden chair.  Behind it, a window peers into the living room, but green curtains block the view.  A sign hangs on the door."); 
+        Room livingRoom = new Room("Living Room", "The lighting is dim, the curtains over the window making it difficult to see.  Since it’s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.");
+        Room dHall = new Room("Downstairs Hall", "There’s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and it’s been there for as long as you can remember.  You think Master called it abstract.");
+        Room kitchen = new Room("Kitchen", "Compared to the orderliness of the rest of the house, the kitchen is quite messy.  Dirty pots and pans clutter the counter space, still not washed and put away since breakfast.  Master did leave in a hurry.  It must have pained her to leave any part of her house in this state.");
+        Room backPorch = new Room("Back Porch", "This is where you usually do your studies.  Your comfy chair is nestled in the corner, a table to sit a drink on next to it.  There is a nice view of the backyard, and you can smell the flowers from the garden.");
+        Room backyard = new Room("Backyard", "The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.");
+        Room cellar = new Room("Cellar", "Over twenty cauldrons sit atop the tables lining the walls.  Master has left several potions brewing, and one has overflowed, coating the floor in a gray mist.  Above your head, sun blossom bulbs shine with bright light.");
+        Room landing = new Room("Second Floor Landing", "A small cabinet sits on the landing, and another painting hangs above it.  This one depicts the founder of the nearby town.  She wears her iconic armor and stands proudly, sword in hand.");
+        Room yourRoom = new Room("Your Bedroom", "Your bed is still unmade, something you should fix before Master gets back.  On your desk is a mess of pins and pens, all of which you found on your last trip to town.  People should be more careful with their belongings, you feel.    ");
+        Room uHall = new Room("Upstairs Hall", "While one side of the hall is lined by a railing, the other is decorated with pressed leaves.  They are carefully arranged in their frames, and the orange, greens, and browns add some much needed color to the house.  In the midst of the leaves, there is a closed door leading to the bathroom. ");
+        Room masterRoom = new Room("Master's Bedroom", "It’s been months since you last stepped foot in here, but you find that nothing has changed.  The room reflects Master’s personality.  The bed, desk, and armoire are all the same shade of brown, and you bet that there is not even a molecule of air out of place.");
+        Room northPath = new Room("North Path", "Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.");
+        Room clearing = new Room("Clearing", "For some reason, no trees have grown in this area.  You rest for a moment, a nearby boulder making a good seat, and listen to the grass rustle in the light breeze.");
+        Room westPath = new Room("West Path", "Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.");
+        Room herbs = new Room("Fairy Herbs", "A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that you’re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.");
+        Room flower = new Room("Flower Patch", "It is rare for flowers to grow around the cottage without sapient aid, but all of them seem to have concentrated here.  While they are pretty, as far as you know, they are of no use in potion-making.  ");
+        Room guardian = new Room("Forest Guardian", "There is a creature draped across a wooden throne.  He looks human, but you know he is not.  You’ve met him once before when Master dragged you along to pay respects.  He seems to be looking at something above your head, and you wonder if he knows you’re here.  The forest guardian smiles.");
+        Room eastPath = new Room("East Path", "Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.");
+        Room lizard = new Room("Lizard", "Sun shines through the canopy, and you see a lizard basking on a rock, its small green body curled around a sun blossom bulb.  It looks up at your approach.  You think you hear is mutter something.");
+        Room southPath = new Room("South Path", "Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.  It is much darker than it should be here.  The area further along the path looks to be pitch black.");
+        Room alley = new Room("Alley", "Behind you, a door in the town walls vanishes as it were never there.  Garbage has piled up along the sides of the buildings.  If you had time, you might have tried to pick through it for something interesting.");
+        Room frontOfAlley = new Room("In Front of Alley",  marketDescription);
+        Room northeastRoad = new Room("Northeast Road", marketDescription);
+        Room northeastCorner = new Room("Northeast Corner", marketDescription);
+        Room northeastMarket = new Room("Northeast Market", marketDescription);
+        Room frontOfBridge = new Room("In Front of Bridge", "Though there are still a number of businesses around, the crowd has thinned out here, the noise quieting.  A guardsman stands before the bridge, and he brings up his hand to smooth down his lapel several times.  You can feel yourself getting annoyed just watching him.");
+        Room southeastMarket = new Room("Southeast Market", marketDescription);
+        Room southeastCorner = new Room("Southeast Corner", marketDescription);
+        Room southeastRoad = new Room("Southeast Road", marketDescription);
+        Room frontOfOffice = new Room("In Front of Government Office", marketDescription);
+        Room southwestRoad = new Room("Southwest Road", marketDescription);
+        Room southwestCorner = new Room("Southwest Corner", marketDescription);
+        Room southwestMarket = new Room("Southwest Market", marketDescription);
+        Room gate = new Room("In Front Of Town Gate", "It seems that the inflow of traffic has been slowed.  A merchant looks agitated as a guard examines her wares, and the people behind her shuffle about, impatient.");
+        Room northwestMarket = new Room("Northwest Market", marketDescription);
+        Room northwestCorner = new Room("Northwest Corner", marketDescription);
+        Room northwestRoad = new Room("Northwest Road", marketDescription);
+        Room northMarket = new Room("North Market", marketDescription);
+        Room townSquare = new Room("Town Square", "A large fountain marks the center of the Merchant District.  You see Syl next to it, packing some boxes into the back of his cart.  Every time he bends over, his long hair falls in his face.");
+        Room potionsShop = new Room("Fairsway Potions", "No matter which way you look, there’s something potion-related.");
+        Room southMarket = new Room("South Market", marketDescription);
+        Room weapons = new Room("Fairsway Weapons", "‘Open!’ the sign on the glass door cheerily exclaims.  Display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right, and there’s a crack in the floor beneath it.  Tave, the owner, stands behind the counter and greets you when you walk in.  As usual, his face is set in a scowl.");
+        Room apparel = new Room("Maril's Apparel", "Tables are placed without rhyme or reason throughout the store.  On them, various styles of shirts and pants are folded in neat squares.  Elegant dresses are displayed on the walls, which are a pastel pink.  Maril, the owner, is arguing with a customer, her wrinkled hands shaking in anger.  It doesn’t look like she’ll want to talk.");
+        Room office = new Room("Government Office", "After dealing with the crowds for so long, this place is almost eerily silent.  There is no line before the main desk, and a woman sits behind it, resting her head on her cheek and looking bored.  Her nametag says that she’s Official Camret.");
+        Room bridge = new Room("Bridge", "You stand over a calm river.");
+        Room welcome = new Room("Welcome to the Citizen District", "A sign hangs across two short, adjacent poles.  It simply says ‘Welcome to the Citizen District’.");
+        Room mainRoad = new Room("Main Road", "Unlike the merchant side, the path is paved with stone.  The houses all look well cared for.");
+        Room taveHouse = new Room("Tave's House", "There’s no one here.");
+        Room library = new Room("Library", "You’ve never seen so many books in one place, but sadly, you can’t take the time to look around.  Licking his paw with an insulting amount of disinterest, your cat sits upon one of the library tables.");
         
         cellar.setPoints(5);
         northPath.setPoints(5);
@@ -356,15 +358,13 @@ public class World {
      * Creates items in the rooms in which they belong.
      */
     public void createItems() {
-        Item garlic = new Item("head of garlic", "Your nose scrunches from the smell. It seems to be made up of at least ten cloves.", 5, 1.5);
+        Item garlic = new Item("head of garlic", "Your nose scrunches from the smell. It seems to be made up of at least ten cloves.", 0, 1.5);
         Room kitchen = getRoom("Kitchen");
         kitchen.addItem(garlic);
         
-        Ingredient clove = new Ingredient("garlic clove", "It's a clove of garlic.", 0, 0.125, 12);
-        
         HerbContainer pouch = new HerbContainer("herb pouch", "The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.", 5, 2);
         Book notes = new Book("notes", "Recipes for potions are scribbled upon a pile of small loose papers. The handwriting is so messy that it is unreadable to anyone but you.", 5, 4, "There are notes about:\n");
-        Item coins = new Item("coin collection", "One of your cherished possessions, it is a jar filled with currency from far-off lands.  The coins are well-cared-for and shine brightly.", 0, 20);
+        Item coins = new Item("coin collection", "One of your cherished possessions, it is a jar filled with currency from far-off lands.  The coins are well-cared-for and shine brightly.", 10, 20);
         Room yourRoom = getRoom("Your Bedroom");
         yourRoom.addItem(pouch);
         yourRoom.addItem(notes);
@@ -378,8 +378,8 @@ public class World {
         jewelryBox.addItem(cellarKey);
         
         Container shed = new Container("shed", "A wooden shed stands at the end of the backyard.  It is weathered and beaten, looking like it could collapse any second.", 0, 129);
-        Item rune = new Item("barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 0, 0);
-        Item hiddenRune = new Item("hidden barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 15, 0);
+        Item rune = new Item("barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 15, 0);
+        Item hiddenRune = new Item("hidden barrier rune", "An ancient symbol is written upon the paper in ink.  It looks a bit like the silhouette of a frog.", 0, 0);
         Room backyard = getRoom("Backyard");
         backyard.addItem(shed);
         shed.addItem(rune);
@@ -388,7 +388,7 @@ public class World {
         clearing.addItem(hiddenRune);
         
         Book wardBook = new Book("book on warding and barriers", "Recently, you've seen Master flipping through this book with a serious frown.  There is nothing on the dull red cover besides the author's last name.", 5, 36, "Table of Contents\n\n Your master has circled some of the items in the table.  They are:\n");
-        PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables.  Unlike the others in the room, it does not have a brewing potion inside it.", 0, 129); 
+        PotionContainer cauldron = new PotionContainer("empty cauldron", "There is a black cauldron, recently bought, sitting on one of the leftmost tables. It is the one Master usually has you use.", 0, 129); 
         PotionContainer vial = new PotionContainer("vial", "It's a small glass vial, able to hold even the most corrosive of potions.", 0, 3);
         PotionContainer phial = new PotionContainer("phial", "The glass is a deep red.  Master puts potions that are going to be sold in bottles like these.", 0, 3);
         Room cellar = getRoom("Cellar");
@@ -400,17 +400,17 @@ public class World {
         tradeItems.add(phial);
 
         Door yardToCellar = backyard.getExit("down");
-//         yardToCellar.setLocked(true);
+        yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
         cellarToYard.setKey(cellarKey);
         
-        Item gold = new Item("gold", "The small bag is heavy for its size.  The gold inside jingles whenever you move.", 15, 13);
+        Item gold = new Item("gold", "The small bag is heavy for its size.  The gold inside jingles whenever you move.", 10, 13);
         npcItems.add(gold);
         tradeItems.add(gold);
         
-        Item bulb = new Item("illuminated bulb", "It's the bulb of a sun blossom.  As they are native to only the southern part of the country, the lizard must have found one that had fallen off a travelling merchant cart.", 10, 2.5);
+        Item bulb = new Item("illuminated bulb", "It's the bulb of a sun blossom.  As they are native to only the southern part of the country, the lizard must have found one that had fallen off a travelling merchant cart.", 15, 2.5);
         npcItems.add(bulb);
         
         Item cloth = new Item("soft cloth", "Made from the silk of volcanic worms, this cloth is revered as one of the softest that has ever graced the country.  It's rumored that the Duke of Nightwood sold his first child just to be able to touch the shimmering blue fabric.", 10, 16);
@@ -433,7 +433,7 @@ public class World {
         Potion shrinking = new Potion("shrinking potion", "Bubbles float to the surface of the pick liquid.", 10, 7);
         Potion duplication = new Potion("duplication potion", "A dark green smoke rises from the potion of the same color.", 10, 7);
         Potion remover = new Potion("scent remover", "The potion is an unappetizing-looking brown.", 10, 7);
-        Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 0, 7);  
+        Potion unknown = new Potion("unknown potion", "The ominous black of it makes a part of you want to keep it far away from the Guardian.", 10, 7);  
         
         Ingredient eppeth = new Ingredient("eppeth", "Its delicate white leaves tickle your hands.", 0, 0.2, 10);
         Ingredient riverCress = new Ingredient("river cress", "Because they need a lot of water, you find these plants the hardest to care for.", 0, 0.2, 10);
@@ -443,7 +443,7 @@ public class World {
         Ingredient taglisbi = new Ingredient("taglisbi", "The large blue flowers of this bush smell pleasant.  You know how to make very few potions with them as an ingredient, but Master uses them a lot.", 0, 0.2, 10);
         Ingredient inneoShoot = new Ingredient("inneo shoot", "This plant consists of hundreds of fire-red shoots growing in a cluster.  Despite only having one of these in your yard, it takes up about two yous of space.", 0, 0.2, 10);
         Ingredient ashClove = new Ingredient("ash clove", "It is the perfect time to harvest these gray buds from their tree.", 0, 0.2, 10);
-        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 0, 0.2, 1);
+        Ingredient orreamin = new Ingredient("orreamin", "Infused with fairy magic, the buds of the low-growing plant glow under the shade of the trees.", 10, 0.2, 1);
         backyard.addItem(eppeth);
         backyard.addItem(riverCress);
         backyard.addItem(blisterFlower);
@@ -467,7 +467,6 @@ public class World {
         duplication.addIngredient(wratagrass);
         
         remover.addIngredient(wratagrass);
-        remover.addIngredient(clove);
         remover.addIngredient(riverCress);
         
         unknown.addIngredient(taglisbi);
@@ -686,33 +685,33 @@ public class World {
         
         guardianCon.addReply("hi", "Oh, Faye, hello.\n\n\tA: You make me uncomfortable.\tB: Hello, uh, sir.\n\tC: You know my cat, right? Is he is the forest?");
         guardianCon.addReply("hia", "You'll do me a favor, won't you?\n\n\tA: Uh, sure?\n\tB: No?\n\tC: Are we ignoring the uncomfortable thing?\n");
-        guardianCon.addReply("hiaa", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiaa", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hiaaa", "Please do come by again soon.");
         guardianCon.addReply("hiaab", "Please do come by again soon.");
-        guardianCon.addReply("hiab", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiab", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hiaba", "Please do come by again soon.");
         guardianCon.addReply("hiabb", "Please do come by again soon.");
-        guardianCon.addReply("hiac", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiac", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hiaba", "Please do come by again soon.");
         guardianCon.addReply("hiabb", "Please do come by again soon.");
         guardianCon.addReply("hib", "You'll do me a favor, won't you?\n\n\tA: Uh, sure?\n\tB: No?\n\tC: Goodbye, sir.\n");
-        guardianCon.addReply("hiba", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hiba", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hibaa", "Please do come by again soon.");
         guardianCon.addReply("hibab", "Please do come by again soon.");
-        guardianCon.addReply("hibb", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hibb", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hibba", "Please do come by again soon.");
         guardianCon.addReply("hibbb", "Please do come by again soon.");
-        guardianCon.addReply("hibc", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hibc", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hibba", "Please do come by again soon.");
         guardianCon.addReply("hibbb", "Please do come by again soon.");
         guardianCon.addReply("hic", "You'll do me a favor, won't you?\n\n\tA: Uh, sure?\n\tB: No?\n\tC: I, um, asked you a question?\n");
-        guardianCon.addReply("hica", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hica", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hicaa", "Please do come by again soon.");
         guardianCon.addReply("hicab", "Please do come by again soon.");
-        guardianCon.addReply("hicb", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hicb", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hicba", "Please do come by again soon.");
         guardianCon.addReply("hicbb", "Please do come by again soon.");
-        guardianCon.addReply("hicc", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
+        guardianCon.addReply("hicc", "Good. Make me a potion using taglisbi, orreamin, ashClove, eppeth, and wratagrass. We'll call it an unknown potion for simplicity's sake.\n\n\tA: Can you repeat that?\n\tB: What--why?\n");
         guardianCon.addReply("hicba", "Please do come by again soon.");
         guardianCon.addReply("hicbb", "Please do come by again soon.");
         
@@ -747,7 +746,7 @@ public class World {
         lizardCon.addReply("hibba", "I lost them in a tragic accident when I was just a small hatchling. Oh, I'm tearing up. Leave me, small human.");
         lizardCon.addReply("hibbb", "So if you've never heard of something, then it doesn't exist? Is that how it is? Leave me, small human.");
         lizardCon.addReply("hic", "This is my hoard, not whatever a 'sun blossom bulb' is.\n\n\tA: Right, of course, but what if I bring you an even better hoard? Can I have it then?\n\tB: You're hoard is a 'sun blossom bulb'.\n");
-        lizardCon.addReply("hica", "If my follower brings me an offering worthy of my great stature, then I suppose I will be gracious and grant her wish. Though, I am not easily pleased, I warn. Now, leave me, small human.");
+        lizardCon.addReply("hica", "If my follower brings me an offering worthy of my great stature, then I suppose I will be gracious and grant her wish. Though, I am not easily pleased, I warn. I will only accept something that is shines even more than my current hoard. Now, leave me, small human.");
         lizardCon.addReply("hicb", "I am kind, so I will not burn you to a crisp with my fiery breath. Leave me, small human.");
         lizardCon.addReply("hid", "Like what?\n\n\tA: You sound like you're recovering from a week-long cold.\n\tB: All scary and, uh, deep.\n");
         lizardCon.addReply("hida", "Do you talk to your parents with such disrespect? Leave me, small human.");

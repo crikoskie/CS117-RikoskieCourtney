@@ -170,6 +170,7 @@ public class Potion extends Item implements Makeable, Useable {
     /**
      * Uses a potion on specified item.
      * 
+     * @param player The player character
      * @param room The room that the player character is currently in.
      * @param theItem The specified item.
      * @param world The world.

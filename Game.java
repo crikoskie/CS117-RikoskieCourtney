@@ -24,6 +24,15 @@ public class Game {
     private Player player;
     /** Ends the game if set to false. */
     private boolean wantToContinue;
+    /** The total score. */
+    private static final int TOTAL_SCORE;
+    
+    /**
+     * Static initializer.
+     */
+    static {
+        TOTAL_SCORE = 250;
+    }
 
     /**
      * Create the game and initialize its internal map.
@@ -178,22 +187,22 @@ public class Game {
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-//             else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
-//                 Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
-//                 Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
-//                 Writer.println();
-//                         
-//                 wantToContinue = false;
-//             }
-//             else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
-//                 Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
-//             }
-//             else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
-//                 Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
-//             }
-//             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
-//                 Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
-//             }
+            else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
+                Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+                Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+                Writer.println();
+                        
+                wantToContinue = false;
+            }
+            else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+                Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+            }
+            else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+                Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+            }
+            else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
+                Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
+            }
             else {                               
                 Room newRoom = doorway.getDestination();                    
                 player.setCurrentRoom(newRoom);          
@@ -236,7 +245,7 @@ public class Game {
      * Print out the closing message for the player.
      */
     private void printGoodbye() {
-        Writer.println("You have earned " + score + " points in " + turns + " turns.");
+        Writer.println("You have earned " + score + " points out of " + TOTAL_SCORE + " in " + turns + " turns.");
         Writer.println("Thank you for playing.  Goodbye.");
     }
 
@@ -587,46 +596,64 @@ public class Game {
                             Writer.println("You can't pack things in that.");
                         }
                         else if (container instanceof HerbContainer) {
-                            HerbContainer aContainer = (HerbContainer)container;
-
+                            HerbContainer herbContainer = (HerbContainer)container;
+                            String containerName = herbContainer.getName();
+                            
                             if (!(item instanceof Ingredient)) {
                                 Writer.println("You probably shouldn't try to put that in there.");
                             }
                             else {
                                 Ingredient ingredient = (Ingredient)item;
-
-                                if (player.isInInventory(itemName)) {
+                                String ingredientName = ingredient.getName();
+                                
+                                if (currentRoom.isInRoom(ingredientName) && player.isInInventory(containerName)) {
                                     if (ingredient.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
-                                        Writer.println("You try to pick it up, but you're already carrying so much.");
+                                       Writer.println("You try to pick it up, but you're already carrying so much.");
+                                    }
+                                    else if (currentRoom.getName().equals("Backyard") && !player.isInInventory(ingredientName)) {
+                                        Writer.println("You probably shouldn't rip out all the herbs at once.");
                                     }
                                     else {
-                                        player.removeItem(itemName);
-                                        Writer.println(aContainer.addHerb(ingredient));
+                                        Writer.println("Packed.");
+                                        herbContainer.addItem(item);
+                                        player.removeItem(ingredientName);
                                     }
-                                }
+                                } 
                                 else {
-                                    currentRoom.removeItem(itemName);
-                                    Writer.println(aContainer.addHerb(ingredient));
+                                    if (currentRoom.getName().equals("Backyard") && !player.isInInventory(ingredientName)) {
+                                        Writer.println("You probably shouldn't rip out all the herbs at once.");
+                                    }
+                                    else {
+                                        Writer.println("Packed.");
+                                        herbContainer.addItem(item);
+                                        player.removeItem(ingredientName);
+                                    }
                                 }
                             }
                         }
                         else {
                             Container aContainer = (Container)container;
-
-                            if (player.isInInventory(itemName)) {
-                                if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
-                                    Writer.println("You try to pick it up, but you're already carrying so much.");
-                                }
-                                else {
+                            String containerName = aContainer.getName();
+                            
+                            if (item instanceof Ingredient) {
+                                Writer.println("You probably shouldn't try to put that in there.");
+                            }
+                            else {
+                                if (!(currentRoom.isInRoom(itemName) && player.isInInventory(containerName))) {
                                     player.removeItem(itemName);
                                     aContainer.addItem(item);
                                     Writer.println("Packed.");
                                 }
-                            }
-                            else {
-                                currentRoom.removeItem(itemName);
-                                aContainer.addItem(item);
-                                Writer.println("Packed.");
+                                else {
+                                    if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
+                                        Writer.println("You try to pick it up, but you're already carrying so much.");
+                                    }
+                                    else {
+                                        currentRoom.removeItem(itemName);
+                                        aContainer.addItem(item);
+                                        Writer.println("Packed.");
+                                    }
+                                }
                             }
                         }
                     }
@@ -681,11 +708,12 @@ public class Game {
                             }
                             else {
                                 player.addToInventory(item);
-                                if (item instanceof Ingredient) {
+                                if (item instanceof Ingredient && aContainer instanceof HerbContainer) {
                                     Ingredient ingredient = (Ingredient)item;
+                                    HerbContainer herbContainer = (HerbContainer)aContainer;
 
                                     if (ingredient.getNumberInGroup() == 0) {
-                                        aContainer.removeItem(response);
+                                        herbContainer.removeItem(response);
                                     }
                                 }
                                 else {
@@ -696,11 +724,12 @@ public class Game {
                         }
                         else {
                             player.addToInventory(item);
-                            if (item instanceof Ingredient) {
+                            if (item instanceof Ingredient && aContainer instanceof HerbContainer) {
                                 Ingredient ingredient = (Ingredient)item;
-
+                                HerbContainer herbContainer = (HerbContainer)aContainer;
+                                
                                 if (ingredient.getNumberInGroup() == 0) {
-                                    aContainer.removeItem(response);
+                                    herbContainer.removeItem(response);
                                 }
                             }
                             else {
