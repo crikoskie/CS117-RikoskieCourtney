@@ -350,7 +350,7 @@ public class World {
         // element is 1
         southPath.addDescription("With the illuminated bulb, it is much easier to see.");
         backyard.addDescription("Some of the herbs are starting to look bare.");
-        taveHouse.addDescription("");
+        taveHouse.addDescription("Tave is sitting on the porch stairs, staring at the ground.  You've never seen him look so depressed.");
         weapons.addDescription("It seems that Tave has left. The sign on the front door has been changed to say 'closed.'");
     }
     
@@ -400,7 +400,7 @@ public class World {
         tradeItems.add(phial);
 
         Door yardToCellar = backyard.getExit("down");
-//         yardToCellar.setLocked(true);
+        yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
@@ -479,9 +479,9 @@ public class World {
         notes.addPage("duplication potion", duplication.toString());
         notes.addPage("scent remover", remover.toString());
         notes.addPage("revealing potion", revealer.toString());
-        wardBook.addPage("detection barrier", "");
-        wardBook.addPage("travel ward", "");
-        wardBook.addPage("invisibilty", "");
+        wardBook.addPage("detection barrier", "More runes can be added to greaten the strength of the barrier.  While the stabilizer cannot be hidden lest the magic not take hold, this author suggests making the others indiscernible.  A word of warning: if you choose to take my advice, do not keep the child runes far from the parent.");
+        wardBook.addPage("travel ward", "Protection while moving is hard to achieve.  Novices should not attempt to establish this ward on their person.  Because it will connect directly to the caster's life force, errors or a lack in concerntration will prove disastorous.");
+        wardBook.addPage("invisibilty", "After the assassination of the Marquis of Dune, use of this warding spell is highly monitored.  As such, I am force to remove this section of my book.  Instead, I will disparage our great ruler in words which have the potential to be construed as compliments.");
         
         potions.put("revealing potion", revealer);
         potions.put("shrinking potion", shrinking);
