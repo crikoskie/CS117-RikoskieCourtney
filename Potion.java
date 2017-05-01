@@ -219,7 +219,7 @@ public class Potion extends Item implements Makeable, Useable {
                 }
                 break;
             case "duplication potion":                
-                if (!(itemName.equals("shed") || itemName.equals("cat"))) {
+                if (!(itemName.equals("shed") || itemName.equals("cat") || itemName.contains("duplicate") || theItem instanceof Ingredient)) {
                     Item item = new Item("duplicate " + theItem.getName(), theItem.getDescription(), 0, theItem.getWeight());
                     result += "\n\nA new " + itemName + " appeared in front of you.";
                     room.addItem(item);
@@ -228,7 +228,7 @@ public class Potion extends Item implements Makeable, Useable {
                         Character syl = world.getCharacter("syl");
                         syl.addTradeItem(item);
                     }
-                    
+
                     container.empty();
                     potionContainer = null;
                 }
