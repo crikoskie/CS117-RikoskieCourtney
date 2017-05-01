@@ -195,7 +195,7 @@ public class Potion extends Item implements Makeable, Useable {
                 if (theItem instanceof Ingredient) {
                     result = "You probably shouldn't use a shrinking potion on that.  It will mess up the porportion.";
                 }
-                else if (itemName.equals("empty cauldron")) {
+                else if (itemName.equals("cauldron")) {
                     result = "You don't want to lessen the amount of potion you are able to make.";
                 }
                 else if (itemName.equals("vial") || itemName.equals("phial")) {

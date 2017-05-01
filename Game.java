@@ -203,6 +203,10 @@ public class Game {
             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
                 Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
             }
+            else if (currentRoom.getName().equals("North Path") && direction.equals("north") && player.isInInventory("cat")) {
+                printWin();
+                wantToContinue = false;
+            }
             else {                               
                 Room newRoom = doorway.getDestination();                    
                 player.setCurrentRoom(newRoom);          
@@ -242,11 +246,19 @@ public class Game {
     }
 
     /**
+     * Prints out the winning message.
+     */
+    private void printWin() {
+        Writer.println("As soon as your feet touch the porch, you breathe a sign of relief.  Master would have appeared by now if she had realized you left.  It seems you got away with at least this one thing.");
+        Writer.println();
+    }
+    
+    /**
      * Print out the closing message for the player.
      */
     private void printGoodbye() {
         Writer.println("You have earned " + score + " points out of " + TOTAL_SCORE + " in " + turns + " turns.");
-        Writer.println("Thank you for playing.  Goodbye.");
+        Writer.println("Thank you for playing.");
     }
 
     /**
@@ -767,7 +779,7 @@ public class Game {
                 }
                 else {
                     Potion potion = (Potion)item;
-                    Item container = currentRoom.getItem("empty cauldron");
+                    Item container = currentRoom.getItem("cauldron");
                     PotionContainer cauldron = (PotionContainer)container;
 
                     if (!cauldron.isEmpty()) {
