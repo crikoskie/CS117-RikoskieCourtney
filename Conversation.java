@@ -63,8 +63,6 @@ public class Conversation {
         String keyValue = trigger;
         while (!done) {
             keyValue = keyValue.toLowerCase();
-            // comment out the following line once you have it all working
-            Writer.println("key: " + keyValue);
             String response = replies.get(keyValue);
             if (response == null) {
                 Writer.println(name + " looks confused at your response and stops talking to you.");
