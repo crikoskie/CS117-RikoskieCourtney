@@ -187,23 +187,23 @@ public class Game {
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-            else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
-                Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
-                Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
-                Writer.println();
-                        
-                wantToContinue = false;
-            }
-            else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
-                Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
-            }
-            else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
-                Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
-            }
-            else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
-                Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
-            }
-            else if (currentRoom.getName().equals("North Path") && direction.equals("north") && player.isInInventory("cat")) {
+//             else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
+//                 Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+//                 Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+//                 Writer.println();
+//                         
+//                 wantToContinue = false;
+//             }
+//             else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+//                 Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+//             }
+//             else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+//                 Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+//             }
+//             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
+//                 Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
+//             }
+            else if (currentRoom.getName().equals("North Path") && direction.equals("up") && player.isInInventory("cat")) {
                 printWin();
                 wantToContinue = false;
             }
@@ -426,6 +426,8 @@ public class Game {
                 boolean added = player.addToInventory(item);
 
                 if (added) {
+                    score += item.getPointValue();
+                    
                     if (item instanceof Ingredient) {
                         Ingredient ingredient = (Ingredient)item;
 
@@ -629,6 +631,7 @@ public class Game {
                                         Writer.println("Packed.");
                                         herbContainer.addItem(item);
                                         player.removeItem(ingredientName);
+                                        score += item.getPointValue();
                                     }
                                 } 
                                 else {
@@ -639,6 +642,7 @@ public class Game {
                                         Writer.println("Packed.");
                                         herbContainer.addItem(item);
                                         player.removeItem(ingredientName);
+                                        score += item.getPointValue();
                                     }
                                 }
                             }
@@ -655,6 +659,7 @@ public class Game {
                                     player.removeItem(itemName);
                                     aContainer.addItem(item);
                                     Writer.println("Packed.");
+                                    score += item.getPointValue();
                                 }
                                 else {
                                     if (item.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
@@ -664,6 +669,7 @@ public class Game {
                                         currentRoom.removeItem(itemName);
                                         aContainer.addItem(item);
                                         Writer.println("Packed.");
+                                        score += item.getPointValue();
                                     }
                                 }
                             }
@@ -796,6 +802,7 @@ public class Game {
                         }
 
                         Writer.println(potion.makePotion(player, currentRoom, world, herbPouch, cauldron));
+                        score += potion.getPointValue();
                     }
                 }
             }
@@ -1093,6 +1100,7 @@ public class Game {
                                             player.addToInventory(npcItem);
                                             player.removeItem(itemName);
                                             character.setInventory(null);
+                                            score += npcItem.getPointValue();
                                             Writer.println(character.getName() + ": " + character.getTradeMessage());
                                         }
                                     }
@@ -1105,6 +1113,7 @@ public class Game {
                                 player.addToInventory(npcItem);
                                 player.removeItem(itemName);
                                 character.setInventory(null);
+                                score += npcItem.getPointValue();
                                 Writer.println(character.getName() + ": " + character.getTradeMessage());
                             }
                         }

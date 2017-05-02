@@ -59,7 +59,19 @@ public class Item
      * @return The point value of the item.
      */
     public int getPointValue() {
-        return pointValue;
+        int itemPoints = pointValue;
+        setPointValue(0);
+        
+        return itemPoints;
+    }
+    
+    /**
+     * Sets the point value of the item.
+     * 
+     * @param thePoints The number of points that the player will receive upon added picking up the item.
+     */
+    public void setPointValue(int thePoints) {
+        pointValue = thePoints;
     }
     
     /**

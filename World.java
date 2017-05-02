@@ -37,7 +37,7 @@ public class World {
 
     /**
      * This method takes care of creating all of the aspects of the world for
-     * the "Campus of Kings" application.
+     * the "Cat application.
      * 
      * @param name
      *            The provided name of the room.
@@ -400,7 +400,7 @@ public class World {
         tradeItems.add(phial);
 
         Door yardToCellar = backyard.getExit("down");
-        yardToCellar.setLocked(true);
+//         yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
@@ -425,7 +425,7 @@ public class World {
         Item card = new Item("citizenship card", "Providing your name, age, and picture, this card is proof that you are a citizen of Fairsway.  Despite costing you so much gold, it is made up of some kind of flimsy material.  Hopefully, someone has cast some spells on it to prevent its destruction.", 15, 1);
         npcItems.add(card);
         
-        Item cat = new Item("your cat", "It stares back at you smugly.  You scowl and look away.", 50, 125);
+        Item cat = new Item("cat", "It stares back at you smugly.  You scowl and look away.", 50, 125);
         Room library = getRoom("Library");
         library.addItem(cat);
         
@@ -804,7 +804,7 @@ public class World {
         sylCon.addReply("hib", "Sadly, I think they're a bit too pricy for you.\n\n\tA: What's a little bit of money between friends?\n\tB: I doubt they're that expensive.\n");
         sylCon.addReply("hiba", "Bye-bye, little lady.");
         sylCon.addReply("hibb", "Maybe not everything, but I did get my hands on quite the beauty.\n\n\tA: What is it?\n\tB: Can't say I care.\n");
-        sylCon.addReply("hibba", "Verian cloth, made of the softest known material.\n\n\tA: That doesn't sound very interesting.\n\tB: Can I touch it?\n");
+        sylCon.addReply("hibba", "Verian cloth, made f the softest known material.\n\n\tA: That doesn't sound very interesting.\n\tB: Can I touch it?\n");
         sylCon.addReply("hibbaa", "Then, I guess I'll go tell some other kid about it. Bye-bye, little lady.");
         sylCon.addReply("hibbab", "Sorry, but it's under lock and key. Even I only got to feel it for a split second. You'd have to ask the buyer.\n\n\tA: Who's buying it?\n\tB: How stingy.\n");
         sylCon.addReply("hibbaba", "No one yet. We're going to be heading off to the captial soon. And speaking of, I've got things to pack up. Bye-bye, little lady.");
