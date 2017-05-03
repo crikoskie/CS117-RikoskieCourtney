@@ -411,6 +411,7 @@ MAKE Scenario #6: Specified item can be made
 	  and : cauldron is empty
 	 Then : ingredients are removed from inventory
 	   or : ingredients are removed from room
+	   or : ingredients are removed from container
 	  and : potion is added to cauldron
 	  and : appropriate message is displayed (you made it)
 	  
@@ -439,8 +440,8 @@ EMPTY Scenario #4: Specified item is already empty
 	GIVEN : "empty item" is entered
 	 WHEN : item is in room
 	   or : item is in inventory
-	  and : item is aleady empty
 	  and : item is emptiable
+	  and : item is aleady empty
 	 THEN : appropriate message is displayed (item is already empty)
 	 
 EMPTY Scenario #5: Specified item can be emptied
@@ -501,7 +502,7 @@ POUR Scenario #7: Second item is not empty
 	 WHEN : second item is in inventory
 	   or : second item is in room
 	  and : second item is able to be poured into
-	  and : second item is not emppty
+	  and : second item is not empty
 	 THEN : appropriate message is displayed (there's already something in it)
 	
 POUR Scenario #8:  Second item is able to be poured into
@@ -585,16 +586,27 @@ USE Scenario #4: Specified item is useable
 	  and : specified item is useable
 	 THEN : user is prompted for what to use the item on
 	 
+USE Scenario #5: Second item is not available
+	GIVEN : "use item" has been entered
+	  and : user has been prompted for what to use the item on
+	 WHEN : second item is not is room
+	   or : second item is not in inventory
+	 THEN : appropriate message is displayed (can't find it)
+
 USE Scenario #5: Cannot use item on second item
 	GIVEN : "use item" has been entered
 	  and : user has been prompted for what to use the item on
 	 WHEN : item cannot be used on second item
+	  and : second item is not is room
+	   or : second item is not in inventory
 	 THEN : appropriate message is displayed (can't use it on this item)
 	 
 USE Scenario #6: Can use item on second item
 	GIVEN : "use item" has been entered
 	  and : user has been prompted for what to use the item on
 	 WHEN : item can be used on second item
+	  and : second item is not is room
+	   or : second item is not in inventory
 	 THEN : affects on item on second item are carried out
 	  and : appropriate message is displayed (you used it)
 	  and : item is removed from its room container
@@ -639,13 +651,6 @@ TRADE Scenario #4: Specified character is not in room
 	  and : user has been prompted for who to trade with
 	 WHEN : specified character is not in room
 	 THEN : appropriate message is displayed (who?)
-	 
-TRADE Scenario #5: Specified character no longer has any items to trade
-	GIVEN : "trade item" has been entered
-	  and : user has been prompted for who to trade with
-	 WHEN : specified character is in room
-	  and : specified character does not have any items
-	 THEN : appropriate message is displayed (they don't have anything to trade)
 	 
 TRADE Scenario #5: Specified character no longer has any items to trade
 	GIVEN : "trade item" has been entered
