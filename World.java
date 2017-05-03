@@ -351,7 +351,7 @@ public class World {
         southPath.addDescription("With the illuminated bulb, it is much easier to see.");
         backyard.addDescription("Some of the herbs are starting to look bare.");
         taveHouse.addDescription("Tave is sitting on the porch stairs, staring at the ground.  You've never seen him look so depressed.");
-        weapons.addDescription("It seems that Tave has left. The sign on the front door has been changed to say 'closed.'");
+        weapons.addDescription("It seems that Tave has left. The sign on the front door has been changed to say 'Closed.'");
     }
     
     /**
@@ -400,7 +400,7 @@ public class World {
         tradeItems.add(phial);
 
         Door yardToCellar = backyard.getExit("down");
-//         yardToCellar.setLocked(true);
+        yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");
