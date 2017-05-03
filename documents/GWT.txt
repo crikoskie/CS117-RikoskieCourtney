@@ -684,6 +684,6 @@ TRADE Scenario #8: Player is not carrying too much
 	  and : adding character's item to your inventory would not put you over max weight
 	  and : item is one that the character will trade for
 	 THEN : item from character's inventory is added to yours
-	  and : appropriate message is displayed (you traded)
+	  and : appropriate message is displayed
 
 	   
