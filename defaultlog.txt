@@ -1,25 +1,24 @@
+﻿You flip to the next page of your book. Your eyes skim the page, unfocused, and the chair creaks as you rock back and forth.
 
-You flip to the next page of your book. Your eyes skim the page, unfocused, and the chair creaks as you rock back and forth.
-
-It’s been a while since you've felt this bored.
+It's been a while since you've felt this bored.
 
 Your master has gone off into town without you for once, and you have been left alone in your little cottage in the woods. Relocating yourself to the front porch has done little to alleviate the mind-numbing-ness of The Uses of Wratagrass, but there was quite literally nothing else to do, barred from making potions as you were. You decide to take a break and close the book with a thwump. Your neck is a bit stiff from looking down for so long, which you pout about. 
 
-'I’m only ten,' you grumble.
+'I'm only ten,' you grumble.
 
-The green of the forest is a welcome sight, and you're tempted to go for a walk against your master’s wishes until you see a clear shimmering wall reflected in the light. Indignation rises up inside of you. 
+The green of the forest is a welcome sight, and you're tempted to go for a walk against your masterâ€™s wishes until you see a clear shimmering wall reflected in the light. Indignation rises up inside of you. 
 
-A barrier. Most likely to warn Master if you leave, as if the babysitter wasn’t enough. Even now, you can feel the invisible eyes of Master’s cat watching your every move. 
+A barrier. Most likely to warn Master if you leave, as if the babysitter wasn't enough. Even now, you can feel the invisible eyes of Masterâ€™s cat watching your every move. 
 
-'I’m already ten!' you say.
+'I'm already ten!' you say.
 
-Then, as if purposefully trying to worsen your mood, your own cat appears along the edge of the forest, past the barrier, somewhere he definitely wasn’t supposed to be.
+Then, as if purposefully trying to worsen your mood, your own cat appears along the edge of the forest, past the barrier, somewhere he definitely wasnâ€™t supposed to be.
 
-You jump up. 'What are you doing? If you get spirited away or something, I’m the one who’s going to get into trouble!' 
+You jump up. 'What are you doing? If you get spirited away or something, I'm the one who's going to get into trouble!' 
 
 He stares at you for a moment before turning with utmost indifference toward the forest.
 
-'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he’s disappeared into the trees.
+'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he's disappeared into the trees.
 
 Front Porch:
 The porch is small, only about half the length of the actual house, and the worn wood creaks beneath your feet.  There are no furnishings besides an inelegant wooden chair.  Behind it, a window peers into the living room, but green curtains block the view.  A sign hangs on the door.
@@ -27,12 +26,12 @@ Exits: north down
 
 > go north
 Living Room:
-The lighting is dim, the curtains over the window making it difficult to see.  Since it’s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
+The lighting is dim, the curtains over the window making it difficult to see.  Since itâ€™s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
 Exits: south north 
 
 > go north
 Downstairs Hall:
-There’s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and it’s been there for as long as you can remember.  You think Master called it abstract.
+There's a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and itâ€™s been there for as long as you can remember.  You think Master called it abstract.
 Exits: east south up 
 
 > go up
@@ -64,7 +63,7 @@ Exits: south north
 
 > go south
 Master's Bedroom:
-It’s been months since you last stepped foot in here, but you find that nothing has changed.  The room reflects Master’s personality.  The bed, desk, and armoire are all the same shade of brown, and you bet that there is not even a molecule of air out of place.
+It's been months since you last stepped foot in here, but you find that nothing has changed.  The room reflects Masterâ€™s personality.  The bed, desk, and armoire are all the same shade of brown, and you bet that there is not even a molecule of air out of place.
 Items: jewelry box   
 Exits: north 
 
@@ -96,7 +95,7 @@ Exits: east south down
 
 > go down
 Downstairs Hall:
-There’s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and it’s been there for as long as you can remember.  You think Master called it abstract.
+Thereâ€™s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and itâ€™s been there for as long as you can remember.  You think Master called it abstract.
 Exits: east south up 
 
 > go east
@@ -112,7 +111,7 @@ Exits: south down
 
 > go down
 Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
+The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you donâ€™t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
 Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
@@ -171,7 +170,7 @@ Ingredients needed to make a revealing potion:
 
 > go up
 Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
+The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you donâ€™t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
 Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
@@ -205,7 +204,7 @@ In a quick flash, another rune appears next to the old one.  It burns up into no
 Taken.
 > go up
 Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
+The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you donâ€™t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
 Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
@@ -323,7 +322,7 @@ Taken.
 Taken.
 > go up
 Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
+The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you donâ€™t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
 Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
@@ -340,12 +339,12 @@ Exits: north west
 
 > go west
 Downstairs Hall:
-There’s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and it’s been there for as long as you can remember.  You think Master called it abstract.
+Thereâ€™s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and itâ€™s been there for as long as you can remember.  You think Master called it abstract.
 Exits: east south up 
 
 > go south
 Living Room:
-The lighting is dim, the curtains over the window making it difficult to see.  Since it’s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
+The lighting is dim, the curtains over the window making it difficult to see.  Since itâ€™s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
 Exits: south north 
 
 > go south
@@ -440,7 +439,7 @@ Exits: north west northeast
 
 > go west
 Forest Guardian:
-There is a creature draped across a wooden throne.  He looks human, but you know he is not.  You’ve met him once before when Master dragged you along to pay respects.  He seems to be looking at something above your head, and you wonder if he knows you’re here.  The forest guardian smiles.
+There is a creature draped across a wooden throne.  He looks human, but you know he is not.  Youâ€™ve met him once before when Master dragged you along to pay respects.  He seems to be looking at something above your head, and you wonder if he knows youâ€™re here.  The forest guardian smiles.
 Exits: east 
 
 > talk forest guardian
@@ -476,7 +475,7 @@ Exits: north west northeast
 
 > go north
 Fairy Herbs:
-A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that you’re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.
+A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that youâ€™re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.
 Exits: east south 
 
 > talk fairy
@@ -530,12 +529,12 @@ Exits: south north
 
 > go south
 In Front of Alley:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go south
 North Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: south north 
 
 > go south
@@ -577,12 +576,12 @@ Enter the letter of your response: a
 Syl: No one yet. We're going to be heading off to the captial soon. And speaking of, I've got things to pack up. Bye-bye, little lady.
 > go south
 South Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go west
 Fairsway Weapons:
-‘Open!’ the sign on the glass door cheerily exclaims.  Display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right, and there’s a crack in the floor beneath it.  Tave, the owner, stands behind the counter and greets you when you walk in.  As usual, his face is set in a scowl.
+â€˜Open!â€™ the sign on the glass door cheerily exclaims.  Display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right, and thereâ€™s a crack in the floor beneath it.  Tave, the owner, stands behind the counter and greets you when you walk in.  As usual, his face is set in a scowl.
 Items: broadsword   
 Exits: east 
 
@@ -629,13 +628,13 @@ You used the duplication potion.
 A new broadsword appeared in front of you.
 > look
 Fairsway Weapons:
-‘Open!’ the sign on the glass door cheerily exclaims.  Display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right, and there’s a crack in the floor beneath it.  Tave, the owner, stands behind the counter and greets you when you walk in.  As usual, his face is set in a scowl.
+â€˜Open!â€™ the sign on the glass door cheerily exclaims.  Display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right, and thereâ€™s a crack in the floor beneath it.  Tave, the owner, stands behind the counter and greets you when you walk in.  As usual, his face is set in a scowl.
 Items: duplicate broadsword   
 Exits: east 
 
 > go east
 South Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go north
@@ -660,7 +659,7 @@ You are carrying:
 
 > go east
 Fairsway Potions:
-No matter which way you look, there’s something potion-related.
+No matter which way you look, thereâ€™s something potion-related.
 Exits: east west 
 
 > go east
@@ -692,7 +691,7 @@ Enter the letter of your response: b
 Guardsman: Well, you can't. My job is to keep the non-citizens out. Do you have the proper papers? No? Then, leave me to my work.
 > go west
 Fairsway Potions:
-No matter which way you look, there’s something potion-related.
+No matter which way you look, thereâ€™s something potion-related.
 Exits: east west 
 
 > go west
@@ -702,12 +701,12 @@ Exits: east south north west
 
 > go north
 North Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: south north 
 
 > go north
 In Front of Alley:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go north
@@ -733,7 +732,7 @@ Exits: southwest east west
 
 > go west
 Fairy Herbs:
-A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that you’re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.
+A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that youâ€™re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.
 Exits: east south 
 
 > trade soft cloth
@@ -773,12 +772,12 @@ Exits: north down
 
 > go north
 Living Room:
-The lighting is dim, the curtains over the window making it difficult to see.  Since it’s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
+The lighting is dim, the curtains over the window making it difficult to see.  Since itâ€™s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
 Exits: south north 
 
 > go north
 Downstairs Hall:
-There’s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and it’s been there for as long as you can remember.  You think Master called it abstract.
+Thereâ€™s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and itâ€™s been there for as long as you can remember.  You think Master called it abstract.
 Exits: east south up 
 
 > go east
@@ -794,7 +793,7 @@ Exits: south down
 
 > go down
 Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
+The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you donâ€™t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
 Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
@@ -874,12 +873,12 @@ Exits: north west
 
 > go west
 Downstairs Hall:
-There’s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and it’s been there for as long as you can remember.  You think Master called it abstract.
+Thereâ€™s a painting on the wall to your left.  It looks like one that you made with your fingers when you were younger, and itâ€™s been there for as long as you can remember.  You think Master called it abstract.
 Exits: east south up 
 
 > go south
 Living Room:
-The lighting is dim, the curtains over the window making it difficult to see.  Since it’s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
+The lighting is dim, the curtains over the window making it difficult to see.  Since itâ€™s the warm season, the fireplace is unlit.  Before it, two chairs sit on either side of a low table.  This is where Master does business with her customers and relaxes when she is off hours, but you rarely spend your time here.  It feels stuffy to you.
 Exits: south north 
 
 > go south
@@ -909,7 +908,7 @@ Exits: north west northeast
 
 > go west
 Forest Guardian:
-There is a creature draped across a wooden throne.  He looks human, but you know he is not.  You’ve met him once before when Master dragged you along to pay respects.  He seems to be looking at something above your head, and you wonder if he knows you’re here.  The forest guardian smiles.
+There is a creature draped across a wooden throne.  He looks human, but you know he is not.  Youâ€™ve met him once before when Master dragged you along to pay respects.  He seems to be looking at something above your head, and you wonder if he knows youâ€™re here.  The forest guardian smiles.
 Exits: east 
 
 > trade phial
@@ -958,12 +957,12 @@ Exits: south north
 
 > go south
 In Front of Alley:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go south
 North Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: south north 
 
 > go south
@@ -973,17 +972,17 @@ Exits: east south north west
 
 > go south
 South Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go south
 In Front of Government Office:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go south
 Government Office:
-After dealing with the crowds for so long, this place is almost eerily silent.  There is no line before the main desk, and a woman sits behind it, resting her head on her cheek and looking bored.  Her nametag says that she’s Official Camret.
+After dealing with the crowds for so long, this place is almost eerily silent.  There is no line before the main desk, and a woman sits behind it, resting her head on her cheek and looking bored.  Her nametag says that sheâ€™s Official Camret.
 Exits: north 
 
 > talk official camret
@@ -1018,12 +1017,12 @@ official camret
 official camret: Congratulations, you were accepted! Here you go.
 > go north
 In Front of Government Office:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go north
 South Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go north
@@ -1033,7 +1032,7 @@ Exits: east south north west
 
 > go east
 Fairsway Potions:
-No matter which way you look, there’s something potion-related.
+No matter which way you look, thereâ€™s something potion-related.
 Exits: east west 
 
 > go east
@@ -1058,7 +1057,7 @@ Exits: east west
 
 > go east
 Welcome to the Citizen District:
-A sign hangs across two short, adjacent poles.  It simply says ‘Welcome to the Citizen District’.
+A sign hangs across two short, adjacent poles.  It simply says â€˜Welcome to the Citizen Districtâ€™.
 Exits: east west 
 
 > go east
@@ -1086,7 +1085,7 @@ Exits: east north west
 
 > go east
 Library:
-You’ve never seen so many books in one place, but sadly, you can’t take the time to look around.  Licking his paw with an insulting amount of disinterest, your cat sits upon one of the library tables.
+Youâ€™ve never seen so many books in one place, but sadly, you canâ€™t take the time to look around.  Licking his paw with an insulting amount of disinterest, your cat sits upon one of the library tables.
 Items: cat   
 Exits: west 
 
@@ -1111,7 +1110,7 @@ Exits: east north west
 
 > go west
 Welcome to the Citizen District:
-A sign hangs across two short, adjacent poles.  It simply says ‘Welcome to the Citizen District’.
+A sign hangs across two short, adjacent poles.  It simply says â€˜Welcome to the Citizen Districtâ€™.
 Exits: east west 
 
 > go west
@@ -1126,7 +1125,7 @@ Exits: east south north west
 
 > go west
 Fairsway Potions:
-No matter which way you look, there’s something potion-related.
+No matter which way you look, thereâ€™s something potion-related.
 Exits: east west 
 
 > go west
@@ -1136,7 +1135,7 @@ Exits: east south north west
 
 > go south
 South Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go west
@@ -1147,7 +1146,7 @@ Exits: east
 
 > go east
 South Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go north
@@ -1157,12 +1156,12 @@ Exits: east south north west
 
 > go north
 North Market:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: south north 
 
 > go north
 In Front of Alley:
-People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still canâ€™t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
 Exits: east south north west 
 
 > go north
@@ -1189,5 +1188,5 @@ Exits: south up
 > go up
 As soon as your feet touch the porch, you breathe a sign of relief.  Master would have appeared by now if she had realized you left.  It seems you got away with at least this one thing.
 
-You have earned 225 points out of 235 in 207 turns.
+You have earned 235 points out of 235 in 207 turns.
 Thank you for playing.

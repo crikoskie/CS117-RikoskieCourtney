@@ -1086,7 +1086,7 @@ public class Game {
                 }
                 else {
                     Item npcItem = character.getInventory();
-
+                    
                     if (npcItem == null) {
                         Writer.println("They don't have anything to trade.");
                     }
@@ -1094,6 +1094,7 @@ public class Game {
                         if (character.isTradeItem(itemName)) {
                             if (character.getName().equals("forest guardian")) {
                                 Item tradeItem = character.getTradeItem(itemName);
+                                int npcItemValue = npcItem.getPointValue();
                                 
                                 if (tradeItem instanceof PotionContainer) {
                                     PotionContainer potionContainer = (PotionContainer)tradeItem;
@@ -1104,7 +1105,7 @@ public class Game {
                                             player.addToInventory(npcItem);
                                             player.removeItem(itemName);
                                             character.setInventory(null);
-                                            score += npcItem.getPointValue();
+                                            score += npcItemValue;
                                             Writer.println(character.getName() + ": " + character.getTradeMessage());
                                         }
                                         else {
@@ -1117,10 +1118,12 @@ public class Game {
                                 }
                             }
                             else {
+                                int npcItemValue = npcItem.getPointValue();
+                                
                                 player.addToInventory(npcItem);
                                 player.removeItem(itemName);
                                 character.setInventory(null);
-                                score += npcItem.getPointValue();
+                                score += npcItemValue;
                                 Writer.println(character.getName() + ": " + character.getTradeMessage());
                             }
                         }
