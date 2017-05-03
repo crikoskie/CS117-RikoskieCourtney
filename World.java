@@ -400,7 +400,7 @@ public class World {
         tradeItems.add(phial);
 
         Door yardToCellar = backyard.getExit("down");
-        yardToCellar.setLocked(true);
+//         yardToCellar.setLocked(true);
         yardToCellar.setKey(cellarKey);
         
         Door cellarToYard = cellar.getExit("up");

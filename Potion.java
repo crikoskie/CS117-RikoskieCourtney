@@ -39,6 +39,15 @@ public class Potion extends Item implements Makeable, Useable {
     }
 
     /**
+     * Gets whether or not the potion was made.
+     * 
+     * @return Whether or not the potion was made.
+     */
+    public boolean wasMade() {
+        return made;
+    }
+    
+    /**
      * Sets the potion's container.
      * 
      * @param container The potion's container.

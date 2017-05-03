@@ -187,22 +187,22 @@ public class Game {
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-            else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
-                Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
-                Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
-                Writer.println();
-                        
-                wantToContinue = false;
-            }
-            else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
-                Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
-            }
-            else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
-                Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
-            }
-            else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
-                Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
-            }
+//             else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
+//                 Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+//                 Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+//                 Writer.println();
+//                         
+//                 wantToContinue = false;
+//             }
+//             else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+//                 Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+//             }
+//             else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+//                 Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+//             }
+//             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
+//                 Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
+//             }
             else if (currentRoom.getName().equals("North Path") && direction.equals("up") && player.isInInventory("cat")) {
                 printWin();
                 wantToContinue = false;
@@ -284,8 +284,8 @@ public class Game {
         Writer.print("'I’m only ten,' you grumble.\n\nThe green of the forest is a welcome sight, and you're tempted to go for a walk against your master’s wishes until you see a clear shimmering wall reflected in the light.");
         Writer.print(" Indignation rises up inside of you. \n\nA barrier. Most likely to warn Master if you leave, as if the babysitter wasn’t enough. Even now, you can feel the invisible eyes of Master’s cat watching your every move. \n\n");
         Writer.print("'I’m already ten!' you say.\n\nThen, as if purposefully trying to worsen your mood, your own cat appears along the edge of the forest, past the barrier, somewhere he definitely wasn’t supposed to be.\n\n");
-        Writer.print("You jump up. 'What are you doing? If you get spirited away or something, I’m the one who’s going to get into trouble!' \n\n He stares at you for a moment before turning with utmost indifference toward the forest.");
-        Writer.print("\n\n 'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he’s disappeared into the trees.");
+        Writer.print("You jump up. 'What are you doing? If you get spirited away or something, I’m the one who’s going to get into trouble!' \n\nHe stares at you for a moment before turning with utmost indifference toward the forest.");
+        Writer.print("\n\n'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he’s disappeared into the trees.");
         Writer.println();
         Writer.println();
         printLocationInformation();
@@ -431,7 +431,7 @@ public class Game {
                     if (item instanceof Ingredient) {
                         Ingredient ingredient = (Ingredient)item;
 
-                        if (ingredient.getNumberInGroup() < 3 && currentRoom.getName().equals("Backyard")) {
+                        if (ingredient.getNumberInGroup() < 3 && currentRoom.getName().equals("Backyard") && !ingredient.getName().equals("orreamin")) {
                             currentRoom.setActive(1);
                         }
                         if (ingredient.getNumberInGroup() == 0) {
@@ -630,6 +630,7 @@ public class Game {
                                     else {
                                         Writer.println("Packed.");
                                         herbContainer.addItem(item);
+                                        score += item.getPointValue();
                                         player.removeItem(ingredientName);
                                     }
                                 } 
@@ -640,6 +641,7 @@ public class Game {
                                     else {
                                         Writer.println("Packed.");
                                         herbContainer.addItem(item);
+                                        score += item.getPointValue();
                                         player.removeItem(ingredientName);
                                     }
                                 }
@@ -665,6 +667,7 @@ public class Game {
                                     else {
                                         currentRoom.removeItem(itemName);
                                         aContainer.addItem(item);
+                                        score += item.getPointValue();
                                         Writer.println("Packed.");
                                     }
                                 }
@@ -800,7 +803,10 @@ public class Game {
                         }
 
                         Writer.println(potion.makePotion(player, currentRoom, world, herbPouch, cauldron));
-                        score += potion.getPointValue();
+                        
+                        if (potion.wasMade()) {
+                            score += potion.getPointValue();
+                        }
                     }
                 }
             }
