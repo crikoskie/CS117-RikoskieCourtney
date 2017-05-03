@@ -17,9 +17,9 @@ Then, as if purposefully trying to worsen your mood, your own cat appears along 
 
 You jump up. 'What are you doing? If you get spirited away or something, I’m the one who’s going to get into trouble!' 
 
- He stares at you for a moment before turning with utmost indifference toward the forest.
+He stares at you for a moment before turning with utmost indifference toward the forest.
 
- 'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he’s disappeared into the trees.
+'Stop!' You scramble toward him, but by the time you reach the beginnings of the barrier, he’s disappeared into the trees.
 
 Front Porch:
 The porch is small, only about half the length of the actual house, and the worn wood creaks beneath your feet.  There are no furnishings besides an inelegant wooden chair.  Behind it, a window peers into the living room, but green curtains block the view.  A sign hangs on the door.
@@ -43,14 +43,14 @@ Exits: east south down
 > go east
 Your Bedroom:
 Your bed is still unmade, something you should fix before Master gets back.  On your desk is a mess of pins and pens, all of which you found on your last trip to town.  People should be more careful with their belongings, you feel.    
-Items: herb pouch   coin collection   notes   
+Items: notes   herb pouch   coin collection   
 Exits: west 
 
+> take notes
+Taken.
 > take herb pouch
 Taken.
 > take coin collection
-Taken.
-> take notes
 Taken.
 > go west
 Second Floor Landing:
@@ -79,10 +79,10 @@ cellar key
 Unpacked.
 > inventory
 You are carrying:
+       notes
+       cellar key
        herb pouch
        coin collection
-       cellar key
-       notes
 
 > go north
 Upstairs Hall:
@@ -113,7 +113,7 @@ Exits: south down
 > go down
 Backyard:
 The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
 > examine shed
@@ -134,7 +134,7 @@ You unlocked the door.
 > go down
 Cellar:
 Over twenty cauldrons sit atop the tables lining the walls.  Master has left several potions brewing, and one has overflowed, coating the floor in a gray mist.  Above your head, sun blossom bulbs shine with bright light.
-Items: vial   book on warding and barriers   phial   cauldron   
+Items: cauldron   vial   book on warding and barriers   phial   
 Exits: up 
 
 > read book on warding and barriers
@@ -151,15 +151,7 @@ What would you like to read about?
 detection barrier
 You read the page.
 
-More runes can be added to greaten the strength of the barrier.  While the stabilizer cannot be hidden lest the magic not take hold, this author suggests making the others indiscernible.  A word of warning: if you choose to take my advice, do not keep the child runes far from the parent.
-> take book on warding and barriers
-Taken.
-> go up
-Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
-Exits: up down 
-
+More runes can be added to strengthen of the barrier.  While the stabilizer cannot be hidden lest the magic not take hold, this author suggests making the others indiscernible.  A word of warning: if you choose to heed my advice, do not keep the child runes far from the parent, and be wary of revealing magic.
 > read notes
 You look at the first page.
 
@@ -174,24 +166,30 @@ revealing potion
 You read the page.
 
 Ingredients needed to make a revealing potion:
-      inneo shoot
       hifefron
+      inneo shoot
 
-> take inneo shoot
-Taken.
+> go up
+Backyard:
+The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
+Exits: up down 
+
 > take hifefron
+Taken.
+> take inneo shoot
 Taken.
 > go down
 Cellar:
 Over twenty cauldrons sit atop the tables lining the walls.  Master has left several potions brewing, and one has overflowed, coating the floor in a gray mist.  Above your head, sun blossom bulbs shine with bright light.
-Items: vial   phial   cauldron   
+Items: cauldron   vial   book on warding and barriers   phial   
 Exits: up 
 
 > make revealing potion
 You made a revealing potion.
 
 To do so, you used:
-      inneo shoot      hifefron
+      hifefron      inneo shoot
 > examine cauldron
 cauldron: There is a black cauldron, recently bought, sitting on one of the leftmost tables. It is the one Master usually has you use.
 Contains:
@@ -203,10 +201,12 @@ barrier rune
 You used the revealing potion.
 
 In a quick flash, another rune appears next to the old one.  It burns up into nothing.
+> take book on warding and barriers
+Taken.
 > go up
 Backyard:
 The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
 > read notes
@@ -223,15 +223,15 @@ shrinking potion
 You read the page.
 
 Ingredients needed to make a shrinking potion:
-      river cress
-      wratagrass
       hifefron
+      wratagrass
+      river cress
 
-> take river cress
+> take hifefron
 Taken.
 > take wratagrass
 Taken.
-> take hifefron
+> take river cress
 Taken.
 > read notes
 You look at the first page.
@@ -247,74 +247,53 @@ duplication potion
 You read the page.
 
 Ingredients needed to make a duplication potion:
+      wratagrass
+      blister flower
       inneo shoot
       ash clove
-      blister flower
-      wratagrass
 
+> take wratagrass
+Taken.
+> take blister flower
+Taken.
 > take inneo shoot
 Taken.
 > take ash clove
 Taken.
-> take blister flower
-Taken.
-> take wratagrass
-Taken.
-> inventory
-You are carrying:
-       herb pouch
-       1 inneo shoot
-       coin collection
-       1 hifefron
-       1 ash clove
-       cellar key
-       book on warding and barriers
-       1 river cress
-       notes
-       barrier rune
-       2 wratagrass
-       1 blister flower
-
 > pack wratagrass
 Into which container?
 herb pouch
 Packed.
+> inventory
+You are carrying:
+       book on warding and barriers
+       notes
+       1 hifefron
+       cellar key
+       1 river cress
+       herb pouch
+       barrier rune
+       coin collection
+       1 blister flower
+       1 inneo shoot
+       1 ash clove
+
 > examine herb pouch
 herb pouch: The inside being made up of small protective pockets, it is perfect for toting around fragile herbs.
 Contains:
        2 wratagrass
 
-> inventory
-You are carrying:
-       herb pouch
-       1 inneo shoot
-       coin collection
-       1 hifefron
-       1 ash clove
-       cellar key
-       book on warding and barriers
-       1 river cress
-       notes
-       barrier rune
-       1 blister flower
-
-> pack cellar key
-Into which container?
-herb pouch
-You probably shouldn't try to put that in there.
 > go down
 Cellar:
 Over twenty cauldrons sit atop the tables lining the walls.  Master has left several potions brewing, and one has overflowed, coating the floor in a gray mist.  Above your head, sun blossom bulbs shine with bright light.
-Items: vial   phial   cauldron   
+Items: cauldron   vial   phial   
 Exits: up 
 
 > make shrinking potion
 You made a shrinking potion.
 
 To do so, you used:
-      river cress      wratagrass      hifefron
-> make duplication potion
-There's already something in the cauldron.
+      hifefron      wratagrass      river cress
 > pour shrinking potion
 What would you like to pour it into?
 vial
@@ -331,7 +310,7 @@ cauldron: There is a black cauldron, recently bought, sitting on one of the left
 You made a duplication potion.
 
 To do so, you used:
-      inneo shoot      ash clove      blister flower      wratagrass
+      wratagrass      blister flower      inneo shoot      ash clove
 > pour duplication potion
 What would you like to pour it into?
 phial
@@ -345,10 +324,10 @@ Taken.
 > go up
 Backyard:
 The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
->  go up
+> go up
 Back Porch:
 This is where you usually do your studies.  Your comfy chair is nestled in the corner, a table to sit a drink on next to it.  There is a nice view of the backyard, and you can smell the flowers from the garden.
 Exits: south down 
@@ -391,11 +370,6 @@ Exits: south north
 
 > go south
 This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.
-> look
-South Path:
-Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.  It is much darker than it should be here.  The area further along the path looks to be pitch black.
-Exits: south north 
-
 > go north
 Clearing:
 For some reason, no trees have grown in this area.  You rest for a moment, a nearby boulder making a good seat, and listen to the grass rustle in the light breeze.
@@ -435,13 +409,13 @@ lizard
 lizard: I suppose this is good enough to be my hoard.
 > inventory
 You are carrying:
-       herb pouch
-       illuminated bulb
        vial
-       cellar key
        book on warding and barriers
-       phial
        notes
+       cellar key
+       phial
+       illuminated bulb
+       herb pouch
        barrier rune
 
 > go west
@@ -459,39 +433,7 @@ West Path:
 Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.
 Exits: southwest east west 
 
-> go west
-Fairy Herbs:
-A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that you’re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.
-Exits: east south 
-
-> talk fairy
-Fairy: What are you doing here? 
-
-	A: That's none of your business.
-	B: I'm looking for a cat.
-	C: Just admiring, you know, things. 
-
-Enter the letter of your response: b
-Fairy: Was it gray with white feet? 
-
-	A: Yes!
-	B: No... 
-
-Enter the letter of your response: b
-Fairy: That's too bad.  I just saw one like that pass by a few moments ago. 
-
-	A: Uh, good for you?
-	B: Would you happen to know what direction it went in?
-
-Enter the letter of your response: b
-Fairy: Maybe I do.  The real question is what would you do for that information?
-
-	A: Absolutely nothing. You're horrid.
-	B: What do you want me to do?
-
-Enter the letter of your response: b
-Fairy: Get me the softest cloth known to all creatures.  Can you do that?  Of course, you, especially you, can't.  You're cat will just have to suffer alone.  Goodbye, insolent child.
-> go south
+> go southwest
 Flower Patch:
 It is rare for flowers to grow around the cottage without sapient aid, but all of them seem to have concentrated here.  While they are pretty, as far as you know, they are of no use in potion-making.  
 Exits: north west northeast 
@@ -532,7 +474,39 @@ Flower Patch:
 It is rare for flowers to grow around the cottage without sapient aid, but all of them seem to have concentrated here.  While they are pretty, as far as you know, they are of no use in potion-making.  
 Exits: north west northeast 
 
-> go northeast
+> go north
+Fairy Herbs:
+A field of orreamin is spread out before you, and the plants glow with fairy magic.  You watch as the fairies themselves chatter with one another, flying to and fro.  They must know that you’re here, but thankfully, they seem to be ignoring you for the most part.  The only one acknowledging your presence is side-eying you.
+Exits: east south 
+
+> talk fairy
+Fairy: What are you doing here? 
+
+	A: That's none of your business.
+	B: I'm looking for a cat.
+	C: Just admiring, you know, things. 
+
+Enter the letter of your response: b
+Fairy: Was it gray with white feet? 
+
+	A: Yes!
+	B: No... 
+
+Enter the letter of your response: b
+Fairy: That's too bad.  I just saw one like that pass by a few moments ago. 
+
+	A: Uh, good for you?
+	B: Would you happen to know what direction it went in?
+
+Enter the letter of your response: b
+Fairy: Maybe I do.  The real question is what would you do for that information?
+
+	A: Absolutely nothing. You're horrid.
+	B: What do you want me to do?
+
+Enter the letter of your response: b
+Fairy: Get me the softest cloth known to all creatures.  Can you do that?  Of course, you, especially you, can't.  You're cat will just have to suffer alone.  Goodbye, insolent child.
+> go east
 West Path:
 Gravel crunching beneath your feet, you step onto a trodden down path.  The trees in this forest are known for their height, and you feel even smaller than usual.
 Exits: southwest east west 
@@ -633,19 +607,20 @@ Tave: He's wants me to sell him my masterpiece.
 
 Enter the letter of your response: b
 Tave: It's not that simple, Faye. Stay sharp, kid.
+> take broadsword
+This item is too heavy for you to pick up.
+> examine broadsword
+broadsword: After the last time, you don't trust yourself to pick up the broadsword without some assistance.  The weight, combined with the fact that it is longer than you are tall, makes it quite unwieldy.
 > use shrinking potion
 What would you like to use it on?
 broadsword
 You used the shrinking potion.
+> examine broadsword
+broadsword: The sword is much smaller than it used to be, and it's easy for you to lift.
 > take broadsword
 Taken.
 > go east
 Tave: I don't mind a little mischief, but that sword doesn't leave this store.
-> look
-Fairsway Weapons:
-‘Open!’ the sign on the glass door cheerily exclaims.  Display cases show off the variety of weapons for sale.  A lone broadsword hangs on the wall to your right, and there’s a crack in the floor beneath it.  Tave, the owner, stands behind the counter and greets you when you walk in.  As usual, his face is set in a scowl.
-Exits: east 
-
 > use duplication potion
 What would you like to use it on?
 broadsword
@@ -674,14 +649,56 @@ syl
 syl: I don't know how you were able to convince Tave, but I'm not going to question it. You want the cloth, right? This is more than worth it.
 > inventory
 You are carrying:
+       vial
+       book on warding and barriers
+       notes
+       cellar key
+       phial
        herb pouch
        soft cloth
-       vial
-       cellar key
-       book on warding and barriers
-       phial
-       notes
        barrier rune
+
+> go east
+Fairsway Potions:
+No matter which way you look, there’s something potion-related.
+Exits: east west 
+
+> go east
+In Front of Bridge:
+Though there are still a number of businesses around, the crowd has thinned out here, the noise quieting.  A guardsman stands before the bridge, and he brings up his hand to smooth down his lapel several times.  You can feel yourself getting annoyed just watching him.
+Exits: east south north west 
+
+> talk guardsman
+Guardsman: Faye.
+
+	A: Happy to see me?
+	B: Who spat on your lapel?
+	C: Your glasses are smudged.
+
+Enter the letter of your response: a
+Guardsman: You know very well how I feel right now. And no, you can't cross the bridge.
+
+	A: I didn't ask!
+	B: For the record, that is still completely unfair.
+
+Enter the letter of your response: a
+Guardsman: Are you saying you don't wish to enter the Citizen District?
+
+	A: Yes!
+	B: No, I do.
+	C: I refuse to answer.
+
+Enter the letter of your response: b
+Guardsman: Well, you can't. My job is to keep the non-citizens out. Do you have the proper papers? No? Then, leave me to my work.
+> go west
+Fairsway Potions:
+No matter which way you look, there’s something potion-related.
+Exits: east west 
+
+> go west
+Town Square:
+A large fountain marks the center of the Merchant District.  You see Syl next to it, packing some boxes into the back of his cart.  Every time he bends over, his long hair falls in his face.
+Exits: east south north west 
 
 > go north
 North Market:
@@ -725,13 +742,13 @@ fairy
 fairy: So you're not entirely useless.
 > inventory
 You are carrying:
-       herb pouch
        vial
-       1 orreamin
-       cellar key
        book on warding and barriers
-       phial
+       1 orreamin
        notes
+       cellar key
+       phial
+       herb pouch
        barrier rune
 
 > go east
@@ -778,7 +795,7 @@ Exits: south down
 > go down
 Backyard:
 The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
 > take taglisbi
@@ -789,33 +806,59 @@ Taken.
 Taken.
 > take wratagrass
 Taken.
+> read notes
+You look at the first page.
+
+There are notes about:
+     shrinking potion
+     revealing potion
+     scent remover
+     duplication potion
+
+What would you like to read about?
+scent remover
+You read the page.
+
+Ingredients needed to make a scent remover:
+      wratagrass
+      river cress
+
+> take wratagrass
+Taken.
+> take river cress
+Taken.
+> look
+Backyard:
+Some of the herbs are starting to look bare.
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
+Exits: up down 
+
 > go down
 Cellar:
 Over twenty cauldrons sit atop the tables lining the walls.  Master has left several potions brewing, and one has overflowed, coating the floor in a gray mist.  Above your head, sun blossom bulbs shine with bright light.
 Items: cauldron   
 Exits: up 
 
+> make scent remover
+You made a scent remover.
+
+To do so, you used:
+      wratagrass      river cress
+> empty cauldron
+Emptied.
 > make unknown potion
 You made a unknown potion.
 
 To do so, you used:
-      taglisbi      ash clove      eppeth      orreamin      wratagrass
+      orreamin      taglisbi      eppeth      wratagrass      ash clove
 > pour unknown potion
 What would you like to pour it into?
 vial
 Poured.
 > go up
 Backyard:
-The yard is covered in all sorts of plants from succulents to trees.  Most are mature and blooming, and you love the vibrant colors, even if the gardening is a lot of work.  There are rows for walking, so you don’t accidently step on any of the low-growing plants.  Next to the ash mountain tree, a hatch sits flush to the ground.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
-Exits: up down 
-
-> take wratagrass
-Taken.
-> look
-Backyard:
 Some of the herbs are starting to look bare.
-Items: taglisbi   inneo shoot   shed   river cress   blister flower   ash clove   eppeth   wratagrass   hifefron   
+Items: hifefron   taglisbi   eppeth   wratagrass   river cress   shed   blister flower   inneo shoot   ash clove   
 Exits: up down 
 
 > go up
@@ -879,14 +922,13 @@ forest guardian
 forest guardian: You're such a nice child, Faye.
 > inventory
 You are carrying:
-       herb pouch
+       notes
        cellar key
+       gold
+       barrier rune
        book on warding and barriers
        phial
-       1 wratagrass
-       notes
-       barrier rune
-       gold
+       herb pouch
 
 > go east
 Flower Patch:
@@ -925,50 +967,6 @@ People from all around the country gather in Fairsway to peruse the newest innov
 Exits: south north 
 
 > go south
-Town Square:
-A large fountain marks the center of the Merchant District.  You see Syl next to it, packing some boxes into the back of his cart.  Every time he bends over, his long hair falls in his face.
-Exits: east south north west 
-
-> go east
-Fairsway Potions:
-No matter which way you look, there’s something potion-related.
-Exits: east west 
-
-> go east
-In Front of Bridge:
-Though there are still a number of businesses around, the crowd has thinned out here, the noise quieting.  A guardsman stands before the bridge, and he brings up his hand to smooth down his lapel several times.  You can feel yourself getting annoyed just watching him.
-Exits: east south north west 
-
-> go east
-Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.
-> talk guardsman
-Guardsman: Faye.
-
-	A: Happy to see me?
-	B: Who spat on your lapel?
-	C: Your glasses are smudged.
-
-Enter the letter of your response: a
-Guardsman: You know very well how I feel right now. And no, you can't cross the bridge.
-
-	A: I didn't ask!
-	B: For the record, that is still completely unfair.
-
-Enter the letter of your response: a
-Guardsman: Are you saying you don't wish to enter the Citizen District?
-
-	A: Yes!
-	B: No, I do.
-	C: I refuse to answer.
-
-Enter the letter of your response: b
-Guardsman: Well, you can't. My job is to keep the non-citizens out. Do you have the proper papers? No? Then, leave me to my work.
-> go west
-Fairsway Potions:
-No matter which way you look, there’s something potion-related.
-Exits: east west 
-
-> go west
 Town Square:
 A large fountain marks the center of the Merchant District.  You see Syl next to it, packing some boxes into the back of his cart.  Every time he bends over, his long hair falls in his face.
 Exits: east south north west 
@@ -1018,17 +1016,6 @@ Official Camret: Then, just give it to me, and we'll get started! Oh, and I forg
 Who do you wish to trade with?
 official camret
 official camret: Congratulations, you were accepted! Here you go.
-> inventory
-You are carrying:
-       herb pouch
-       citizenship card
-       cellar key
-       book on warding and barriers
-       phial
-       1 wratagrass
-       notes
-       barrier rune
-
 > go north
 In Front of Government Office:
 People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
@@ -1053,6 +1040,16 @@ Exits: east west
 In Front of Bridge:
 Though there are still a number of businesses around, the crowd has thinned out here, the noise quieting.  A guardsman stands before the bridge, and he brings up his hand to smooth down his lapel several times.  You can feel yourself getting annoyed just watching him.
 Exits: east south north west 
+
+> inventory
+You are carrying:
+       notes
+       cellar key
+       citizenship card
+       barrier rune
+       book on warding and barriers
+       phial
+       herb pouch
 
 > go east
 Bridge:
@@ -1097,34 +1094,16 @@ Exits: west
 You try to pick it up, but you're already carrying so much.
 > drop book on warding and barriers
 Dropped.
-> drop phial
-Dropped.
 > drop notes
-Dropped.
-> take cat
-You try to pick it up, but you're already carrying so much.
-> inventory
-You are carrying:
-       herb pouch
-       citizenship card
-       cellar key
-       1 wratagrass
-       barrier rune
-
-> drop cellar key
-Dropped.
-> drop barrier rune
 Dropped.
 > drop herb pouch
 Dropped.
+> drop cellar key
+Dropped.
+> drop phial
+Dropped.
 > take cat
 Taken.
-> inventory
-You are carrying:
-       citizenship card
-       1 wratagrass
-       cat
-
 > go west
 Main Road:
 Unlike the merchant side, the path is paved with stone.  The houses all look well cared for.
@@ -1151,6 +1130,27 @@ No matter which way you look, there’s something potion-related.
 Exits: east west 
 
 > go west
+Town Square:
+A large fountain marks the center of the Merchant District.  You see Syl next to it, packing some boxes into the back of his cart.  Every time he bends over, his long hair falls in his face.
+Exits: east south north west 
+
+> go south
+South Market:
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+Exits: east south north west 
+
+> go west
+Fairsway Weapons:
+It seems that Tave has left. The sign on the front door has been changed to say 'Closed.'
+Items: duplicate broadsword   
+Exits: east 
+
+> go east
+South Market:
+People from all around the country gather in Fairsway to peruse the newest innovations in magic.  No matter how many times you come into town, you still can’t get used to the crowds.  Businesses of all types line the streets, the bright storefronts designed to draw the eye.  You keep getting knocked around, and you hope one of the less popular stores can give you some refuge.
+Exits: east south north west 
+
+> go north
 Town Square:
 A large fountain marks the center of the Merchant District.  You see Syl next to it, packing some boxes into the back of his cart.  Every time he bends over, his long hair falls in his face.
 Exits: east south north west 
@@ -1189,5 +1189,5 @@ Exits: south up
 > go up
 As soon as your feet touch the porch, you breathe a sign of relief.  Master would have appeared by now if she had realized you left.  It seems you got away with at least this one thing.
 
-You have earned 225 points out of 250 in 206 turns.
+You have earned 225 points out of 235 in 207 turns.
 Thank you for playing.

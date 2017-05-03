@@ -187,22 +187,22 @@ public class Game {
             else if (doorway.isLocked()) {
                 Writer.println("You try your best to open the hatch, but it's locked and won't budge.");
             }
-//             else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
-//                 Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
-//                 Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
-//                 Writer.println();
-//                         
-//                 wantToContinue = false;
-//             }
-//             else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
-//                 Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
-//             }
-//             else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
-//                 Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
-//             }
-//             else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
-//                 Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
-//             }
+            else if (currentRoom.getName().equals("Front Porch") && direction.equals("down") && clearing.isInRoom("hidden barrier rune")) {
+                Writer.print("You step into the forest, determined and ready to face the world, but your confidence isn't well-placed.");
+                Writer.println(" Master comes out of the trees, a severe frown on her face. You probably should have gotten rid of that barrier somehow.");
+                Writer.println();
+                        
+                wantToContinue = false;
+            }
+            else if (currentRoom.getName().equals("In Front of Bridge") && direction.equals("east") && !player.isInInventory("citizenship card")) {
+                Writer.println("Guardsman: Turn around, Faye. And don't come back until you're a proper citizen.");
+            }
+            else if (currentRoom.getName().equals("South Path") && direction.equals("south") && !player.isInInventory("illuminated bulb") && !currentRoom.isInRoom("illuminated bulb")) {
+                Writer.println("This must be another one of Master's precautions. You can't see even a few feet in front of you. Best find something bright.");
+            }
+            else if (currentRoom.getName().equals("Fairsway Weapons") && !(weapons.isInRoom("broadsword") || weapons.isInRoom("duplicate broadsword"))) {
+                Writer.println("Tave: I don't mind a little mischief, but that sword doesn't leave this store.");
+            }
             else if (currentRoom.getName().equals("North Path") && direction.equals("up") && player.isInInventory("cat")) {
                 printWin();
                 wantToContinue = false;
@@ -622,7 +622,7 @@ public class Game {
                                 
                                 if (currentRoom.isInRoom(ingredientName) && player.isInInventory(containerName)) {
                                     if (ingredient.getWeight() + player.getTotalWeight() > Player.MAX_WEIGHT) {
-                                       Writer.println("You try to pick it up, but you're already carrying so much.");
+                                        Writer.println("You try to pick it up, but you're already carrying so much.");
                                     }
                                     else if (currentRoom.getName().equals("Backyard") && !player.isInInventory(ingredientName)) {
                                         Writer.println("You probably shouldn't rip out all the herbs at once.");
